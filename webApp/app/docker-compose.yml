@@ -37,7 +37,7 @@ services:
     ports:
       - 8024:80
     environment:
-      PMA_HOST: baseDatosNewTitans2
+      PMA_HOST: baseDatosNewTitans
     networks:
       - newTitans
 
