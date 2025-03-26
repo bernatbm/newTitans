@@ -1,0 +1,47 @@
+services:
+  #PHP - APACHE CONTAINER
+  apacheApp:
+    image: php:8.2-apache
+    container_name: php-apacheApp
+    ports:
+      - 5000:80
+    volumes:
+      - ./:/var/www/html
+    networks:
+      - newTitans
+    depends_on:
+      - mysql
+    working_dir: /var/www/html # Laravel trabaja desde la carpeta de 'Volumes'
+  #MYSQL CONTAINER
+  mysql:
+    image: mysql:8.0
+    container_name: baseDatosNewTitansApp
+    ports:
+      - 3308:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: dataBaseNewTitans
+      MYSQL_USER: bernat
+      MYSQL_PASSWORD: newtitansdb
+    networks:
+      - newTitans
+    volumes:
+      - mysql_data:/var/lib/mysql
+  #PHPMYADMIN CONTAINER
+  phpmyadminApp:
+    depends_on:
+      - mysql
+    image: phpmyadmin:latest
+    container_name: phpmyadminApp
+    restart: always
+    ports:
+      - 8024:80
+    environment:
+      PMA_HOST: baseDatosNewTitans2
+    networks:
+      - newTitans
+
+networks:
+  newTitans:
+volumes:
+  mysql_data:
