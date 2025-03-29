@@ -25,6 +25,8 @@ services:
       MYSQL_PASSWORD: newtitansdb
     networks:
       - newTitans
+      
+    
     volumes:
       - mysql_data:/var/lib/mysql
   #PHPMYADMIN CONTAINER
@@ -40,8 +42,10 @@ services:
       PMA_HOST: baseDatosNewTitansApp
     networks:
       - newTitans
+       
 
 networks:
   newTitans:
+    external: true
 volumes:
   mysql_data:
