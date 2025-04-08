@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>newTitans</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Encabezado -->
+    <header>
+        <a href="index.html"><h1>Nombre de la Empresa</h1></a>
+        <nav>
+            <a href="admin_reservas.html">Admin Reservas</a>
+            <a href="perfil.html">Perfil</a>
+            <a href="logout.html">Cerrar Sesión</a>
+        </nav>
+    </header>
+    
+    
+    
+    <section class="hero" id="inicio">
+        <div class="hero-content">
+            <h1 style="color: #FFFFFF;">Bienvenido a Nuestra Empresa</h1>
+            <p style="color: #FFFFFF;">Ofrecemos servicios de transporte confiables y seguros.</p>
+        </div>
+    </section>
+    
+
+    <!-- Sección Servicios -->
+    <section class="services" id="servicios">
+        <h2>Nuestros Servicios</h2>
+        <div class="service">
+            <img src="transporte-aeropuerto.jpg" alt="Transporte Aeropuerto" class="service-img">
+            <h3>Transporte Aeropuerto</h3>
+            <p>Servicio rápido y eficiente desde y hacia el aeropuerto.</p>
+        </div>
+        <div class="service">
+            <img src="viajes-corporativos.jpg" alt="Viajes Corporativos" class="service-img">
+            <h3>Viajes Corporativos</h3>
+            <p>Transporte cómodo para tus reuniones de negocios.</p>
+        </div>
+        <div class="service">
+            <img src="tours-turisticos.jpg" alt="Tours Turísticos" class="service-img">
+            <h3>Tours Turísticos</h3>
+            <p>Explora la ciudad con nuestros servicios de transporte turístico.</p>
+        </div>
+    </section>
+
+    <!-- Sección Contacto -->
+    <section class="contact" id="contacto">
+        <h2>Contáctanos</h2>
+        <p>Email: info@transfers.com</p>
+        <p>Teléfono: +34 123 456 789</p>
+
+        <!-- Formulario básico -->
+        <form action="#" method="post">
+            <label for="nombre">Nombre:</label><br/>
+            <input type="text" id="nombre" name="nombre" required><br/><br/>
+
+            <label for="email">Email:</label><br/>
+            <input type="email" id="email" name="email" required><br/><br/>
+
+            <label for="mensaje">Mensaje:</label><br/>
+            <textarea id="mensaje" name="mensaje" rows="4" required></textarea><br/><br/>
+
+            <button type="submit">Enviar</button>
+        </form>
+    </section>
+
+    <!-- Pie de página -->
+    <footer>
+        <p>&copy; 2025 Empresa de Transfers. Todos los derechos reservados.</p>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>

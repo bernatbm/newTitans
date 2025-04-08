@@ -1,7 +1,10 @@
+
 services:
-  #PHP - APACHE CONTAINER
+  # PHP - APACHE CONTAINER
   apache:
-    image: php:8.2-apache
+    build:
+      context: .
+      dockerfile: Dockerfile
     container_name: php-apache
     ports:
       - 5000:80
@@ -12,9 +15,10 @@ services:
     depends_on:
       - mysql
     environment:
-      - APACHE_DOCUMENT_ROOT=/var/www/html/public # Carpeta Importante de Laravel 
-    working_dir: /var/www/html # Laravel trabaja desde la carpeta de 'Volumes'
-  #MYSQL CONTAINER
+      - APACHE_DOCUMENT_ROOT=/var/www/html/public
+    working_dir: /var/www/html
+
+  # MYSQL CONTAINER
   mysql:
     image: mysql:8.0
     container_name: baseDatosNewTitans
@@ -29,7 +33,8 @@ services:
       - newTitans
     volumes:
       - mysql_data:/var/lib/mysql
-  #PHPMYADMIN CONTAINER
+
+  # PHPMYADMIN CONTAINER
   phpmyadmin:
     depends_on:
       - mysql
@@ -43,12 +48,12 @@ services:
     networks:
       - newTitans
 
-  #WORDPRESS CONTAINER
-wordpress:
-    image: wordpress:latest #La última imagen de wordpress
+  # WORDPRESS CONTAINER
+  wordpress:
+    image: wordpress:latest # La última imagen de wordpress
     container_name: wordpress # El nombre del container
     depends_on:
-     - mysql #depende del container mysql
+      - mysql # Depende del container mysql
     ports:
       - 9090:80 # El puerto
     environment:
@@ -56,14 +61,13 @@ wordpress:
       WORDPRESS_DB_USER: bernat
       WORDPRESS_DB_PASSWORD: newtitansdb
       WORDPRESS_DB_NAME: dataBaseNewTitans
-
-      #En este caso toda la DataBase esta conectada con la DB de mysql, de allí que todo sea igual.
     volumes:
-      - ./src/wordpress:/var/www/html #La ruta donde esta creada (he creado una carpeta en src llamada wordpress y donde se guarda
+      - ./src/wordpress:/var/www/html # La ruta donde esta creada (he creado una carpeta en src llamada wordpress)
     networks:
-      - newTitans #La network donde todo esta conectado
+      - newTitans # La network donde todo está conectado
 
 networks:
   newTitans:
+
 volumes:
   mysql_data:
