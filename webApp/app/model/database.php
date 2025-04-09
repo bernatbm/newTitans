@@ -1,15 +1,26 @@
 <?php
-$servername = "baseDatosNewTitans"; 
-$username = "root";
-$password = "";
-$database = "dataBaseNewTitans";
+class database{
+    private $pdo;
 
-// Crear conexión
-$conn = new mysqli($servername, $username, $password, $database);
+    public function __construct(){
+        $host = "baseDatosNewTitansApp";
+        $db ='dataBaseNewTitans';
+        $user='bernat';
+        $pswd = 'newtitansdb';
+        $conn = "mysql:host=$host;dbname=$db";
 
-// Verificar conexión
-if ($conn->connect_error) {
-    die("Conexión fallida: " . $conn->connect_error);
+        try{
+            $this->pdo=new PDO($conn,$user,$pswd); //conexion con la bd
+            $this->pdo->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);// Config en caso de error
+
+            $this->pdo->exec("SET NAMES 'utf8'"); 
+        }catch(PDOException $e){
+            echo "No hay conexión:" . $e->getMessage();
+            exit();//Cerramos conexion 
+        }
+    }
+
+    public function getConn(){
+        return $this->pdo;
+    }
 }
-echo "Conexión exitosa";
-?>

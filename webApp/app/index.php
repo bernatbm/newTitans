@@ -1,23 +1,41 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Isla Transfers</title>
-    <link rel="stylesheet" href="model/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
     <!-- Encabezado -->
     <header>
-        <a href="index.html"><h1>Isla Transfers</h1></a>
-        <nav>
-            <a href="perfil.html">PERFIL</a>
-            <a href="registro.html">REGISTRO</a>
-            <a href="login.html">LOGIN</a>
+    <div class="titleLogo">
+        <img src="assets/imagenes/newTitans.svg" class="service-img">
+        <a href="./index.php"><h1>Isla Transfers</h1></a>
+    </div>
+    <nav>
+    <?php if (isset($_SESSION['userName'])): ?>
+        <span>
+            <a href="../model/perfil.php"><?php echo "Hola, " . strtoupper($_SESSION['userName']); ?></a>
+        </span>
+        
+        <?php if (!empty($_SESSION['isAdmin']) && $_SESSION['isAdmin'] == 1): ?>
+            <p class="admin-label">[ Admin ]</p>
+        <?php endif; ?>
 
-        </nav>
-    </header>
-    
+        <a href="../model/logout.php">CERRAR SESIÓN</a>
+    <?php else: ?>
+        <a href="../registro/registro.php">REGISTRO</a>
+        <a href="../model/login.php">LOGIN</a>
+    <?php endif; ?>
+    </nav>
+</header>
+
     <section class="hero" id="inicio">
         <div class="hero-content">
             <h1 style="color: #FFFFFF;">Bienvenido a Nuestra Empresa</h1>
@@ -97,6 +115,6 @@
 
 
     <!-- JavaScript -->
-    <script src="script.js"></script>
+    <script src="model/script.js"></script>
 </body>
 </html>
