@@ -69,15 +69,17 @@ session_start();
     <button type="submit" id="btnRegistro">REGISTRARSE</button>
     </form>
 </div>
+<!--Si el usuario es registrado, pasara por aquí-->
 <?php if (isset($_GET['registro']) && $_GET['registro'] == 'registrado'): ?>
     <script>
-        window.registrado = {
-            nombre: "<?php echo htmlspecialchars($_GET['nombre']); ?>",
-            isAdmin: "<?php echo htmlspecialchars($_GET['isAdmin']); ?>"
+        window.registrado = {//preparara una ventana(popup) con los datos de registrado
+        
+            nombre: "<?php echo htmlspecialchars($_GET['nombre']); ?>", // guardamos el valor de nombre
+            isAdmin: "<?php echo htmlspecialchars($_GET['isAdmin']); ?>"//lo mismo con isAdmin
         };
     </script>
 <?php endif; ?>
-<script src="../js/script.js"></script>
+<script src="../js/script.js"></script><!--Va al script.js, para realizar el popup y abrirla
 
 
 
