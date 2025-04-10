@@ -12,6 +12,9 @@ services:
     depends_on:
       - mysql
     working_dir: /var/www/html # Laravel trabaja desde la carpeta de 'Volumes'
+    #SI ERES WINDOWS DESCOMENTA EL COMANDO DE ABAJO,SI TRABAJAS CON LINUX, PASA DE MI
+   # command: > 
+    #  bash -c "docker-php-ext-install pdo pdo_mysql && apache2-foreground"
   #MYSQL CONTAINER
   mysql:
     image: mysql:8.0

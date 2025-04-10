@@ -54,6 +54,13 @@ session_start();
     <input type="text" name="ciudad" required>
     <label class="Name">País:</label>
     <input type="text" name="pais" required>
+    <label class="Name">¿Eres Administrador?:</label>
+    <select name="isAdmin" required>
+    <option value="" disabled selected>Selecciona tipo Usuario</option>
+    <option value="1">Administrador</option>
+    <option value="0">Usuario</option>
+</select>
+
     
     <button type="submit" id="btnRegistro">REGISTRARSE</button>
     </form>

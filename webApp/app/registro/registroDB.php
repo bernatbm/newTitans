@@ -11,6 +11,8 @@ $ciudad = $_POST['ciudad'] ?? '';
 $pais = $_POST['pais'] ?? '';
 $email = $_POST['email'] ?? '';
 $password = $_POST['password'] ?? '';
+$isAdmin = $_POST['isAdmin'] ?? '';
+
 
 // Validamos los campos
 if (
@@ -32,7 +34,26 @@ if (empty($nombre) || empty($apellido1) || empty($email) || empty($password)) {
 $db = new Database();
 $conn = $db->getConn();
 
+
+$checkColumnSQL = "
+    SELECT COUNT(*) AS existe 
+    FROM information_schema.COLUMNS 
+    WHERE TABLE_NAME = 'transfer_viajeros' 
+    AND COLUMN_NAME = 'isAdmin' 
+    AND TABLE_SCHEMA = 'dataBaseNewTitans';
+";
+
+$result = $conn->query($checkColumnSQL);
+$row = $result->fetch(PDO::FETCH_ASSOC);
+
+if ($row['existe'] == 0) {
+    // Si la columna no existe, la creamos
+    $alterSQL = "ALTER TABLE transfer_viajeros ADD isAdmin TINYINT(1) DEFAULT 0";
+    $conn->exec($alterSQL);
+}
+
 try {
+
     // Preparar la sentencia SQL para insertar los datos en la tabla transfer_viajeros(los usuarios)
     $stmt = $conn->prepare("INSERT INTO transfer_viajeros 
                             (nombre, apellido1, apellido2, direccion, codigoPostal, ciudad, pais, email, password, isAdmin)
@@ -48,7 +69,7 @@ try {
     $stmt->bindValue(':pais', $_POST['pais']);
     $stmt->bindValue(':email', $_POST['email']);
     $stmt->bindValue(':password', $_POST['password']); 
-    $stmt->bindValue(':isAdmin', 0); 
+    $stmt->bindValue(':isAdmin',$_POST['isAdmin'] ); 
 
     // Ejecutar la consulta
     $stmt->execute();
