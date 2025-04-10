@@ -34,7 +34,17 @@ if (empty($nombre) || empty($apellido1) || empty($email) || empty($password)) {
 $db = new Database();
 $conn = $db->getConn();
 
+// Validar si el email ya existe
+$checkEmail = $conn->prepare("SELECT COUNT(*) FROM transfer_viajeros WHERE email = :email");
+$checkEmail->bindParam(':email', $email);
+$checkEmail->execute();
+$emailExiste = $checkEmail->fetchColumn();
 
+if ($emailExiste > 0) {
+    $error = urlencode("El usuario con este email ya existe.");
+    header("Location: registro.php?error=$error");
+    exit;
+}
 $checkColumnSQL = "
     SELECT COUNT(*) AS existe 
     FROM information_schema.COLUMNS 

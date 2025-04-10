@@ -79,7 +79,18 @@ session_start();
         };
     </script>
 <?php endif; ?>
-<script src="../js/script.js"></script><!--Va al script.js, para realizar el popup y abrirla
+<script>
+    <?php if (isset($_GET['error'])): ?>
+        // Mostrar el mensaje de error en un popup
+        alert("<?php echo htmlspecialchars($_GET['error']); ?>");
+
+        // Limpiar la URL para que no se muestre dos veces el popup
+        const nuevaURL = window.location.origin + window.location.pathname;
+        window.history.replaceState({}, document.title, nuevaURL);
+    <?php endif; ?>
+</script>
+
+<script src="../js/script.js"></script><!--Va al script.js, para realizar el popup y abrirla-->
 
 
 
