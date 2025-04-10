@@ -74,7 +74,13 @@ try {
 
     // Ejecutar la consulta
     $stmt->execute();
-} catch (PDOException $e) {
-    echo "Error al registrar el usuario: " . $e->getMessage();
-}
+    //Una vez ejecutado la consulta guarda el nombre y el tipo de isAdmin[0:User,1:Admin,2:Corp]
+    $nombre = urlencode($_POST['nombre']);
+    $isAdmin = urlencode($_POST['isAdmin']);
+    header("Location: ../registro/registro.php?registro=registrado&nombre=$nombre&isAdmin=$isAdmin");//vuelve a la página de registro con lo guardado
+    exit;
+
+    } catch (PDOException $e) {
+        echo "Error al registrar el usuario: " . $e->getMessage();
+    }
 ?>
