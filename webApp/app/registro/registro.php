@@ -20,7 +20,10 @@ session_start();
     <?php if (isset($_SESSION['userName'])): ?>
              <span><a href="../model/perfil.php"><?php echo "Hola, " . strtoupper($_SESSION['userName']); ?></a></span>
              <?php if (!empty($_SESSION['isAdmin']) && $_SESSION['isAdmin'] == 1): ?>
-             <p class="admin-label">[ Admin ]</p>
+            <p class="admin-label">[ Admin ]</p>
+            <?php elseif (!empty($_SESSION['isAdmin']) && $_SESSION['isAdmin'] == 2): ?>
+            <p class="admin-label">[ Corp ]</p>
+        
         <?php endif; ?>
 
                 <!-- Hacef Log OUT o Cerral Sesión -->
@@ -54,9 +57,43 @@ session_start();
     <input type="text" name="ciudad" required>
     <label class="Name">País:</label>
     <input type="text" name="pais" required>
+    <label class="Name">¿Tipo Usuario?:</label>
+    <select name="isAdmin" required>
+    <option value="" disabled selected>Selecciona tipo Usuario</option>
+    <option value="1">Administrador</option>
+    <option value="0">Usuario</option>
+    <option value="2">Corporativo</option>
+</select>
+
     
     <button type="submit" id="btnRegistro">REGISTRARSE</button>
     </form>
 </div>
+<!--Si el usuario es registrado, pasara por aquí-->
+<?php if (isset($_GET['registro']) && $_GET['registro'] == 'registrado'): ?>
+    <script>
+        window.registrado = {//preparara una ventana(popup) con los datos de registrado
+        
+            nombre: "<?php echo htmlspecialchars($_GET['nombre']); ?>", // guardamos el valor de nombre
+            isAdmin: "<?php echo htmlspecialchars($_GET['isAdmin']); ?>"//lo mismo con isAdmin
+        };
+    </script>
+<?php endif; ?>
+<script>
+    <?php if (isset($_GET['error'])): ?>
+        // Mostrar el mensaje de error en un popup
+        alert("<?php echo htmlspecialchars($_GET['error']); ?>");
+
+        // Limpiar la URL para que no se muestre dos veces el popup
+        const nuevaURL = window.location.origin + window.location.pathname;
+        window.history.replaceState({}, document.title, nuevaURL);
+    <?php endif; ?>
+</script>
+
+<script src="../js/script.js"></script><!--Va al script.js, para realizar el popup y abrirla-->
+
+
+
 </body>
+
 </html>

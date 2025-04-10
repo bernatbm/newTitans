@@ -32,3 +32,21 @@ service.addEventListener("click", () => {
     }
 });
 });
+
+//PopUp de alerta de registro completado
+document.addEventListener("DOMContentLoaded", () => {
+    if (window.registrado) {
+        const { nombre, isAdmin } = window.registrado;
+
+        let tipoUsuario = "";//Usuario, saldra vacío
+        if (isAdmin === "1") tipoUsuario = "Administrador";
+        else if (isAdmin === "2") tipoUsuario = "Corporativo";
+
+        alert(`¡${nombre},${tipoUsuario} ha sido registrado con éxito!`);//saldra la alerta con el popup
+
+        
+        const nuevaURL = window.location.origin + window.location.pathname;//Limpiaremos la URL para que no nos salga dos veces el popup
+        window.history.replaceState({}, document.title, nuevaURL);
+    }
+});
+

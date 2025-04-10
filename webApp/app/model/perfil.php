@@ -29,6 +29,8 @@ if (!isset($_SESSION['userName'])) {
              <span><a href="perfil.php"><?php echo "Hola, " . strtoupper($_SESSION['userName']); ?></a></span>
              <?php if (!empty($_SESSION['isAdmin']) && $_SESSION['isAdmin'] == 1): ?>
             <p class="admin-label">[ Admin ]</p>
+            <?php elseif (!empty($_SESSION['isAdmin']) && $_SESSION['isAdmin'] == 2): ?>
+            <p class="admin-label">[ Corp ]</p>
         <?php endif; ?>
 
                 <!-- Hacef Log OUT o Cerral Sesión -->
