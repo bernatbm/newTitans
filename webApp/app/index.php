@@ -26,6 +26,9 @@ session_start();
         
         <?php if (!empty($_SESSION['isAdmin']) && $_SESSION['isAdmin'] == 1): ?>
             <p class="admin-label">[ Admin ]</p>
+            <?php elseif (!empty($_SESSION['isAdmin']) && $_SESSION['isAdmin'] == 2): ?>
+            <p class="admin-label">[ Corp ]</p>
+        
         <?php endif; ?>
 
         <a href="../model/logout.php">CERRAR SESIÓN</a>

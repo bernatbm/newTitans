@@ -20,7 +20,10 @@ session_start();
     <?php if (isset($_SESSION['userName'])): ?>
              <span><a href="../model/perfil.php"><?php echo "Hola, " . strtoupper($_SESSION['userName']); ?></a></span>
              <?php if (!empty($_SESSION['isAdmin']) && $_SESSION['isAdmin'] == 1): ?>
-             <p class="admin-label">[ Admin ]</p>
+            <p class="admin-label">[ Admin ]</p>
+            <?php elseif (!empty($_SESSION['isAdmin']) && $_SESSION['isAdmin'] == 2): ?>
+            <p class="admin-label">[ Corp ]</p>
+        
         <?php endif; ?>
 
                 <!-- Hacef Log OUT o Cerral Sesión -->
@@ -54,11 +57,12 @@ session_start();
     <input type="text" name="ciudad" required>
     <label class="Name">País:</label>
     <input type="text" name="pais" required>
-    <label class="Name">¿Eres Administrador?:</label>
+    <label class="Name">¿Tipo Usuario?:</label>
     <select name="isAdmin" required>
     <option value="" disabled selected>Selecciona tipo Usuario</option>
     <option value="1">Administrador</option>
     <option value="0">Usuario</option>
+    <option value="2">Corporativo</option>
 </select>
 
     

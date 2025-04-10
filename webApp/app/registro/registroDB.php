@@ -48,7 +48,8 @@ $row = $result->fetch(PDO::FETCH_ASSOC);
 
 if ($row['existe'] == 0) {
     // Si la columna no existe, la creamos
-    $alterSQL = "ALTER TABLE transfer_viajeros ADD isAdmin TINYINT(1) DEFAULT 0";
+    $alterSQL = "ALTER TABLE transfer_viajeros ADD isAdmin TINYINT DEFAULT 0";
+
     $conn->exec($alterSQL);
 }
 
