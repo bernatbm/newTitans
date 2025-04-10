@@ -21,7 +21,7 @@ session_start();
     <nav>
     <?php if (isset($_SESSION['userName'])): ?>
         <span>
-            <a href="../model/perfil.php"><?php echo "Hola, " . strtoupper($_SESSION['userName']); ?></a>
+            <a href="../model/perfilUsuario.php"><?php echo "Hola, " . strtoupper($_SESSION['userName']); ?></a>
         </span>
         
         <?php if (!empty($_SESSION['isAdmin']) && $_SESSION['isAdmin'] == 1): ?>

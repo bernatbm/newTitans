@@ -6,28 +6,34 @@ require_once '../controller/travellerController.php';
 // conexión a la base de datos
 $db = new database(); // database
 $conn = $db->getConn(); //conexión database
+$usuario = $_POST['user'] ?? '';
+$password = $_POST['password'] ?? '';
 
-if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    $usuario = $_POST['user'] ?? '';
-    $password = $_POST['password'] ?? '';
+if ($conn) {
+    $controller = new travellerController($conn); 
+    $resultado = $controller->loginTraveller($usuario, $password);
 
-    
-    if ($conn) {
-        $controller = new travellerController($conn); 
-        $resultado = $controller->loginTraveller($usuario, $password);
+    if ($resultado['success']) {
+        $_SESSION['userName'] = $resultado['user']['nombre'];
+        $_SESSION['isAdmin'] = $resultado['user']['isAdmin'];
 
-        if ($resultado['success']) {
-            $_SESSION['userName'] = $resultado['user']['nombre']; // Aqui busca el nombre
-            $_SESSION['isAdmin'] = $resultado['user']['isAdmin']; //Aqui busca si es Admin[0: No Admin,1:[Admin]]
-            
-
-            header("Location: perfil.php"); //Si se hace match, va al perfil de usuario
-            exit;//Corto y cambio
-        } 
+        // Redirección según el tipo de usuario
+        if ($_SESSION['isAdmin'] == 1) {
+            header("Location: panelAdministrador.php");
+        } elseif($_SESSION['isAdmin']==2){
+            header("Location: panelCorporativo.php");
+        } else {
+            header("Location: perfilUsuario.php");
+        }
+        exit;
     } else {
-       
-        $error = 'No hay conexión a la database';
+        // Login fallido (usuario o contraseña incorrectos)
+        $error = 'Usuario o contraseña incorrectos.';
     }
+
+} else {
+    // Fallo en la conexión a la base de datos
+    $error = 'No hay conexión a la base de datos.';
 }
 ?>
 
