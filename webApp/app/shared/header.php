@@ -9,7 +9,7 @@
     <nav>
         <?php if (isset($_SESSION['userName'])): ?>
             <?php
-                $perfilLink = '/webApp/app/model/perfilUsuario.php'; // Por defecto
+                $perfilLink = '/webApp/app/usuario/perfilUsuario.php';
 
                 if (isset($_SESSION['isAdmin'])) {
                     if ($_SESSION['isAdmin'] == 1) {

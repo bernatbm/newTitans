@@ -19,11 +19,11 @@ if ($conn) {
 
         // Redirección según el tipo de usuario
         if ($_SESSION['isAdmin'] == 1) {
-            header("Location: panelAdministrador.php");
-        } elseif($_SESSION['isAdmin']==2){
-            header("Location: panelCorporativo.php");
+            header("Location: ../admin/panelAdministrador.php");
+        } elseif ($_SESSION['isAdmin'] == 2) {
+            header("Location: ../corporativo/panelCorporativo.php");
         } else {
-            header("Location: perfilUsuario.php");
+            header("Location: ../usuario/panelUsuario.php");
         }
         exit;
     } else {
