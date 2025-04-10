@@ -13,31 +13,9 @@ session_start();
 </head>
 <body>
     <!-- Encabezado -->
-    <header>
-    <div class="titleLogo">
-        <img src="assets/imagenes/newTitans.svg" class="service-img">
-        <a href="./index.php"><h1>Isla Transfers</h1></a>
-    </div>
-    <nav>
-    <?php if (isset($_SESSION['userName'])): ?>
-        <span>
-            <a href="../model/perfilUsuario.php"><?php echo "Hola, " . strtoupper($_SESSION['userName']); ?></a>
-        </span>
-        
-        <?php if (!empty($_SESSION['isAdmin']) && $_SESSION['isAdmin'] == 1): ?>
-            <p class="admin-label">[ Admin ]</p>
-            <?php elseif (!empty($_SESSION['isAdmin']) && $_SESSION['isAdmin'] == 2): ?>
-            <p class="admin-label">[ Corp ]</p>
-        
-        <?php endif; ?>
+    <?php include 'shared/header.php'; ?>
+    <!---FIN ENCABEZADO-->
 
-        <a href="../model/logout.php">CERRAR SESIÓN</a>
-    <?php else: ?>
-        <a href="../registro/registro.php">REGISTRO</a>
-        <a href="../model/login.php">LOGIN</a>
-    <?php endif; ?>
-    </nav>
-</header>
 
     <section class="hero" id="inicio">
         <div class="hero-content">

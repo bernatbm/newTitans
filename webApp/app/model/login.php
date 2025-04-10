@@ -9,31 +9,34 @@ $conn = $db->getConn(); //conexión database
 $usuario = $_POST['user'] ?? '';
 $password = $_POST['password'] ?? '';
 
-if ($conn) {
-    $controller = new travellerController($conn); 
-    $resultado = $controller->loginTraveller($usuario, $password);
 
-    if ($resultado['success']) {
-        $_SESSION['userName'] = $resultado['user']['nombre'];
-        $_SESSION['isAdmin'] = $resultado['user']['isAdmin'];
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {//Esto luego, cuando demos clic a ENTRAR, si no, entra en bucle cuando busca si es Admin,Corp o User
+    if ($conn) {
+        $controller = new travellerController($conn); 
+        $resultado = $controller->loginTraveller($usuario, $password);
 
-        // Redirección según el tipo de usuario
-        if ($_SESSION['isAdmin'] == 1) {
-            header("Location: ../admin/panelAdministrador.php");
-        } elseif ($_SESSION['isAdmin'] == 2) {
-            header("Location: ../corporativo/panelCorporativo.php");
+        if ($resultado['success']) {
+            $_SESSION['userName'] = $resultado['user']['nombre'];
+            $_SESSION['isAdmin'] = $resultado['user']['isAdmin'];
+
+            // Redirección según el tipo de usuario
+            if ($_SESSION['isAdmin'] == 1) {
+                header("Location: ../admin/panelAdministrador.php");
+            } elseif ($_SESSION['isAdmin'] == 2) {
+                header("Location: ../corporativo/panelCorporativo.php");
+            } else {
+                header("Location: ../usuario/perfilUsuario.php");
+            }
+            exit;
         } else {
-            header("Location: ../usuario/perfilUsuario.php");
+            // Login fallido (usuario o contraseña incorrectos)
+            $error = 'Usuario o contraseña incorrectos.';
         }
-        exit;
-    } else {
-        // Login fallido (usuario o contraseña incorrectos)
-        $error = 'Usuario o contraseña incorrectos.';
-    }
 
-} else {
-    // Fallo en la conexión a la base de datos
-    $error = 'No hay conexión a la base de datos.';
+    } else {
+        // Fallo en la conexión a la base de datos
+        $error = 'No hay conexión a la base de datos.';
+    }
 }
 ?>
 
@@ -47,34 +50,10 @@ if ($conn) {
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
 </head>
 <body>
-<header>
-    <div class="titleLogo">
-        <img src="../assets/imagenes/newTitans.svg" class="service-img">
-        <a href="../index.php"><h1>Isla Transfers</h1></a>
-        </div>
-        <nav>
-            <!--Este de aqui lo he dejado por si acaso(Se que si esta logeado, no saldrá esta pantalla-->
-    <?php if (isset($_SESSION['userName'])): ?>
-        
-             <span><a href="./model/perfil.php"><?php echo "Hola, " . strtoupper($_SESSION['userName']); ?></a></span>
-             <?php if (!empty($_SESSION['isAdmin']) && $_SESSION['isAdmin'] == 1): ?>
-            <p class="admin-label">[ Admin ]</p>
-            <?php elseif (!empty($_SESSION['isAdmin']) && $_SESSION['isAdmin'] == 2): ?>
-            <p class="admin-label">[ Corp ]</p>
-        
-        <?php endif; ?>
 
-                <!-- Hacef Log OUT o Cerral Sesión -->
-                <a href="logout.php">CERRAR SESIÓN</a>
-            <?php else: ?>
-                <!-- Si no hay usuario, REGISTRO y/o LOGIN -->
-                <a href="../registro/registro.php">REGISTRO</a>
-                <a href="../model/login.php">LOGIN</a>
-            <?php endif; ?>
-        </nav>
-    </header>
-
-    <!--FORMULARIO DE LOGIN--->
+      <!-- Encabezado -->
+    <?php include '../shared/header.php'; ?>
+    <!---FIN ENCABEZADO-->
 
     <div class="LogInForm">
         <h1>LOG IN</h1>

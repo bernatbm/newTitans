@@ -2,41 +2,44 @@
 
 <header>
     <div class="titleLogo">
-        <img src="/webApp/app/assets/imagenes/newTitans.svg" class="service-img">
-        <a href="/webApp/index.php"><h1>Isla Transfers</h1></a>
+        <img src="/assets/imagenes/newTitans.svg" class="service-img">
+        <a href="/index.php"><h1>Isla Transfers</h1></a>
     </div>
-
     <nav>
         <?php if (isset($_SESSION['userName'])): ?>
-            <?php
-                $perfilLink = '/webApp/app/usuario/perfilUsuario.php';
 
-                if (isset($_SESSION['isAdmin'])) {
-                    if ($_SESSION['isAdmin'] == 1) {
-                        $perfilLink = '/webApp/app/admin/panelAdministrador.php';
-                    } elseif ($_SESSION['isAdmin'] == 2) {
-                        $perfilLink = '/webApp/app/corporativo/panelCorporativo.php';
-                    }
-                }
-            ?>
-
-            <span>
-                <a href="<?php echo $perfilLink; ?>">
-                    <?php echo "Hola, " . strtoupper($_SESSION['userName']); ?>
-                </a>
-            </span>
-
+            <?php if (in_array(basename($_SERVER['PHP_SELF']), ['panelAdministrador.php', 'panelCorporativo.php','perfilUsuario.php', 'login.php'])): ?>
+                <a href="../registro/registro.php">REGISTRO</a>
+            <?php endif; ?>
+            
             <?php if ($_SESSION['isAdmin'] == 1): ?>
-                <p class="admin-label">[ Admin ]</p>
+                
+                <a href="../admin/panelAdministrador.php"><?php echo "Hola, " . strtoupper($_SESSION['userName']); ?></a>
             <?php elseif ($_SESSION['isAdmin'] == 2): ?>
+                
+                <a href="../corporativo/panelCorporativo.php"><?php echo "Hola, " . strtoupper($_SESSION['userName']); ?></a>
+            <?php else: ?>
+                
+                <a href="../usuario/perfilUsuario.php"><?php echo "Hola, " . strtoupper($_SESSION['userName']); ?></a>
+            <?php endif; ?>
+            
+            <?php if (!empty($_SESSION['isAdmin']) && $_SESSION['isAdmin'] == 1): ?>
+                <p class="admin-label">[ Admin ]</p>
+                <?php elseif (!empty($_SESSION['isAdmin']) && $_SESSION['isAdmin'] == 2): ?>
                 <p class="admin-label">[ Corp ]</p>
             <?php endif; ?>
 
-            <a href="/webApp/app/model/logout.php">CERRAR SESIÓN</a>
+           
 
+
+            <a href="../model/logout.php">CERRAR SESIÓN</a>
         <?php else: ?>
-            <a href="/webApp/app/registro/registro.php">REGISTRO</a>
-            <a href="/webApp/app/model/login.php">LOGIN</a>
+            <?php if (in_array(basename($_SERVER['PHP_SELF']), ['index.php','login.php'])): ?>
+                <a href="../registro/registro.php">REGISTRO</a>
+            <?php endif; ?>
+            <?php if (in_array(basename($_SERVER['PHP_SELF']), ['index.php','registro.php'])): ?>
+                <a href="../model/login.php">LOGIN</a>
+            <?php endif; ?>
         <?php endif; ?>
     </nav>
 </header>

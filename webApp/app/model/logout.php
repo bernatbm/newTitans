@@ -5,8 +5,13 @@ session_destroy(); // Destruir la sesión 'POR ESPAAARTAAAAA'
 
 $referer = $_SERVER['HTTP_REFERER'] ?? '';//donde estamos
 
-if (strpos($referer, 'perfil.php') !== false) {
-    header("Location: ../model/login.php");// Si cerramos sesión desde perfil, va a login
+//Aqui estan els logOuts o CERRAR SESSIONES segun PERFIL
+if (
+    strpos($referer, 'panelAdministrador.php') !== false ||
+    strpos($referer, 'panelCorporativo.php') !== false ||
+    strpos($referer, 'perfilUsuario.php') !== false
+) {
+    header("Location: ../model/login.php");// Si cerramos sesión desde cualquier perfil, va a login
 } else if (strpos($referer, 'registro.php') !== false) {//Si estamos en reistro va a registro(Solo cambia a login)
     header("Location: ../registro/registro.php");
 } else {
