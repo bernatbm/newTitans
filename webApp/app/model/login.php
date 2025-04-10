@@ -23,7 +23,7 @@ if ($conn) {
         } elseif ($_SESSION['isAdmin'] == 2) {
             header("Location: ../corporativo/panelCorporativo.php");
         } else {
-            header("Location: ../usuario/panelUsuario.php");
+            header("Location: ../usuario/perfilUsuario.php");
         }
         exit;
     } else {
