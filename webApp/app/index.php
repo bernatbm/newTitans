@@ -96,6 +96,6 @@ session_start();
 
 
     <!-- JavaScript -->
-    <script src="model/script.js"></script>
+    <script src="js/script.js"></script>
 </body>
 </html>
