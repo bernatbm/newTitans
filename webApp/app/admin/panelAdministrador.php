@@ -40,7 +40,34 @@ session_start();
                             <label for="hora-llegada">Hora de llegada:</label>
                             <input class="pa-input-hora-llegada" type="time" id="hora-llegada" name="hora-llegada" required>
                         </div>
-                        <div class="pa-form-aeropuerto"></div>
+                        <div class="pa-form-numero-vuelo">
+                            <label for="numero-vuelo">Numero de vuelo:</label>
+                            <input class="pa-input-numero-vuelo" type="text" id="numero-vuelo" name="numero-vuelo">
+                        </div>
+                        <div class="pa-form-aeropuerto-origen">
+                            <label for="aeropuerto-origen" >Aeropuerto de origen:</label>
+                            <input class="pa-input-aeropuerto-origen" type="text" id="aeropuerto-origen" name="aeropuerto-origen" required>
+                        </div>
+                        <div class="pa-form-hotel-destino">
+                            <label for="hotel-destino">Hotel de destino:</label>
+                            <input class="pa-input-hotel-destino" type="text" id="hotel-destino" name="hotel-destino" required>
+                        </div>
+                        <div class="pa-form-numero-viajeros">
+                            <label for="numero-viajeros">Número de viajeros:</label>
+                            <select class="pa-select-numero-viajeros" id="numero-viajeros" name="numero_viajeros" required>
+                                <option value="" disabled selected>Selecciona</option>
+                                <option value="1">1 viajero</option>
+                                <option value="2">2 viajeros</option>
+                                <option value="3">3 viajeros</option>
+                                <option value="4">4 viajeros</option>
+                                <option value="5">5 viajeros</option>
+                                <option value="6">6 viajeros</option>
+                            </select>
+                        </div>
+                        <div class="pa-form-email">
+                            <label for="email-cliente">Email:</label>
+                            <input class="pa-input-email" type="email" id="email-cliente" name="email_cliente" required>
+                        </div>
                     </form>
             </div>
         

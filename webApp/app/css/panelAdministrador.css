@@ -58,12 +58,6 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4); 
     transition: box-shadow 0.3s ease; 
 }
-.pa-form-dia-llegada{
-    margin-top: 20px;
-}
-.pa-form-hora-llegada{
-    margin-top: 20px;
-}
 
 .pa-input-dia-llegada{
     margin-left: 23px;
@@ -74,6 +68,18 @@
     cursor: pointer;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4); 
     transition: box-shadow 0.3s ease; 
+}
+.pa-form-hora-llegada,
+.pa-form-dia-llegada,
+.pa-form-numero-vuelo,
+.pa-form-aeropuerto-origen,
+.pa-form-hotel-destino,
+.pa-form-numero-viajeros,
+.pa-form-email{
+    margin-top: 20px;
+}
+.pa-form-email{
+    margin-bottom: 20px;
 }
 
 .pa-input-hora-llegada{
@@ -89,3 +95,85 @@
 
 
 
+.pa-input-numero-vuelo{
+    margin-left: 10px;
+    width: 20%;            
+    max-width: 60px;       
+    height: 5px;          
+    padding: 10px;          
+    font-size: 1rem;
+    border-radius: 6px;
+    border: 1px solid #f8ce70;
+    background-color: #726963;
+    color: white;
+    cursor: text;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4); 
+    transition: box-shadow 0.3s ease; 
+}
+
+
+
+.pa-input-aeropuerto-origen{
+    margin-left: 10px;
+    width: 50%;            
+    max-width: 200px;       
+    height: 5px;          
+    padding: 10px;          
+    font-size: 1rem;
+    border-radius: 6px;
+    border: 1px solid #f8ce70;
+    background-color: #726963;
+    color: white;
+    cursor: text;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4); 
+    transition: box-shadow 0.3s ease; 
+}
+
+
+
+.pa-input-hotel-destino{
+    margin-left: 10px;
+    width: 50%;            
+    max-width: 200px;       
+    height: 5px;          
+    padding: 10px;          
+    font-size: 1rem;
+    border-radius: 6px;
+    border: 1px solid #f8ce70;
+    background-color: #726963;
+    color: white;
+    cursor: text;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4); 
+    transition: box-shadow 0.3s ease; 
+}
+
+.pa-select-numero-viajeros{
+    margin-left: 10px;
+    width: 50%;            
+    max-width: 200px;        
+    padding: 3px;          
+    font-size: 0.9rem;
+    border-radius: 6px;
+    border: 1px solid #f8ce70;
+    background-color: #726963;
+    color: white;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4); 
+    transition: box-shadow 0.3s ease; 
+}
+
+.pa-input-email{
+    margin-left: 10px;
+    width: 50%;            
+    max-width: 200px;        
+    padding: 1px;   
+    height: 7px;       
+    font-size: 0.9rem;
+    border-radius: 6px;
+    border: 1px solid #f8ce70;
+    background-color: #726963;
+    color: white;
+    cursor: text;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4); 
+    transition: box-shadow 0.3s ease;
+}
