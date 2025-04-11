@@ -153,16 +153,22 @@ button[type="submit"] {
 
     .titleLogo img {
         margin-top: 2px;
-        height: 45px;
+        height: 25px;
     }
 
     .titleLogo h1 {
         font-size: 0px;
     }
 
-    header a,
+    
     .admin-label {
-        font-size: 14px;
+        font-size: 7.65px;
+    }
+    header nav a{
+        font-size: 11.45px;
+    }
+   .registerName{
+    font-size: 11.5px;
     }
 }
 

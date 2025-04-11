@@ -11,7 +11,7 @@
         <?php if (isset($_SESSION['userName'])): ?>
 
             <?php if (in_array(basename($_SERVER['PHP_SELF']), ['panelAdministrador.php', 'panelCorporativo.php','perfilUsuario.php', 'login.php'])): ?>
-                <a href="../registro/registro.php">REGISTRO</a>
+                <a class="registerName" href="../registro/registro.php">REGISTRO</a>
             <?php endif; ?>
             
             <?php if ($_SESSION['isAdmin'] == 1): ?>
@@ -37,7 +37,7 @@
             <a href="../model/logout.php">CERRAR SESIÓN</a>
         <?php else: ?>
             <?php if (in_array(basename($_SERVER['PHP_SELF']), ['index.php','login.php'])): ?>
-                <a href="../registro/registro.php">REGISTRO</a>
+                <a class="registerName" href="../registro/registro.php">REGISTRO</a>
             <?php endif; ?>
             <?php if (in_array(basename($_SERVER['PHP_SELF']), ['index.php','registro.php'])): ?>
                 <a href="../model/login.php">LOGIN</a>
