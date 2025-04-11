@@ -16,6 +16,7 @@
 }
 
 .pa-crear-reserva{
+    min-height: 300px;
     margin-top: 25px;
     margin-left: auto;
     margin-right: auto;
@@ -25,7 +26,7 @@
     border-color: grey;
     background-color: #2b2323;
     width: 80%;
-    max-width: 900px;
+    max-width: 1000px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
@@ -33,12 +34,61 @@
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
 }
 
+.pa-selector-trayecto {
+    display: flex;
+    justify-content: center;
+    gap: 30px; 
+    margin: 30px 0;
+    flex-wrap: wrap;
+}
+
+.pa-trayecto-opcion {
+    width: 300px; 
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.pa-trayecto-opcion:hover {
+    transform: scale(1.05);
+}
+
+.pa-trayecto-opcion img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+}
+
 .pa-h2{
     margin-left: 30px;
+    text-align: center;
     padding-top: 10px;
     color: #f8ce70;
-    font-size: 25px;
-    
+    font-size: 35px;
+}
+
+.pa-h3-titulo-trayecto {
+    margin-left: 30px;
+    text-align: center;
+    padding-top: 10px;
+    color: #f8ce70;
+    font-size: 35px;
+}
+
+.pa-btn-cambiar-trayecto {
+    margin: 10px 30px 20px;
+    padding: 8px 16px;
+    font-size: 0.95rem;
+    background-color: #726963;
+    color: white;
+    border: 1px solid #f8ce70;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.pa-btn-cambiar-trayecto:hover {
+    background-color: #8d827c;
 }
 
 .pa-form{
@@ -60,7 +110,30 @@
     transition: box-shadow 0.3s ease; 
 }
 
-.pa-input-dia-llegada{
+
+.pa-form-hora-llegada,
+.pa-form-dia-llegada,
+.pa-form-numero-vuelo,
+.pa-form-aeropuerto-origen,
+.pa-form-hotel-destino,
+.pa-form-numero-viajeros,
+.pa-form-nombre-cliente,
+.pa-form-email,
+.pa-form-dia-vuelo,
+.pa-form-hora-vuelo,
+.pa-form-hora-recogida,
+.pa-form-hotel-recogida,
+.pa-form-aeropuerto-destino{
+    margin-top: 20px;
+    padding-left: 40px;
+}
+
+.pa-form-email{
+    margin-bottom: 20px;
+}
+
+.pa-input-dia-llegada,
+.pa-input-dia-vuelo{
     margin-left: 23px;
     border-radius: 6px;
     border: 1px solid #f8ce70;
@@ -70,20 +143,10 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4); 
     transition: box-shadow 0.3s ease; 
 }
-.pa-form-hora-llegada,
-.pa-form-dia-llegada,
-.pa-form-numero-vuelo,
-.pa-form-aeropuerto-origen,
-.pa-form-hotel-destino,
-.pa-form-numero-viajeros,
-.pa-form-email{
-    margin-top: 20px;
-}
-.pa-form-email{
-    margin-bottom: 20px;
-}
 
-.pa-input-hora-llegada{
+.pa-input-hora-llegada,
+.pa-input-hora-vuelo,
+.pa-input-hora-recogida{
     margin-left: 13px;
     border-radius: 6px;
     border: 1px solid #f8ce70;
@@ -114,7 +177,8 @@
 
 
 
-.pa-input-aeropuerto-origen{
+.pa-input-aeropuerto-origen,
+.pa-input-aeropuerto-destino{
     margin-left: 10px;
     width: 50%;            
     max-width: 200px;       
@@ -132,7 +196,8 @@
 
 
 
-.pa-input-hotel-destino{
+.pa-input-hotel-destino,
+.pa-input-hotel-recogida{
     margin-left: 10px;
     width: 50%;            
     max-width: 200px;       
@@ -162,6 +227,21 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4); 
     transition: box-shadow 0.3s ease; 
 }
+.pa-input-nombre-cliente{
+    margin-left: 10px;
+    width: 50%;            
+    max-width: 200px;        
+    padding: 7px;          
+    font-size: 0.9rem;
+    border-radius: 6px;
+    border: 1px solid #f8ce70;
+    background-color: #726963;
+    color: white;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4); 
+    transition: box-shadow 0.3s ease; 
+    height: 3px;
+}
 
 .pa-input-email{
     margin-left: 10px;
@@ -179,13 +259,20 @@
     transition: box-shadow 0.3s ease;
 }
 
-.pa-aeropuerto-hotel-submit{
+
+
+.pa-aeropuerto-hotel-submit,
+.pa-hotel-aeropuerto-submit,
+.pa-ida-vuelta-submit{
     margin-left: 300px;
     margin-bottom: 20px;
 }
-.pa-aeropuerto-hotel-button{
+.pa-aeropuerto-hotel-button,
+.pa-hotel-aeropuerto-button,
+.pa-ida-vuelta-button{
     background-color: #f8ce70 !important; 
-    color: #221a1a !important  ;                    
+    color: #221a1a !important  ;  
+                      
     border: none !important  ;
     border-radius: 6px !important  ;
     padding: 10px 20px !important  ;
@@ -193,13 +280,38 @@
     font-weight: bold !important  ;
     cursor: pointer !important  ;
     margin-top: 20px !important  ;
-    
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4) !important  ;
+    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.4) !important  ;
     transition: background-color 0.3s ease, transform 0.2s ease !important  ;
 }
 
-.pa-aeropuerto-hotel-button hover {
-    background-color: #ffe191 !important  ;        
+.pa-aeropuerto-hotel-button:hover,
+.pa-hotel-aeropuerto-button:hover,
+.pa-ida-vuelta-button:hover {
+    background-color: #f5b94c !important  ;        
     transform: scale(1.03) !important  ;            
 }
 
+.pa-dos-columnas {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    margin-top: 30px;
+    margin-left: 10px;
+    margin-right: 10px;
+    flex-wrap: wrap;
+  }
+  
+  .pa-columna {
+    flex: 1;
+    min-width: 300px;
+    padding: 10px;
+    border: 1px solid #f8ce70;
+    border-radius: 10px;
+    background-color: #3a2e2e;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  }
+
+  .pa-titulo-ida-y-vuelta{
+    text-align: center;
+    color: #f8ce70;
+  }

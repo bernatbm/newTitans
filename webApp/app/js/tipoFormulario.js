@@ -1,22 +1,70 @@
-document.addEventListener('DOMContentLoaded', function () {
-    const tipoTrayecto = document.getElementById('pa-tipo-trayecto');
-    const formAeropuertoHotel = document.getElementById('form-aeropuerto-hotel');
-    const formHotelAeropuerto = document.getElementById('form-hotel-aeropuerto');
-    const formIdaVuelta = document.getElementById('from-ida-vuelta'); // asegúrate que el ID es correcto
 
-    tipoTrayecto.addEventListener('change', function () {
-        formAeropuertoHotel.style.display = 'none';
-        formHotelAeropuerto.style.display = 'none';
-        formIdaVuelta.style.display = 'none';
+document.addEventListener("DOMContentLoaded", function () {
+    const opciones = document.querySelectorAll(".pa-trayecto-opcion");
+    const selectorTrayecto = document.querySelector(".pa-selector-trayecto");
+    const formularioAeropuertoHotel = document.getElementById("form-aeropuerto-hotel");
+    const formularioHotelAeropuerto = document.getElementById("form-hotel-aeropuerto");
+    const formularioIdaVuelta = document.getElementById("from-ida-vuelta");
+    const tituloSelector = document.getElementById("h2-selector");
+    const tituloTrayecto = document.getElementById("titulo-trayecto");
+    const botonesCambiarTrayecto = document.querySelectorAll(".pa-btn-cambiar-trayecto");
 
-        const valor = this.value;
+    
+    
 
-        if (valor === 'aeropuerto-hotel') {
-            formAeropuertoHotel.style.display = 'block';
-        } else if (valor === 'hotel-aeropuerto') {
-            formHotelAeropuerto.style.display = 'block';
-        } else if (valor === 'ida-vuelta') {
-            formIdaVuelta.style.display = 'block';
-        }
+    opciones.forEach(opcion => {
+        opcion.addEventListener("click", () => {
+            const tipo = opcion.getAttribute("data-tipo");
+
+            // Oculta todos los formularios
+            formularioAeropuertoHotel.style.display = "none";
+            formularioHotelAeropuerto.style.display = "none";
+            formularioIdaVuelta.style.display = "none";
+
+            // Muestra el formulario correspondiente
+            if (tipo === "aeropuerto-hotel") {
+                formularioAeropuertoHotel.style.display = "block";
+            } else if (tipo === "hotel-aeropuerto") {
+                formularioHotelAeropuerto.style.display = "block";
+            } else if (tipo === "ida-vuelta") {
+                formularioIdaVuelta.style.display = "block";
+            }
+            selectorTrayecto.style.display = "none";
+            tituloSelector.style.display = "none";
+
+            botonesCambiarTrayecto.forEach(boton => {
+                boton.style.display = "inline-block";
+            });
+        
+
+            if (tipo === "aeropuerto-hotel") {
+                formularioAeropuertoHotel.style.display = "block";
+                tituloTrayecto.textContent = "Trayecto aeropuerto a hotel";
+            } else if (tipo === "hotel-aeropuerto") {
+                formularioHotelAeropuerto.style.display = "block";
+                tituloTrayecto.textContent = "Trayecto hotel a aeropuerto";
+            } else if (tipo === "ida-vuelta") {
+                formularioIdaVuelta.style.display = "block";
+                tituloTrayecto.textContent = "Trayecto de ida y vuelta";
+            }
+
+            tituloTrayecto.style.display = "block";
+        });
+    });
+
+    botonesCambiarTrayecto.forEach(boton => {
+        boton.addEventListener("click", () => {
+            // Oculta formularios
+            formularioAeropuertoHotel.style.display = "none";
+            formularioHotelAeropuerto.style.display = "none";
+            formularioIdaVuelta.style.display = "none";
+    
+            // Muestra el selector y el título principal
+            selectorTrayecto.style.display = "flex";
+            tituloSelector.style.display = "block";
+    
+            // Oculta título de trayecto
+            tituloTrayecto.style.display = "none";
+        });
     });
 });
