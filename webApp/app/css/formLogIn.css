@@ -172,3 +172,34 @@ button[type="submit"] {
     }
 }
 
+/* RESPONSIVE */
+@media screen and (max-width: 512px) {
+    .header-content {
+        flex-wrap: wrap;
+        flex-direction: row;
+        justify-content: center;
+        gap: 10px;
+    }
+
+
+    .titleLogo img {
+        margin-top: 2px;
+        height: 32px;
+    }
+
+    .titleLogo h1 {
+        font-size: 0px;
+    }
+
+    
+    .admin-label {
+        font-size: 8px;
+    }
+    header nav a{
+        font-size: 12.2px;
+    }
+   .registerName{
+    font-size: 12.5px;
+    }
+}
+
