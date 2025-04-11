@@ -10,7 +10,6 @@ body, h1, h2, h3, p, ul, li, form {
 
 body {
     font-family: "Roboto", sans-serif;
-    line-height: 1.6;
     color: #333;
     background-color: #221a1a;
 }
@@ -272,6 +271,30 @@ button[type="submit"] {
 
 .admin-label {
     font-size: 12px;
-    color: #666;
+    color: #d1cbcb;
     margin-top: 4px;
+}
+/* RESPONSIVE */
+@media screen and (max-width: 768px) {
+    .header-content {
+        flex-wrap: wrap;
+        flex-direction: row;
+        justify-content: center;
+        gap: 10px;
+    }
+
+
+    .titleLogo img {
+        margin-top: 2px;
+        height: 45px;
+    }
+
+    .titleLogo h1 {
+        font-size: 0px;
+    }
+
+    header a,
+    .admin-label {
+        font-size: 14px;
+    }
 }

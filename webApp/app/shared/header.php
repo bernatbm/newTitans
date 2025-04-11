@@ -2,7 +2,9 @@
 
 <header>
     <div class="titleLogo">
-        <img src="/assets/imagenes/newTitans.svg" class="service-img">
+    <a href="/index.php">
+        <img src="/assets/imagenes/newTitans.svg" class="service-img" alt="Logo Isla Transfers">
+    </a>
         <a href="/index.php"><h1>Isla Transfers</h1></a>
     </div>
     <nav>
