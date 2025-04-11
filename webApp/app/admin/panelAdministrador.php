@@ -14,9 +14,40 @@ session_start();
 
 <?php include '../shared/header.php'; ?>
 
-<main>
-    <h1>PANEL DE ADMINISTRADOR</h1>
-    <p>Bienvenido, aquí puedes crear y gestionar reservas.</p>
+<main class="pa-main">
+    <h1 class="pa-h1">Perfil de Administrador</h1>
+    <p class="pa-p1">Bienvenido, aquí puedes crear y gestionar reservas</p>
+        <section class="pa-crear-reserva">
+            <div>
+                <h2 class="pa-h2">Crear reserva</h2>
+                    <form class="pa-form" action="crearReserva.php" method="POST">
+                        <div class="pa-form-tipo">
+                            <label for="pa-tipo-trayecto">Tipo de trayecto:</label>
+                            <select id="pa-tipo-trayecto" name="tipo_trayecto" required> 
+                                <option value="" disabled selected>Selecciona una opción</option>
+                                <option value="aeropuerto-hotel">Aeropuerto → Hotel</option>
+                                <option value="hotel-aeropuerto">Hotel → Aeropuerto</option>
+                                <option value="ida-vuelta">Ida y vuelta</option>
+                            </select>
+                        </div>
+                        <div class="pa-form-dia-llegada">
+                            <label for="dia-llegada">Dia de llegada:</label>
+                            <input class="pa-input-dia-llegada" type="date" id="dia-llegada" name="dia-llegada" required>
+                        </div>
+
+
+                        <div class="pa-form-hora-llegada">
+                            <label for="hora-llegada">Hora de llegada:</label>
+                            <input class="pa-input-hora-llegada" type="time" id="hora-llegada" name="hora-llegada" required>
+                        </div>
+                        <div class="pa-form-aeropuerto"></div>
+                    </form>
+            </div>
+        
+        </section>
+
+        
+        
 </main>
 
 </body>

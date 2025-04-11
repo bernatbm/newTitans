@@ -1,0 +1,91 @@
+.pa-main{
+    margin-top: 75px;
+    color: white;
+}
+
+.pa-h1{
+    font-size: 50px;
+    text-align: center;
+    margin-bottom: 20px;
+    text-decoration: underline;
+}
+
+.pa-p1{
+    text-align: center;
+    font-size: 25px;
+}
+
+.pa-crear-reserva{
+    margin-top: 25px;
+    margin-left: auto;
+    margin-right: auto;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 10px;
+    border-color: grey;
+    background-color: #2b2323;
+    width: 80%;
+    max-width: 900px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.pa-crear-reserva:hover{
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+}
+
+.pa-h2{
+    margin-left: 30px;
+    padding-top: 10px;
+    color: #f8ce70;
+    
+}
+
+.pa-form{
+    padding-left: 30px;
+    margin-left: 0;
+}
+
+.pa-form-tipo{
+    margin-top: 10px;
+}
+.pa-form-tipo select {
+    margin-left: 10px;
+    border-radius: 6px;
+    border: 1px solid #f8ce70;
+    background-color: #726963;
+    color: white;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4); 
+    transition: box-shadow 0.3s ease; 
+}
+.pa-form-dia-llegada{
+    margin-top: 20px;
+}
+.pa-form-hora-llegada{
+    margin-top: 20px;
+}
+
+.pa-input-dia-llegada{
+    margin-left: 23px;
+    border-radius: 6px;
+    border: 1px solid #f8ce70;
+    background-color: #726963;
+    color: white;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4); 
+    transition: box-shadow 0.3s ease; 
+}
+
+.pa-input-hora-llegada{
+    margin-left: 13px;
+    border-radius: 6px;
+    border: 1px solid #f8ce70;
+    background-color: #726963;
+    color: white;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4); 
+    transition: box-shadow 0.3s ease; 
+}
+
+
+
