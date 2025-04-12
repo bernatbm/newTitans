@@ -115,6 +115,7 @@
 .pa-form-fecha-llegada,
 .pa-form-numero-vuelo,
 .pa-form-aeropuerto-origen,
+.pa-form-zona,
 .pa-form-hotel-destino,
 .pa-form-numero-viajeros,
 .pa-form-nombre-cliente,
@@ -214,6 +215,8 @@
 }
 
 .pa-select-numero-viajeros,
+.pa-input-zona,
+.pa-select-hotel-destino,
 .pa-select-hotel-destino{
     margin-left: 10px;
     width: 50%;            

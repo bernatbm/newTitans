@@ -61,13 +61,21 @@ session_start();
                                 <label for="aeropuerto-origen" >Aeropuerto de origen:</label>
                                 <input class="pa-input-aeropuerto-origen" type="text" id="aeropuerto-origen" name="aeropuerto_origen" required>
                             </div>
-                            <div class="pa-form-hotel-destino">
-                                <label for="hotel-destino">Hotel de destino:</label>
-                                <select class="pa-select-hotel-destino" id="id-hotel" name="id_hotel" required>
-                                    <option value="" disabled selected>Selecciona un hotel</option>
-                                    <?php include '../controller/getHoteles.php'; ?>
+
+                            <div class="pa-form-zona">
+                                <label for="id-zona">Zona:</label>
+                                <select class="pa-input-zona" id="id-zona" name="id_zona" required>
+                                    <option value="" disabled selected>Selecciona una zona</option>
+                                    <?php include '../controller/getZonas.php'; ?>
                                 </select>
                             </div>
+                            <div class="pa-form-hotel-destino">
+                                <label for="id-hotel">Hotel de destino:</label>
+                                <select class="pa-select-hotel-destino" id="id-hotel" name="id_hotel" required>
+                                    <option  disabled selected>Primero selecciona una zona</option>
+                                </select>
+                            </div>
+
                             <div class="pa-form-numero-viajeros">
                                 <label for="numero-viajeros">Número de viajeros:</label>
                                 <select class="pa-select-numero-viajeros" id="numero-viajeros" name="num_viajeros" required>
@@ -270,5 +278,6 @@ session_start();
         
 </main>
 <script src="../js/tipoFormulario.js"></script>
+<script src="../js/filtroHoteles.js"></script>
 </body>
 </html>
