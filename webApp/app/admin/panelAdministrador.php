@@ -100,31 +100,38 @@ session_start();
                             <!---------------------- Formulario Opcional Usuario------------------------>
 
                             <div id="datos-viajero-adicionales" style="display: none;">
-                            
-                                <label>Nombre:</label>
-                                <input type="text" name="nombre" id="nombre" >
-
-                                <label>Apellido 1:</label>
-                                <input type="text" name="apellido1" id="apellido1" >
-
-                                <label>Apellido 2:</label>
-                                <input type="text" name="apellido2" id="apellido2">
-
-                                <label>Dirección:</label>
-                                <input type="text" name="direccion" id="direccion" >
-
-                                <label>Código Postal:</label>
-                                <input type="text" name="codigoPostal" id="codigoPostal" >
-
-                                <label>Ciudad:</label>
-                                <input type="text" name="ciudad" id="ciudad" >
-
-                                <label>País:</label>
-                                <input type="text" name="pais" id="pais" >
-
-                                <label>Contraseña:</label>
-                                <input type="password" name="password" id="password" >
-                            
+                                <div>
+                                    <label>Nombre:</label>
+                                    <input class="pa-form-opcional" type="text" name="nombre" id="nombre" >
+                                </div>
+                                <div>
+                                    <label>Apellido 1:</label>
+                                    <input class="pa-form-opcional" type="text" name="apellido1" id="apellido1" >
+                                </div>
+                                <div>
+                                    <label>Apellido 2:</label>
+                                    <input class="pa-form-opcional" type="text" name="apellido2" id="apellido2">
+                                </div>
+                                <div>
+                                    <label>Dirección:</label>
+                                    <input class="pa-form-opcional" type="text" name="direccion" id="direccion" >
+                                </div>
+                                <div>
+                                    <label>Código Postal:</label>
+                                    <input class="pa-form-opcional" type="text" name="codigoPostal" id="codigoPostal" >
+                                </div>
+                                <div>
+                                    <label>Ciudad:</label>
+                                    <input class="pa-form-opcional" type="text" name="ciudad" id="ciudad" >
+                                </div>
+                                <div>
+                                    <label>País:</label>
+                                    <input class="pa-form-opcional" type="text" name="pais" id="pais" >
+                                </div>
+                                <div>
+                                    <label>Contraseña:</label>
+                                    <input class="pa-form-opcional" type="password" name="password" id="password" >
+                                </div>
                             </div>
                         </form>
 

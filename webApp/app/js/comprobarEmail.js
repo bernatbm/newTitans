@@ -46,7 +46,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 !ciudad?.value || !pais?.value || !password?.value
             ) {
                 e.preventDefault();
-                alert("⚠️ El email no está registrado. Por favor, completa todos los datos del viajero.");
+                alert("El email no está registrado. Por favor, completa todos los datos del viajero.\n Luego pulsa de nuevo 'Confirmar reserva' ");
             }
         }
     });

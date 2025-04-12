@@ -159,6 +159,22 @@
 }
 
 
+.pa-form-opcional{ 
+    margin-left: 30px;
+    margin-bottom: 10px;
+    width: 20%;            
+    max-width: 160px;       
+    height: 5px;          
+    padding: 10px;          
+    font-size: 1rem;
+    border-radius: 6px;
+    border: 1px solid #f8ce70;
+    background-color: #726963;
+    color: white;
+    cursor: text;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4); 
+    transition: box-shadow 0.3s ease; 
+}
 
 .pa-input-numero-vuelo{
     margin-left: 10px;
