@@ -63,23 +63,21 @@ session_start();
                             </div>
                             <div class="pa-form-hotel-destino">
                                 <label for="hotel-destino">Hotel de destino:</label>
-                                <input class="pa-input-hotel-destino" type="text" id="hotel-destino" name="hotel_destino" required>
+                                <select class="pa-select-hotel-destino" id="id-hotel" name="id_hotel" required>
+                                    <option value="" disabled selected>Selecciona un hotel</option>
+                                    <?php include '../controller/getHoteles.php'; ?>
+                                </select>
                             </div>
                             <div class="pa-form-numero-viajeros">
                                 <label for="numero-viajeros">Número de viajeros:</label>
-                                <select class="pa-select-numero-viajeros" id="numero-viajeros" name="numero_viajeros" required>
-                                    <option value="" disabled selected>Selecciona</option>
-                                    <option value="1">1 viajero</option>
-                                    <option value="2">2 viajeros</option>
-                                    <option value="3">3 viajeros</option>
-                                    <option value="4">4 viajeros</option>
-                                    <option value="5">5 viajeros</option>
-                                    <option value="6">6 viajeros</option>
+                                <select class="pa-select-numero-viajeros" id="numero-viajeros" name="num_viajeros" required>
+                                <option value="" disabled selected>Selecciona</option>
+                                <?php
+                                    for ($i = 1; $i <= 8; $i++) {
+                                        echo "<option value='$i'>$i viajero" . ($i > 1 ? "s" : "") . "</option>";
+                                    }
+                                    ?>
                                 </select>
-                            </div>
-                            <div class="pa-form-nombre-cliente">
-                                <label for="nombre-cliente">Nombre completo:</label>
-                                <input class="pa-input-nombre-cliente" type="text" id="nombre-cliente" name="nombre_cliente" required>
                             </div>
                             <div class="pa-form-email">
                                 <label for="email-cliente">Email:</label>
@@ -136,10 +134,7 @@ session_start();
                                     <option value="6">6 viajeros</option>
                                 </select>
                             </div>
-                            <div class="pa-form-nombre-cliente">
-                                <label for="nombre-cliente">Nombre completo:</label>
-                                <input class="pa-input-nombre-cliente" type="text" id="nombre-cliente" name="nombre_cliente" required>
-                            </div>
+                            
                             <div class="pa-form-email">
                                 <label for="email-cliente">Email:</label>
                                 <input class="pa-input-email" type="email" id="email-cliente" name="email_cliente" required>
@@ -196,10 +191,7 @@ session_start();
                                             <option value="6">6 viajeros</option>
                                         </select>
                                     </div>
-                                    <div class="pa-form-nombre-cliente">
-                                        <label for="nombre-cliente">Nombre completo:</label>
-                                        <input class="pa-input-nombre-cliente" type="text" id="nombre-cliente" name="nombre_cliente" required>
-                                    </div>
+                                    
                                     <div class="pa-form-email">
                                         <label for="email-cliente">Email:</label>
                                         <input class="pa-input-email" type="email" id="email-cliente" name="email_cliente" required>
@@ -246,10 +238,7 @@ session_start();
                                             <option value="6">6 viajeros</option>
                                         </select>
                                     </div>
-                                    <div class="pa-form-nombre-cliente">
-                                        <label for="nombre-cliente">Nombre completo:</label>
-                                        <input class="pa-input-nombre-cliente" type="text" id="nombre-cliente" name="nombre_cliente" required>
-                                    </div>
+                                    
                                     <div class="pa-form-email">
                                         <label for="email-cliente">Email:</label>
                                         <input class="pa-input-email" type="email" id="email-cliente" name="email_cliente" required>

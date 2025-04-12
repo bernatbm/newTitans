@@ -213,7 +213,8 @@
     transition: box-shadow 0.3s ease; 
 }
 
-.pa-select-numero-viajeros{
+.pa-select-numero-viajeros,
+.pa-select-hotel-destino{
     margin-left: 10px;
     width: 50%;            
     max-width: 200px;        
