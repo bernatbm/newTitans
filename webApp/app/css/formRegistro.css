@@ -13,9 +13,6 @@ body {
     color: #333;
     background-color: #221a1a;
     
-
-    
-    
 }
 
 
@@ -151,7 +148,7 @@ button[type="submit"] {
 }
 
 /* RESPONSIVE */
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 433px) {
     .header-content {
         flex-wrap: wrap;
         flex-direction: row;
@@ -210,4 +207,32 @@ button[type="submit"] {
     font-size: 12.5px;
     }
 }
+@media screen and (max-width: 768px) {
+    .header-content {
+        flex-wrap: wrap;
+        flex-direction: row;
+        justify-content: center;
+        gap: 10px;
+    }
 
+
+    .titleLogo img {
+        margin-top: 2px;
+        height: 60px;
+    }
+
+    .titleLogo h1 {
+        font-size: 0px;
+    }
+
+    
+    .admin-label {
+        font-size: 10px;
+    }
+    header nav a{
+        font-size: 16px;
+    }
+   .registerName{
+    font-size: 16px;
+}
+}
