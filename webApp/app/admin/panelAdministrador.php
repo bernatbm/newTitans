@@ -38,7 +38,7 @@ session_start();
 
                 </div>
                 
-                    <!-- Formulario Aeropuerto-> Hotel-->
+                    <!---------------------- Formulario Aeropuerto-> Hotel------------------------>
 
                     <div id="form-aeropuerto-hotel" style="display: none;">
                     
@@ -96,8 +96,40 @@ session_start();
                                 <button class="pa-btn-cambiar-trayecto" style="display: none;">Volver a selección de trayecto</button>
                                 <button class="pa-aeropuerto-hotel-button" id="submit-aeropuerto-hotel" type="submit">Confirmar reserva</button>
                             </div>
+
+                            <!---------------------- Formulario Opcional Usuario------------------------>
+
+                            <div id="datos-viajero-adicionales" style="display: none;">
+                            
+                                <label>Nombre:</label>
+                                <input type="text" name="nombre" id="nombre" >
+
+                                <label>Apellido 1:</label>
+                                <input type="text" name="apellido1" id="apellido1" >
+
+                                <label>Apellido 2:</label>
+                                <input type="text" name="apellido2" id="apellido2">
+
+                                <label>Dirección:</label>
+                                <input type="text" name="direccion" id="direccion" >
+
+                                <label>Código Postal:</label>
+                                <input type="text" name="codigoPostal" id="codigoPostal" >
+
+                                <label>Ciudad:</label>
+                                <input type="text" name="ciudad" id="ciudad" >
+
+                                <label>País:</label>
+                                <input type="text" name="pais" id="pais" >
+
+                                <label>Contraseña:</label>
+                                <input type="password" name="password" id="password" >
+                            
+                            </div>
                         </form>
-                    
+
+                        
+                                    
                         
                     </div>
 
@@ -279,5 +311,6 @@ session_start();
 </main>
 <script src="../js/tipoFormulario.js"></script>
 <script src="../js/filtroHoteles.js"></script>
+<script src="../js/comprobarEmail.js"></script>
 </body>
 </html>
