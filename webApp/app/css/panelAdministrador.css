@@ -112,7 +112,7 @@
 
 
 .pa-form-hora-llegada,
-.pa-form-dia-llegada,
+.pa-form-fecha-llegada,
 .pa-form-numero-vuelo,
 .pa-form-aeropuerto-origen,
 .pa-form-hotel-destino,
@@ -132,7 +132,7 @@
     margin-bottom: 20px;
 }
 
-.pa-input-dia-llegada,
+.pa-input-fecha-llegada,
 .pa-input-dia-vuelo{
     margin-left: 23px;
     border-radius: 6px;
@@ -264,8 +264,10 @@
 .pa-aeropuerto-hotel-submit,
 .pa-hotel-aeropuerto-submit,
 .pa-ida-vuelta-submit{
-    margin-left: 300px;
-    margin-bottom: 20px;
+    display: flex;
+    justify-content: center; 
+    gap: 10px; 
+    margin: 30px 30px;
 }
 .pa-aeropuerto-hotel-button,
 .pa-hotel-aeropuerto-button,

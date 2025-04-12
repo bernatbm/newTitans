@@ -10,7 +10,7 @@ class database{
         $conn = "mysql:host=$host;dbname=$db";
 
         try{
-            $this->pdo=new PDO($conn,$user,$pswd); //conexion con la bd
+            $this->pdo=new PDO($conn,$user,$pswd);
             $this->pdo->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);// Config en caso de error
 
             $this->pdo->exec("SET NAMES 'utf8'"); 
