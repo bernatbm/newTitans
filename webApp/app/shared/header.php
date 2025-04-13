@@ -36,9 +36,7 @@
 
             <a href="../model/logout.php">CERRAR SESIÓN</a>
         <?php else: ?>
-            <?php if (in_array(basename($_SERVER['PHP_SELF']), ['index.php','login.php'])): ?>
-                <a class="registerName" href="../registro/registro.php">REGISTRO</a>
-            <?php endif; ?>
+            
             <?php if (in_array(basename($_SERVER['PHP_SELF']), ['index.php','registro.php'])): ?>
                 <a href="../model/login.php">LOGIN</a>
             <?php endif; ?>

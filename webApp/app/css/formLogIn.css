@@ -71,7 +71,7 @@ header nav a {
 }
 
 header nav a:hover {
-    background-color: #333333; 
+    background-color: #f3c158; 
     border-radius: 5px;
     
 
@@ -86,20 +86,58 @@ header nav a:hover {
   }
   
 
-.LogInForm {
+  .LogInForm {
+    position: relative;
     margin: auto;
-    margin-top: 250px;
+    margin-top: 150px;
     padding: 30px;
     max-width: 600px;
     border-radius: 15px;
     color: #ffffff;
-    background:linear-gradient(100deg, #dadada43,#ffffff5a,#a0a0a027);
+    background-color: #2b2323;
     background-size: 200% 200%;
-    position: relative;
     animation: moveback 10s ease infinite;
-    border: solid 1px rgba(255, 255, 255, 0.609);
-
+    overflow: hidden;
 }
+
+/* borde animado */
+.LogInForm::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    border: 1px solid transparent;
+    border-radius: 15px;
+    box-sizing: border-box;
+    z-index: 2;
+    pointer-events: none;
+    animation: borderAnim 10s linear infinite;
+    background: linear-gradient(
+        90deg,
+        #f3c158,
+        transparent,
+        #f3c158
+    );
+    background-size: 400% 400%;
+    -webkit-mask:
+        linear-gradient(#000 0 0) content-box,
+        linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+}
+
+/* clave: animamos la posición del degradado para simular el movimiento */
+@keyframes borderAnim {
+    0% {
+        background-position: 0% 0%;
+    }
+    100% {
+        background-position: 400% 0%;
+    }
+}
+
 
 @keyframes moveback {
     0%{background-position: 0 50%;}
@@ -122,15 +160,18 @@ textarea {
 
 
 button[type="submit"] {
-    background-color: #007bff;
+    background-color: #f3c158;
     color: white;
-    padding: 10px 20px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 5px 20px;
+    border-radius: 10px;
     
 }
 
-#btnLogIn{
-    margin-top: 25px;
-    margin-left: 222px;
+
+#btnLogIn {
+    display: block;
+    margin: 25px auto 0 auto;
     font-size: large;
 }
 
@@ -139,6 +180,39 @@ button[type="submit"] {
     color: #d1cbcb;
     margin-top: 4px;
 }
+
+#btnRegistrarse {
+    display: block;
+    margin: 25px auto 0 auto;
+    font-size: large;
+}
+.botones {
+    display: flex;
+    justify-content: center; /* centra horizontalmente */
+    gap: 10px; /* espacio entre botones */
+    margin-top: 15px;
+}
+
+.botones a,
+.botones button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    background-color: #f3c158;
+    color: #2b2323;
+    font-weight: bold;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.botones a:hover,
+.botones button:hover {
+    background-color: #ffd577;
+}
+
+
+
 
 
 /* RESPONSIVE */

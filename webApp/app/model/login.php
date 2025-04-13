@@ -62,8 +62,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {//Esto luego, cuando demos clic a EN
             <input type="text" name="user" required>
             <label class="Name">Contraseña</label><br>
             <input type="password" name="password" required><br>
-
-            <button type="submit" id="btnLogIn">ENTRAR</button>
+        
+            <div class="botones">
+                <button type="submit" id="btnLogIn">ENTRAR</button>
+                <a href="../registro/registro.php" id="btnRegistrarse">REGISTRARSE</a>
+            </div>
         </form>
 
         <?php if (isset($error)): ?>

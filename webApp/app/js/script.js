@@ -50,3 +50,28 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 });
 
+// Función para abrir la pestaña seleccionada
+function openTab(tabName) {
+    // Ocultar todos los contenidos de las pestañas
+    var tabs = document.querySelectorAll('.tab-content');
+    tabs.forEach(function(tab) {
+        tab.classList.remove('active');
+    });
+
+    // Eliminar la clase "active" de todas las pestañas
+    var tabLinks = document.querySelectorAll('.tab');
+    tabLinks.forEach(function(link) {
+        link.classList.remove('active');
+    });
+
+    // Mostrar el contenido de la pestaña seleccionada
+    document.getElementById(tabName).classList.add('active');
+
+    // Marcar la pestaña seleccionada como "active"
+    event.target.classList.add('active');
+}
+
+// Mostrar la pestaña "Registrar Usuario" por defecto al cargar la página
+document.addEventListener('DOMContentLoaded', function() {
+    openTab('usuario');
+});

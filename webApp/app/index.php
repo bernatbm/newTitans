@@ -1,5 +1,18 @@
 <?php
 session_start();
+require_once './model/database.php'; 
+$db = new database(); // database
+$conn = $db->getConn(); //conexión database
+
+$stmt = $conn->prepare("SELECT COUNT(*) as total FROM transfer_administradores WHERE isAdmin = 1");
+$stmt->execute();
+$result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+if ($result['total'] == 0) {
+    // No hay administradores, redirige a la página de registro inicial
+    header("Location: /registro/registro.php");
+    exit();
+}
 ?>
 
 <!DOCTYPE html>

@@ -1,4 +1,4 @@
-<?php
+git <?php
 require_once '../model/database.php';
 
 $db = new database();
