@@ -1,6 +1,7 @@
 <?php
 require_once '../model/database.php';
 
+
 // Recogemos los datos del form (login.php)
 $nombre = $_POST['nombre'] ?? '';
 $apellido1 = $_POST['apellido1'] ?? '';
@@ -48,84 +49,7 @@ if ($emailExiste > 0) {
     header("Location: registro.php?error=$error");
     exit;
 }
-// Si el destino es transfer_administradores, aseguramos que la tabla y las columnas necesarias existen
-if ($tablaUser === 'transfer_administradores') {
-    // Comprobamos si la tabla 'transfer_administradores' existe
-    $checkTableSQL = "
-        SELECT COUNT(*) AS existe 
-        FROM information_schema.TABLES 
-        WHERE TABLE_NAME = 'transfer_administradores' 
-        AND TABLE_SCHEMA = 'dataBaseNewTitans';
-    ";
-    $result = $conn->query($checkTableSQL);
-    $row = $result->fetch(PDO::FETCH_ASSOC);
 
-    // Si la tabla no existe, la creamos
-    if ($row['existe'] == 0) {
-        $createTableSQL = "
-            CREATE TABLE transfer_administradores (
-                id INT AUTO_INCREMENT PRIMARY KEY,
-                nombre VARCHAR(255) NOT NULL,
-                apellido1 VARCHAR(255) NOT NULL,
-                apellido2 VARCHAR(255),
-                email VARCHAR(255) NOT NULL,
-                password VARCHAR(255) NOT NULL,
-                isAdmin TINYINT DEFAULT 1
-            );
-        ";
-        $conn->exec($createTableSQL);
-    }
-
-    // Comprobamos si la columna 'isAdmin' existe en la tabla
-    $checkColumnSQL = "
-        SELECT COUNT(*) AS existe 
-        FROM information_schema.COLUMNS 
-        WHERE TABLE_NAME = 'transfer_administradores' 
-        AND COLUMN_NAME = 'isAdmin' 
-        AND TABLE_SCHEMA = 'dataBaseNewTitans';
-    ";
-    $result = $conn->query($checkColumnSQL);
-    $row = $result->fetch(PDO::FETCH_ASSOC);
-
-    // Si la columna 'isAdmin' no existe, la agregamos
-    if ($row['existe'] == 0) {
-        $conn->exec("ALTER TABLE transfer_administradores ADD isAdmin TINYINT DEFAULT 1");
-    }
-
-    // Comprobamos si faltan otras columnas necesarias
-    $columnsToCheck = ['nombre', 'apellido1', 'apellido2', 'email', 'id', 'password']; // Puedes agregar más columnas si es necesario
-    foreach ($columnsToCheck as $column) {
-        $checkColumnSQL = "
-            SELECT COUNT(*) AS existe 
-            FROM information_schema.COLUMNS 
-            WHERE TABLE_NAME = 'transfer_administradores' 
-            AND COLUMN_NAME = '$column' 
-            AND TABLE_SCHEMA = 'dataBaseNewTitans';
-        ";
-        $result = $conn->query($checkColumnSQL);
-        $row = $result->fetch(PDO::FETCH_ASSOC);
-
-        // Si la columna no existe, la agregamos
-        if ($row['existe'] == 0) {
-            switch ($column) {
-                case 'nombre':
-                case 'apellido1':
-                case 'apellido2':
-                    $conn->exec("ALTER TABLE transfer_administradores ADD $column VARCHAR(255) NOT NULL");
-                    break;
-                case 'email':
-                    $conn->exec("ALTER TABLE transfer_administradores ADD $column VARCHAR(255) NOT NULL");
-                    break;
-                case 'id':
-                    $conn->exec("ALTER TABLE transfer_administradores ADD $column INT AUTO_INCREMENT PRIMARY KEY");
-                    break;
-                case 'password':
-                    $conn->exec("ALTER TABLE transfer_administradores ADD $column VARCHAR(255) NOT NULL");
-                    break;
-            }
-        }
-    }
-}
 
 
 // Si el destino es transfer_viajeros, aseguramos que la columna isAdmin existe
