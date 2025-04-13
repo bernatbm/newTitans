@@ -3,6 +3,19 @@ session_start();
 require_once '../model/database.php'; 
 require_once '../controller/travellerController.php'; 
 
+// Verificar si hay parámetros en la URL (registrado exitosamente)
+if (isset($_GET['registro']) && $_GET['registro'] == 'registrado') {
+    $nombre = $_GET['nombre'];
+    $isAdmin = $_GET['isAdmin'];
+    $tipoUsuario = ($isAdmin == '1') ? 'Administrador' : (($isAdmin == '2') ? 'Corporativo' : 'Usuario');
+
+    // Mostrar alerta con mensaje de éxito
+    echo "<script>
+            window.addEventListener('DOMContentLoaded', function() {
+                alert('¡$nombre, $tipoUsuario ha sido registrado con éxito!');
+            });
+          </script>";
+}
 // conexión a la base de datos
 $db = new database(); // database
 $conn = $db->getConn(); //conexión database
