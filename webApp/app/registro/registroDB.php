@@ -14,12 +14,21 @@ $password = $_POST['password'] ?? '';
 $isAdmin = $_POST['isAdmin'] ?? 0;
 
 // Validar campos obligatorios
-if (
-    empty($nombre) || empty($apellido1) || empty($apellido2) || empty($direccion) ||
-    empty($codigoPostal) || empty($ciudad) || empty($pais) || empty($email) || empty($password)
-) {
-    echo "Por favor ingrese todos los campos obligatorios.";
-    exit;
+if ($isAdmin == 1) {
+    // Registro de administrador solo requiere nombre, apellido1, email, password
+    if (empty($nombre) || empty($apellido1) || empty($email) || empty($password)) {
+        echo "Por favor ingrese todos los campos obligatorios.";
+        exit;
+    }
+} else {
+    // Usuario o corporativo requieren todos los campos
+    if (
+        empty($nombre) || empty($apellido1) || empty($apellido2) || empty($direccion) ||
+        empty($codigoPostal) || empty($ciudad) || empty($pais) || empty($email) || empty($password)
+    ) {
+        echo "Por favor ingrese todos los campos obligatorios.";
+        exit;
+    }
 }
 
 $db = new Database();
@@ -91,8 +100,9 @@ try {
 
     $nombre = urlencode($nombre);
     $isAdmin = urlencode($isAdmin);
-    header("Location: ../registro/registro.php?registro=registrado&nombre=$nombre&isAdmin=$isAdmin");
-    exit;
+
+    header("Location: ../model/login.php?registro=registrado&nombre=$nombre&isAdmin=$isAdmin");
+    exit();
 
 } catch (PDOException $e) {
     echo "Error al registrar el usuario: " . $e->getMessage();

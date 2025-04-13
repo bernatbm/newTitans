@@ -50,6 +50,20 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 });
 
+// Lógica de pestañas
+const tabs = document.querySelectorAll('.tab');
+const contents = document.querySelectorAll('.tab-content');
+
+tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+        tabs.forEach(t => t.classList.remove('active'));
+        contents.forEach(c => c.classList.remove('active'));
+
+        tab.classList.add('active');
+        document.getElementById(tab.dataset.tab).classList.add('active');
+    });
+});
+
 // Función para abrir la pestaña seleccionada
 function openTab(tabName) {
     // Ocultar todos los contenidos de las pestañas

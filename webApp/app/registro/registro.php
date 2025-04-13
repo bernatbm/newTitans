@@ -50,10 +50,14 @@ $adminLogIn = isset($_SESSION['isAdmin']) && $_SESSION['isAdmin'] == 1;
         <div class="tab-content" id="corporativo">
             <?php include 'formComposeBase.php'; ?>
             <input type="hidden" name="isAdmin" value="2">
+            <button id="btnRegistro" type="submit">REGISTRAR</button>
         </div>
 
-        <button id="btnRegistro" type="submit">REGISTRAR</button>
-        <?php elseif ($totalAdmins == 0):?>
+        
+        </form>
+
+    <?php elseif ($totalAdmins == 0): ?>
+        <form method="POST" action="registroDB.php">
             <h1>BIENVENIDO, ADMINISTRADOR</h1>
             <label class="registerName">Nombre:</label>
             <input type="text" name="nombre" required>
@@ -69,8 +73,11 @@ $adminLogIn = isset($_SESSION['isAdmin']) && $_SESSION['isAdmin'] == 1;
             <input type="hidden" name="isAdmin" value="1">
             <button id="btnRegistro" type="submit">REGISTRARSE</button>
         </div>
-        
-        <? elseif (!!!$adminLogIn):?>
+       
+        </form>
+
+    <?php elseif (!$adminLogIn): ?>
+        <form method="POST" action="registroDB.php">
             <h1>REGISTRATE</h1>
             <label class="registerName">Nombre:</label>
             <input type="text" name="nombre" required>
@@ -102,27 +109,36 @@ $adminLogIn = isset($_SESSION['isAdmin']) && $_SESSION['isAdmin'] == 1;
             <input type="hidden" name="isAdmin" value="0">
             <button id="btnRegistro" type="submit">REGISTRARSE</button>
             
-        </div>
-        <?endif?>
+        </form>
+    <?endif?>
 
-    </form>
+    
 </div>
-
 <script>
-    // Lógica de pestañas
-    const tabs = document.querySelectorAll('.tab');
-    const contents = document.querySelectorAll('.tab-content');
+document.addEventListener("DOMContentLoaded", () => {
+    // Obtener los parámetros de la URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const registrado = urlParams.get('registro');
+    const nombre = urlParams.get('nombre');
+    const isAdmin = urlParams.get('isAdmin');
 
-    tabs.forEach(tab => {
-        tab.addEventListener('click', () => {
-            tabs.forEach(t => t.classList.remove('active'));
-            contents.forEach(c => c.classList.remove('active'));
+    // Verificar si la URL contiene los parámetros
+    if (registrado === "registrado" && nombre && isAdmin !== null) {
+        let tipoUsuario = ""; // Usuario, saldrá vacío
+        if (isAdmin === "1") tipoUsuario = "Administrador";
+        else if (isAdmin === "2") tipoUsuario = "Corporativo";
 
-            tab.classList.add('active');
-            document.getElementById(tab.dataset.tab).classList.add('active');
-        });
-    });
+        // Mostrar alerta con el popup
+        alert(`¡${nombre}, ${tipoUsuario} ha sido registrado con éxito!`);
+
+        // Limpiar la URL para evitar mostrar el popup dos veces
+        const nuevaURL = window.location.origin + window.location.pathname;
+        window.history.replaceState({}, document.title, nuevaURL);
+    }
+});
 </script>
+<script src="../js/script.js"></script>
+
 
 </body>
 </html>
