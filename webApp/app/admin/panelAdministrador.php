@@ -398,6 +398,10 @@ session_start();
             </div>
         
         </section>
+
+        <?php include '../controller/listarReservas.php'; ?>
+        
+
         <section class="pa-calendario">
             <h2 class="pa-h2">Calendario de Reservas</h2>
             <div id="calendar" style="max-width: 900px; margin: 0 auto;"></div>

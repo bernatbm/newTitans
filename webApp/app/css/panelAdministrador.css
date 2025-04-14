@@ -338,6 +338,35 @@
     color: #f8ce70;
   }
 
+/* Lista*/
+.pa-lista-reservas {
+    width: 1400px;
+    text-align: center;
+    margin: auto;
+    
+}
+
+.pa-tabla-reservas {
+    width: 100%;
+    border-collapse: collapse;
+    border-radius: 12px;        
+    overflow: hidden;           
+}
+.tabla-wrapper {
+    border: 2px solid grey;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.pa-casillas-reservas{
+    width: 100%;
+    border-collapse: collapse;
+    border: 2px solid grey;  
+    border-radius: 12px;        
+    overflow: hidden;   
+}
+
+/* Calendario*/
   .fc-event {
     cursor: pointer;
 }
