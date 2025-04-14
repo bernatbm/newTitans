@@ -337,3 +337,7 @@
     text-align: center;
     color: #f8ce70;
   }
+
+  .fc-event {
+    cursor: pointer;
+}

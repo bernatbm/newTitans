@@ -1,6 +1,7 @@
 <?php
 require_once '../model/database.php';
 
+
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $fechaEntrada = $_POST['fecha_llegada'] ?? null;
     $horaEntrada = $_POST['hora_llegada'] ?? null;
@@ -98,8 +99,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $stmt->bindParam(':id_vehiculo', $idVehiculo);
         $stmt->bindParam(':fecha_reserva', $fechaReserva);
         $stmt->execute();
-
-        echo "Reserva creada con éxito. Localizador: $localizador";
+        
+        
+            echo "Reserva creada con éxito. Localizador: $localizador.";
+        
     } catch (PDOException $e) {
         echo "Error al insertar: " . $e->getMessage();
     }

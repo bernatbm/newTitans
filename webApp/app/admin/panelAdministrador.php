@@ -398,10 +398,20 @@ session_start();
             </div>
         
         </section>
+        <section class="pa-calendario">
+            <h2 class="pa-h2">Calendario de Reservas</h2>
+            <div id="calendar" style="max-width: 900px; margin: 0 auto;"></div>
+        </section>
 
-        
-        
 </main>
+
+
+<link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/main.min.css" rel="stylesheet">
+
+<script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"></script>
+
+<script src="../js/calendarioAdmin.js"></script>
+
 <script src="../js/tipoFormulario.js"></script>
 <script src="../js/filtroHoteles.js"></script>
 <script src="../js/comprobarEmail.js"></script>
