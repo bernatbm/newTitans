@@ -117,7 +117,7 @@ if ($tablaUser === 'transfer_administradores') {
                     $conn->exec("ALTER TABLE transfer_administradores ADD $column VARCHAR(255) NOT NULL");
                     break;
                 case 'id':
-                    $conn->exec("ALTER TABLE transfer_administradores ADD $column INT AUTO_INCREMENT PRIMARY KEY");
+                    $conn->exec("ALTER TABLE transfer_administradores ADD $column INT NOT NULL");
                     break;
                 case 'password':
                     $conn->exec("ALTER TABLE transfer_administradores ADD $column VARCHAR(255) NOT NULL");
