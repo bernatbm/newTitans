@@ -127,10 +127,27 @@ header nav a:hover {
 }
 .addUser{
     content: url("../assets/imagenes/addNewUser.svg");
+    width: 32px; 
+    height: 32px;
+    
 }
 
 .addUser:hover {
     content: url("../assets/imagenes/addNewUserHover.svg");
+    width: 32px; 
+    height: 32px;
+   
+}
+.aerohotel{
+    content: url("../assets/imagenes/aerohotel-2.svg");
+    width: 32px; 
+    height: 32px;
+}
+
+.aerohotel:hover {
+    content: url("../assets/imagenes/aerohotelhover-3.svg");
+    width: 32px; 
+    height: 32px;
 }
 
 
@@ -325,8 +342,9 @@ header nav a:hover {
     font-size: 4em;
     text-align: center;
     font-weight: bold;
-    width: 100%; 
+    width: 95%; 
     margin-bottom: 30px;
+    box-sizing: border-box;
 }
 
 .contact p{
