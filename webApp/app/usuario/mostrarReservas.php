@@ -1,5 +1,40 @@
 <?php
 session_start();
+
+require_once '../model/database.php';
+
+$reservas = [];
+
+if (isset($_SESSION['email'])) {
+    $email = $_SESSION['email'];
+
+    try {
+        $db = new database();
+        $conn = $db->getConn();
+
+        $sql = "SELECT 
+                    r.id_reserva,
+                    tr.tipo_reserva,
+                    r.fecha_entrada AS fecha_llegada,
+                    r.hora_entrada AS hora_llegada,
+                    r.numero_vuelo_entrada AS numero_vuelo,
+                    r.origen_vuelo_entrada AS zona,
+                    h.nombre AS hotel
+                FROM transfer_reservas r
+                JOIN transfer_tipo_reserva tr ON r.id_tipo_reserva = tr.id_tipo_reserva
+                JOIN transfer_hoteles h ON r.id_hotel = h.id_hotel
+                WHERE r.email_cliente = :email";
+
+        $stmt = $conn->prepare($sql);
+        $stmt->bindParam(':email', $email);
+        $stmt->execute();
+        $reservas = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    } catch (PDOException $e) {
+        echo "Error al obtener las reservas: " . $e->getMessage();
+    }
+} else {
+    echo "⚠️ No has iniciado sesión.";
+}
 ?>
 <!DOCTYPE html>
 <html lang="es">
