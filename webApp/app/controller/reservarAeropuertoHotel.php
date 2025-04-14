@@ -1,9 +1,8 @@
 <?php
 require_once '../model/database.php';
-require_once __DIR__ . '/../../../vendor/autoload.php';
+require_once 'enviarMail.php';
 
-use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\Exception;
+
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $fechaEntrada = $_POST['fecha_llegada'] ?? null;
@@ -99,42 +98,23 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $stmt->execute();
 
         // Envío de correo
-        $mail = new PHPMailer(true);
+        
+        $resultadoEnvio = enviarCorreoReserva($emailCliente, [
+            'localizador'      => $localizador,
+            'fechaEntrada'     => $fechaEntrada,
+            'horaEntrada'      => $horaEntrada,
+            'numeroVuelo'      => $numeroVuelo,
+            'aeropuertoOrigen' => $aeropuertoOrigen,
+            'hotel'            => $hotel,
+            'numViajeros'      => $numViajeros
+        ]);
 
-        $mail->isSMTP();
-        $mail->Host       = 'smtp.gmail.com';
-        $mail->SMTPAuth   = true;
-        $mail->Username   = 'reservasnewtitans@gmail.com';
-        $mail->Password   = 'pdeojfezuelrvsf';
-        $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
-        $mail->Port       = 465;
+        if ($resultadoEnvio === true) {
+            echo "Reserva creada con éxito. Localizador: $localizador.";
+        } else {
+            echo $resultadoEnvio;
+        }
 
-        $mail->setFrom('reservasnewtitans@gmail.com', 'Transfer Isla Transfers');
-        $mail->addAddress($emailCliente);
-
-        $mail->isHTML(true);
-        $mail->Subject = '✔ Reserva confirmada';
-        $mail->Body    = "
-            <h2>¡Gracias por tu reserva!</h2>
-            <p>Tu reserva ha sido confirmada correctamente. Aquí tienes los detalles:</p>
-            <ul>
-                <li><strong>Localizador:</strong> {$localizador}</li>
-                <li><strong>Fecha de llegada:</strong> {$fechaEntrada}</li>
-                <li><strong>Hora de llegada:</strong> {$horaEntrada}</li>
-                <li><strong>Número de vuelo:</strong> {$numeroVuelo}</li>
-                <li><strong>Aeropuerto de origen:</strong> {$aeropuertoOrigen}</li>
-                <li><strong>Hotel ID:</strong> {$hotel}</li>
-                <li><strong>Número de viajeros:</strong> {$numViajeros}</li>
-            </ul>
-            <p>Si necesitas modificar algo, contáctanos respondiendo este correo.</p>
-        ";
-
-        $mail->send();
-
-        echo "Reserva creada con éxito. Localizador: $localizador.";
-
-    } catch (Exception $e) {
-        echo "Error al enviar correo: " . $mail->ErrorInfo;
     } catch (PDOException $e) {
         echo "Error al insertar: " . $e->getMessage();
     }

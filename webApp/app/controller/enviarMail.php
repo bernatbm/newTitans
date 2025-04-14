@@ -2,42 +2,44 @@
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-require '../vendor/autoload.php'; 
+require_once __DIR__ . '/../vendor/autoload.php';
 
-function enviarCorreoReserva($destinatario, $nombreCliente, $localizador, $detalles = '') {
-    $mail = new PHPMailer(true);
-
+function enviarCorreoReserva($emailCliente, $datosReserva)
+{
     try {
-        // Configuración del servidor SMTP
+        $mail = new PHPMailer(true);
         $mail->isSMTP();
-        $mail->Host = 'smtp.gmail.com';
-        $mail->SMTPAuth = true;
-        $mail->Username = 'reservasnewtitans@gmail.com';
-        $mail->Password = 'pdeo jfez uelr vsf';
-        $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
-        $mail->Port = 587;
+        $mail->Host       = 'smtp.gmail.com';
+        $mail->SMTPAuth   = true;
+        $mail->Username   = 'reservasnewtitans@gmail.com';
+        $mail->Password   = 'sclwecasirpllpuk';
+        $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
+        $mail->Port       = 465;
 
-        // Remitente
-        $mail->setFrom('reservasnewtitans@gmail.com', 'Reservas Transfer Isla Transfers');
-        $mail->addAddress($destinatario);
+        $mail->setFrom('reservasnewtitans@gmail.com', 'Transfer Isla Transfers');
+        $mail->addAddress($emailCliente);
 
-        // Contenido
         $mail->isHTML(true);
-        $mail->Subject = 'Confirmación de Reserva';
-        $mail->Body    = "
-            <h2>¡Gracias por reservar con nosotros, $nombreCliente!</h2>
-            <p>Tu reserva ha sido confirmada con el siguiente localizador:</p>
-            <strong>$localizador</strong>
-            <br><br>
-            $detalles
-            <br><br>
-            <em>Nos vemos pronto,<br>Reservas Transfer Isla Transfers</em>
+        $mail->Subject = '✔ Reserva confirmada';
+
+        $mail->Body = "
+            <h2>¡Gracias por tu reserva!</h2>
+            <p>Tu reserva ha sido confirmada correctamente. Aquí tienes los detalles:</p>
+            <ul>
+                <li><strong>Localizador:</strong> {$datosReserva['localizador']}</li>
+                <li><strong>Fecha de llegada:</strong> {$datosReserva['fechaEntrada']}</li>
+                <li><strong>Hora de llegada:</strong> {$datosReserva['horaEntrada']}</li>
+                <li><strong>Número de vuelo:</strong> {$datosReserva['numeroVuelo']}</li>
+                <li><strong>Aeropuerto de origen:</strong> {$datosReserva['aeropuertoOrigen']}</li>
+                <li><strong>Hotel ID:</strong> {$datosReserva['hotel']}</li>
+                <li><strong>Número de viajeros:</strong> {$datosReserva['numViajeros']}</li>
+            </ul>
+            <p>Si necesitas modificar algo, contáctanos respondiendo este correo.</p>
         ";
 
         $mail->send();
         return true;
     } catch (Exception $e) {
-        error_log("❌ Error al enviar correo: {$mail->ErrorInfo}");
-        return false;
+        return 'Error al enviar correo: ' . $mail->ErrorInfo;
     }
 }

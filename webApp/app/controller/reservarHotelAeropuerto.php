@@ -1,5 +1,6 @@
 <?php
 require_once '../model/database.php';
+require_once 'enviarMail.php';
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $diaVuelo = $_POST['dia_vuelo'] ?? null;
@@ -95,9 +96,25 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $stmt->bindParam(':fecha_reserva', $fechaReserva);
         $stmt->execute();
 
-        echo "✅ Reserva creada con éxito. Localizador: $localizador";
+        // 📩 Enviar correo
+        $resultadoEnvio = enviarCorreoReserva($emailCliente, [
+            'localizador'      => $localizador,
+            'fechaEntrada'     => $diaVuelo,
+            'horaEntrada'      => $horaRecogida,
+            'numeroVuelo'      => $numeroVuelo,
+            'aeropuertoOrigen' => 'Destino ID: ' . $aeropuertoDestino,
+            'hotel'            => $hotel,
+            'numViajeros'      => $numViajeros
+        ]);
+
+        if ($resultadoEnvio === true) {
+            echo "Reserva creada con éxito. Localizador: $localizador.";
+        } else {
+            echo $resultadoEnvio;
+        }
+
     } catch (PDOException $e) {
-        echo "❌ Error al insertar: " . $e->getMessage();
+        echo "Error al insertar: " . $e->getMessage();
     }
 } else {
     echo "Método no permitido.";

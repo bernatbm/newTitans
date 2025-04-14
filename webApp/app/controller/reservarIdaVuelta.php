@@ -1,10 +1,11 @@
 <?php
 require_once '../model/database.php';
+require_once 'enviarMail.php';
 
-if ($_SERVER["REQUEST_METHOD"]==="POST"){
-    $fechaEntrada = $_POST ['fecha_llegada']?? null;
-    $horaEntrada = $_POST ['hora_llegada']?? null;
-    $numeroVueloEntrada= $_POST['numero_vuelo_entrada']??null;
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    $fechaEntrada = $_POST['fecha_llegada'] ?? null;
+    $horaEntrada = $_POST['hora_llegada'] ?? null;
+    $numeroVueloEntrada = $_POST['numero_vuelo_entrada'] ?? null;
     $aeropuertoOrigen = $_POST['aeropuerto_origen'] ?? null;
     $hotel = $_POST['id_hotel'] ?? null;
     $numViajeros = $_POST['num_viajeros'] ?? null;
@@ -16,15 +17,16 @@ if ($_SERVER["REQUEST_METHOD"]==="POST"){
     $emailCliente = $_POST['email_cliente'] ?? null;
     $idTipoReserva = $_POST['id_tipo_reserva'] ?? null;
 
-    if(
+    if (
         empty($fechaEntrada) || empty($horaEntrada) || empty($numeroVueloEntrada) || 
-        empty($aeropuertoOrigen) || empty($hotel) ||  empty($numViajeros) ||  empty($diaVuelo)|| 
-        empty($horaVuelo) || empty($numeroVueloVuelta) || empty($horaRecogida) || empty($aeropuertoDestino)|| 
+        empty($aeropuertoOrigen) || empty($hotel) ||  empty($numViajeros) ||  empty($diaVuelo) || 
+        empty($horaVuelo) || empty($numeroVueloVuelta) || empty($horaRecogida) || empty($aeropuertoDestino) || 
         empty($emailCliente) || empty($idTipoReserva)
-    ){
+    ) {
         echo "Todos los campos obligatorios deben estar completos.";
         exit;
     }
+
     try {
         $db = new database();
         $conn = $db->getConn();
@@ -69,21 +71,23 @@ if ($_SERVER["REQUEST_METHOD"]==="POST"){
             $insertViajero->bindParam(':password', $password);
             $insertViajero->execute();
         }
+
         $vehiculoQuery = $conn->query("SELECT id_vehiculo FROM transfer_vehiculo ORDER BY RAND() LIMIT 1");
         $idVehiculo = $vehiculoQuery->fetchColumn();
 
         $fechaReserva = date('Y-m-d H:i:s');
         $localizador = random_int(100000, 999999);
 
-        $sql= "INSERT INTO transfer_reservas
-        (localizador,fecha_entrada,hora_entrada,numero_vuelo_entrada, origen_vuelo_entrada, id_hotel,id_vehiculo,fecha_reserva,
-        num_viajeros,fecha_vuelo_salida,hora_vuelo_salida,numero_vuelo_salida,hora_recogida,id_destino,email_cliente,id_tipo_reserva)
-        VALUES (:localizador,:fecha_entrada,:hora_entrada,:numero_vuelo_entrada,:origen_vuelo_entrada,:id_hotel,:id_vehiculo,:fecha_reserva,
-        :num_viajeros,:fecha_vuelo_salida,:hora_vuelo_salida,:numero_vuelo_salida,:hora_recogida,:id_destino,:email_cliente, :id_tipo_reserva)";
+        $sql = "INSERT INTO transfer_reservas
+        (localizador, fecha_entrada, hora_entrada, numero_vuelo_entrada, origen_vuelo_entrada, id_hotel, id_vehiculo, fecha_reserva,
+        num_viajeros, fecha_vuelo_salida, hora_vuelo_salida, numero_vuelo_salida, hora_recogida, id_destino, email_cliente, id_tipo_reserva)
+        VALUES 
+        (:localizador, :fecha_entrada, :hora_entrada, :numero_vuelo_entrada, :origen_vuelo_entrada, :id_hotel, :id_vehiculo, :fecha_reserva,
+        :num_viajeros, :fecha_vuelo_salida, :hora_vuelo_salida, :numero_vuelo_salida, :hora_recogida, :id_destino, :email_cliente, :id_tipo_reserva)";
 
         $stmt = $conn->prepare($sql);
-        $stmt->bindParam(':localizador',$localizador);
-        $stmt->bindParam(':fecha_entrada',$fechaEntrada);
+        $stmt->bindParam(':localizador', $localizador);
+        $stmt->bindParam(':fecha_entrada', $fechaEntrada);
         $stmt->bindParam(':hora_entrada', $horaEntrada);
         $stmt->bindParam(':numero_vuelo_entrada', $numeroVueloEntrada);
         $stmt->bindParam(':origen_vuelo_entrada', $aeropuertoOrigen);
@@ -100,10 +104,31 @@ if ($_SERVER["REQUEST_METHOD"]==="POST"){
         $stmt->bindParam(':id_tipo_reserva', $idTipoReserva);
         $stmt->execute();
 
-        echo "Reserva creada con éxito. Localizador: $localizador";
-    }catch (PDOException $e){
+        // Enviar correo
+        $resultadoEnvio = enviarCorreoReserva($emailCliente, [
+            'localizador'       => $localizador,
+            'fechaEntrada'      => $fechaEntrada,
+            'horaEntrada'       => $horaEntrada,
+            'numeroVuelo'       => $numeroVueloEntrada,
+            'aeropuertoOrigen'  => $aeropuertoOrigen,
+            'hotel'             => $hotel,
+            'numViajeros'       => $numViajeros,
+            'fechaVuelta'       => $diaVuelo,
+            'horaVuelta'        => $horaVuelo,
+            'vueloVuelta'       => $numeroVueloVuelta,
+            'horaRecogida'      => $horaRecogida,
+            'aeropuertoDestino' => $aeropuertoDestino
+        ]);
+
+        if ($resultadoEnvio === true) {
+            echo "Reserva creada con éxito. Localizador: $localizador.";
+        } else {
+            echo $resultadoEnvio;
+        }
+
+    } catch (PDOException $e) {
         echo "Error al insertar: " . $e->getMessage();
     }
-}else{
+} else {
     echo "Método no permitido.";
 }
