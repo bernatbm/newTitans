@@ -5,29 +5,8 @@ $db = new database(); // database
 $conn = $db->getConn(); //conexión database
 
 // Crear tabla transfer_administradores si no existe
-$checkTableSQL = "
-    SELECT COUNT(*) AS existe 
-    FROM information_schema.TABLES 
-    WHERE TABLE_NAME = 'transfer_administradores' 
-    AND TABLE_SCHEMA = 'dataBaseNewTitans';
-";
-$result = $conn->query($checkTableSQL);
-$row = $result->fetch(PDO::FETCH_ASSOC);
+$db->crearTablaAdmin();
 
-if ($row['existe'] == 0) {
-    $createTableSQL = "
-        CREATE TABLE transfer_administradores (
-            id INT AUTO_INCREMENT PRIMARY KEY,
-            nombre VARCHAR(255) NOT NULL,
-            apellido1 VARCHAR(255) NOT NULL,
-            apellido2 VARCHAR(255),
-            email VARCHAR(255) NOT NULL,
-            password VARCHAR(255) NOT NULL,
-            isAdmin TINYINT DEFAULT 1
-        );
-    ";
-    $conn->exec($createTableSQL);
-}
 $stmt = $conn->prepare("SELECT COUNT(*) as total FROM transfer_administradores WHERE isAdmin = 1");
 $stmt->execute();
 $result = $stmt->fetch(PDO::FETCH_ASSOC);

@@ -23,27 +23,27 @@ body {
 }
 
 
+/*HEADER PRINCIPAL*/
 header {
-    background-color: #221a1a4f; 
+    background: linear-gradient(180deg, #221a1a, rgba(34, 26, 26, 0.8));
     position: fixed; 
     top: 0;
     left: 0;
-    width: 99%; 
+    width: 100%; 
     z-index: 1000;
     display: flex;
     justify-content: space-between;
     align-items: center;
     color: white;
     padding: 10px 15px; 
+   
 }
 .titleLogo {
     display: flex;
-    align-items: center;
+    align-items: center;   
     gap: 10px; 
 }
-.titleLogo img {
-    height: 50px;
-}
+
 
 
 header a {
@@ -52,6 +52,7 @@ header a {
     padding: 0; 
     font-size: 1.2em;
     font-weight: bold;
+   
 }
 
 header h1 {
@@ -64,6 +65,9 @@ header nav {
     justify-content: center; 
     gap:15px;
     padding-right: 15px;
+    margin-right: 10px;
+    
+
 }
 
 header nav a {
@@ -77,7 +81,55 @@ header nav a {
 header nav a:hover {
     background-color: #f3c158; 
     border-radius: 10px;
-    color:black;   
+    color:black;
+    
+
+    
+}
+/*HEADER SECUNDARIO*/
+.header-secundario {
+    background: linear-gradient(180deg, rgba(34, 26, 26, 0.8), #f3c258);
+    color: white;
+    padding: 8px 15px;
+    text-align: center;
+    font-size: 1em;
+    margin-top: 75px; /* Espacio debajo del header principal */
+    transition: background 0.5s ease-in-out; /* Transición suave en el color */
+}
+
+
+/* Estilo para los enlaces del header secundario */
+.header-secundario nav {
+    display: flex; 
+    justify-content: flex-end;
+    gap: 15px;
+    margin-right: 10px;
+    width: 100%;
+
+    
+}
+.header-secundario nav a {
+    padding: 8px 20px;
+    font-size: 1em;
+    font-weight: bold;
+    background-color:  #f3c158; 
+    color:black;
+    border-radius: 10px;
+    border: 1px solid #221a1a4f;
+}
+
+.header-secundario nav a:hover {
+    background-color: black; 
+    border-radius: 10px;
+    color: #f3c158;
+    
+}
+.addUser{
+    content: url("../assets/imagenes/addNewUser.svg");
+}
+
+.addUser:hover {
+    content: url("../assets/imagenes/addNewUserHover.svg");
 }
 
 
@@ -278,6 +330,16 @@ button[type="submit"] {
     }
 }
 
+/* REGISTER */
+.registerName{
+    
+    color:#f3c158;
+    font-weight: bold;
+    
+}
+input{
+    margin: auto;
+}
 
 
 /* RESPONSIVE */

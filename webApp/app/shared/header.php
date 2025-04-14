@@ -10,9 +10,7 @@
     <nav>
         <?php if (isset($_SESSION['userName'])): ?>
 
-            <?php if (in_array(basename($_SERVER['PHP_SELF']), ['panelAdministrador.php', 'panelCorporativo.php','perfilUsuario.php', 'login.php'])): ?>
-                <a class="registerName" href="../registro/registro.php">REGISTRO</a>
-            <?php endif; ?>
+            
             
             <?php if ($_SESSION['isAdmin'] == 1): ?>
                 
@@ -43,3 +41,12 @@
         <?php endif; ?>
     </nav>
 </header>
+<?php if (isset($_SESSION['isAdmin']) && $_SESSION['isAdmin'] == 1): ?>
+    <header class="header-secundario">
+        <nav>
+            <a class= "addUser" href="/registro/registro.php">
+                <img  src="../assets/imagenes/addNewUser.svg" alt="Añadir Usuario">
+            </a>
+        </nav>
+    </header>
+<?php endif; ?>

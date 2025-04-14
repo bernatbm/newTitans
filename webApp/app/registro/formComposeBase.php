@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="../css/formRegistro.css?v=<?php echo time(); ?>">
 <label class="registerName">Nombre:</label>
 <input type="text" name="nombre" required>
 
