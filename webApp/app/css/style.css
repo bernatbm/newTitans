@@ -30,7 +30,7 @@ header {
     position: fixed; 
     top: 0;
     left: 0;
-    width: 99%; 
+    width: 100%; 
     z-index: 1000;
     display: flex;
     justify-content: space-between;
@@ -216,7 +216,7 @@ header nav a:hover {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 30px; 
+    gap: 20px; 
     font-weight: bold;
 }
 
@@ -224,8 +224,9 @@ header nav a:hover {
     font-size: 4em;
     text-align: center;
     font-weight: bold;
-    width: 75%; 
+    width: 100%; 
     margin-bottom: 30px;
+    box-sizing: border-box;
     
 
 }
@@ -240,6 +241,10 @@ header nav a:hover {
     flex-direction: column;
     align-items: center;
     color: black; 
+    box-sizing: border-box;
+    border: 1px solid #2b2323 ;
+    background-color: #f2b83a; 
+
 }
 
 
@@ -268,6 +273,7 @@ header nav a:hover {
     padding: 50px 0; 
     background-color: #161111; 
     color: white;
+    
 }
 
 .contact h2{
@@ -279,28 +285,47 @@ header nav a:hover {
 }
 
 .contact p{
-    margin-left: 30px;
+    margin: 30px;
+
 }
 
 form {
+    border: 1px solid #f3c158;
+    background-color: #2b2323;
     width: 80%;
     max-width: 600px;
     margin: auto;
     color: #ffffff;
+    border-radius: 10px;
+    padding-bottom: 10px;
 }
 
+form label{
+    margin-left: 10px;
+}
 input[type="text"],
 input[type="email"],
 textarea {
-    width: calc(100% - 20px);
+    margin: 10px;
+    width: calc(95% - 20px);
     padding: 10px;
 }
 
 button[type="submit"] {
-    background-color: #007bff;
-    color: white;
-    padding: 10px 20px;
+    display: block;
+    margin: 25px auto 0 auto;
+    font-size: large;
+    color: #2b2323;
+    font-weight: bold;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+    background-color: #f3c158;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 5px 20px;
+    border-radius: 10px;
 }
+
 
 
 .perfil {

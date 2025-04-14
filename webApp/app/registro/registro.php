@@ -38,12 +38,14 @@ $adminLogIn = isset($_SESSION['isAdmin']) && $_SESSION['isAdmin'] == 1;
         <div class="tab-content active" id="usuario">
             <?php include 'formComposeBase.php'; ?>
             <input type="hidden" name="isAdmin" value="0">
+            <button id="btnRegistro" type="submit">REGISTRAR</button>
         </div>
 
         <!-- ADMINISTRADOR -->
         <div class="tab-content" id="administrador">
             <?php include 'formComposeAdmin.php'; ?>
             <input type="hidden" name="isAdmin" value="1">
+            <button id="btnRegistro" type="submit">REGISTRAR</button>
         </div>
 
         <!-- CORPORATIVO -->

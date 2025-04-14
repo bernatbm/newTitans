@@ -148,12 +148,11 @@ header nav a:hover {
 
 .LogInForm h1{
     text-align: center;
-}
-.LogInForm h1{
-    text-align: center;
-    color: #f3c158;
+    color:#f3c158;
     font-weight: bold;
+
 }
+
 input[type="text"],
 input[type="email"],
 input[type="password"],
@@ -189,7 +188,6 @@ button[type="submit"] {
     display: block;
     margin: 25px auto 0 auto;
     font-size: large;
-    font-weight: bold;
 }
 .botones {
     display: flex;
