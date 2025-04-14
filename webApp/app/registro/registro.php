@@ -15,6 +15,7 @@ session_start();
  <?php include '../shared/header.php'; ?>
     <!---FIN ENCABEZADO-->
 
+
     <!--EL FORM DEL REGISTRO-->
     <div class="registroForm">
     <h1>REGISTRAR USUARIO</h1>
@@ -38,10 +39,9 @@ session_start();
             <button id="btnRegistro" type="submit">REGISTRAR</button>
         </div>
 
-        
-        </form>
+    </form>
 
-    <?php elseif ($totalAdmins == 0): ?>
+    <?php if ($totalAdmins == 0): ?>
         <form method="POST" action="registroDB.php">
             <h1>BIENVENIDO, ADMINISTRADOR</h1>
             <label class="registerName">Nombre:</label>
@@ -57,8 +57,6 @@ session_start();
             <input type="password" name="password" required>
             <input type="hidden" name="isAdmin" value="1">
             <button id="btnRegistro" type="submit">REGISTRARSE</button>
-        </div>
-       
         </form>
 
     <?php elseif (!$adminLogIn): ?>
@@ -93,17 +91,14 @@ session_start();
 
             <input type="hidden" name="isAdmin" value="0">
             <button id="btnRegistro" type="submit">REGISTRARSE</button>
-            
         </form>
-    <?endif?>
+    <?php endif; ?> <!-- Aquí cerramos el 'if' correctamente -->
 
-    
 </div>
 <!--Si el usuario es registrado, pasara por aquí-->
 <?php if (isset($_GET['registro']) && $_GET['registro'] == 'registrado'): ?>
     <script>
         window.registrado = {//preparara una ventana(popup) con los datos de registrado
-        
             nombre: "<?php echo htmlspecialchars($_GET['nombre']); ?>", // guardamos el valor de nombre
             isAdmin: "<?php echo htmlspecialchars($_GET['isAdmin']); ?>"//lo mismo con isAdmin
         };
@@ -121,7 +116,6 @@ session_start();
 </script>
 
 <script src="../js/script.js"></script><!--Va al script.js, para realizar el popup y abrirla-->
-
 
 
 </body>
