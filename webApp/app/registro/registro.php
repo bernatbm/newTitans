@@ -15,7 +15,6 @@ session_start();
  <?php include '../shared/header.php'; ?>
     <!---FIN ENCABEZADO-->
 
-
     <!--EL FORM DEL REGISTRO-->
     <div class="registroForm">
     <h1>REGISTRAR USUARIO</h1>
