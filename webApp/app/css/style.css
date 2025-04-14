@@ -24,13 +24,13 @@ body {
     margin: 0 auto;
 }
 
-
+/*HEADER PRINCIPAL*/
 header {
-    background-color: #221a1a4f; 
+    background: linear-gradient(180deg, #221a1a, rgba(34, 26, 26, 0.8));
     position: fixed; 
     top: 0;
     left: 0;
-    width: 99%; 
+    width: 100%; 
     z-index: 1000;
     display: flex;
     justify-content: space-between;
@@ -66,6 +66,7 @@ header nav {
     justify-content: center; 
     gap:15px;
     padding-right: 15px;
+    margin-right: 10px;
     
 
 }
@@ -85,6 +86,51 @@ header nav a:hover {
     
 
     
+}
+/*HEADER SECUNDARIO*/
+.header-secundario {
+    background: linear-gradient(180deg, rgba(34, 26, 26, 0.8), #f3c258);
+    color: white;
+    padding: 8px 15px;
+    text-align: center;
+    font-size: 1em;
+    margin-top: 75px; /* Espacio debajo del header principal */
+    transition: background 0.5s ease-in-out; /* Transición suave en el color */
+}
+
+
+/* Estilo para los enlaces del header secundario */
+.header-secundario nav {
+    display: flex; 
+    justify-content: flex-end;
+    gap: 15px;
+    margin-right: 10px;
+    width: 100%;
+
+    
+}
+.header-secundario nav a {
+    padding: 8px 20px;
+    font-size: 1em;
+    font-weight: bold;
+    background-color:  #f3c158; 
+    color:black;
+    border-radius: 10px;
+    border: 1px solid #221a1a4f;
+}
+
+.header-secundario nav a:hover {
+    background-color: black; 
+    border-radius: 10px;
+    color: #f3c158;
+    
+}
+.addUser{
+    content: url("../assets/imagenes/addNewUser.svg");
+}
+
+.addUser:hover {
+    content: url("../assets/imagenes/addNewUserHover.svg");
 }
 
 
@@ -132,20 +178,61 @@ header nav a:hover {
 }
 
 .service {
+    position: relative;
     width: 400px;
-    background-color: #333;
+    background-color: #2b2323;
     padding: 20px;
-    border-radius: 10px;
+    border-radius: 15px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.3);
     transition: transform 0.3s ease;
     display: flex;
     flex-direction: column;
     align-items: center;
+    overflow: hidden; 
+    border: 1px solid #f3c158;
+    box-sizing: border-box;
+    
 }
 
+/* Animación y borde al hacer hover */
 .service:hover {
     transform: translateY(-5px);
+    border: transparent;
 }
+
+/* Borde animado */
+.service::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    border: 1px solid transparent;
+    border-radius: 15px;
+    box-sizing: border-box;
+    z-index: -1; /* Lo coloca detrás del contenido */
+    pointer-events: none; /* Para no interferir con el clic en otros elementos */
+    animation: borderAnim 10s linear infinite;
+    background: linear-gradient(90deg, #f3c158, transparent, #f3c158);
+    background-size: 400% 400%;
+    -webkit-mask:
+        linear-gradient(#000 0 0) content-box,
+        linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+}
+
+/* Animación de borde con el degradado */
+@keyframes borderAnim {
+    0% {
+        background-position: 0% 0%;
+    }
+    100% {
+        background-position: 400% 0%;
+    }
+}
+
 
 .service img {
     max-width: 100%; 
@@ -170,20 +257,23 @@ header nav a:hover {
 
 .ventajas {
     padding: 50px 0;
-    background-color: #555; 
-    color: #fff;
+    background-color: #f3c158; 
+    color: black;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 30px; 
+    gap: 20px; 
+    font-weight: bold;
 }
 
 .ventajas h2 {
     font-size: 4em;
     text-align: center;
     font-weight: bold;
-    width: 75%; 
+    width: 100%; 
     margin-bottom: 30px;
+    box-sizing: border-box;
+    
 
 }
 
@@ -195,7 +285,12 @@ header nav a:hover {
     transition: transform 0.3s ease;
     display: flex;
     flex-direction: column;
-    align-items: center; 
+    align-items: center;
+    color: black; 
+    box-sizing: border-box;
+    border: 1px solid #2b2323 ;
+    background-color: #f2b83a; 
+
 }
 
 
@@ -207,14 +302,14 @@ header nav a:hover {
 
 .ventaja h3 {
     font-size: 1.5em;
-    color: #ffffff;
+    color: black;
     margin-bottom: 10px;
     text-align: center;
     display: flex;
 }
 
 .ventaja p {
-    color: #ffffff;
+    color: black;
     text-align: center; 
 }
 
@@ -224,6 +319,7 @@ header nav a:hover {
     padding: 50px 0; 
     background-color: #161111; 
     color: white;
+    
 }
 
 .contact h2{
@@ -235,28 +331,47 @@ header nav a:hover {
 }
 
 .contact p{
-    margin-left: 30px;
+    margin: 30px;
+
 }
 
 form {
+    border: 1px solid #f3c158;
+    background-color: #2b2323;
     width: 80%;
     max-width: 600px;
     margin: auto;
     color: #ffffff;
+    border-radius: 10px;
+    padding-bottom: 10px;
 }
 
+form label{
+    margin-left: 10px;
+}
 input[type="text"],
 input[type="email"],
 textarea {
-    width: calc(100% - 20px);
+    margin: 10px;
+    width: calc(95% - 20px);
     padding: 10px;
 }
 
 button[type="submit"] {
-    background-color: #007bff;
-    color: white;
-    padding: 10px 20px;
+    display: block;
+    margin: 25px auto 0 auto;
+    font-size: large;
+    color: #2b2323;
+    font-weight: bold;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+    background-color: #f3c158;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 5px 20px;
+    border-radius: 10px;
 }
+
 
 
 .perfil {
