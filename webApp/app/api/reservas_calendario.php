@@ -41,7 +41,7 @@ try {
         });
 
         $eventos[] = [
-            'title' => $tipo . ' - ' . $reserva['localizador'],
+            'title' => 'Reserva #' . $reserva['id_reserva'],
             'start' => $startDateTime,
             'id'    => $reserva['localizador'],
             'extendedProps' => $propsFiltradas

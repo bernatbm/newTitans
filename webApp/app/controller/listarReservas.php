@@ -53,8 +53,9 @@ try {
                     <td style="padding: 6px; border: 1px solid #ddd;"><?= htmlspecialchars($reserva['fecha_reserva']) ?></td>
                     <td style="padding: 6px; border: 1px solid #ddd;"><?= htmlspecialchars($reserva['fecha_modificacion'] ?? 'Sin modificar') ?></td>
                     <td style="padding: 6px; border: 1px solid #ddd;">
-                        <a href="editarReserva.php?id=<?= $reserva['id_reserva'] ?>" style="color:blue; text-decoration: none;">Editar</a> |
-                        <a href="borrarReserva.php?id=<?= $reserva['id_reserva'] ?>" style="color:red; text-decoration: none;" onclick="return confirm('¿Seguro que quieres borrar esta reserva?')">Borrar</a>
+                        <a href="../controller/verReserva.php?id=<?= $reserva['id_reserva'] ?>" class="btn-detalles">Detalles</a>
+                        <a href="../controller/editarReserva.php?id=<?= $reserva['id_reserva'] ?>" class="btn-reserva btn-editar">Editar</a>
+                        <a href="../controller/borrarReserva.php?id=<?= $reserva['id_reserva'] ?>" class="btn-reserva btn-borrar" onclick="return confirm('¿Seguro que quieres borrar esta reserva?')">Borrar</a>
                     </td>
                 </tr>
             <?php endforeach; ?>

@@ -400,11 +400,16 @@ session_start();
         </section>
 
         <?php include '../controller/listarReservas.php'; ?>
+        <?php if (isset($_GET['mensaje']) && $_GET['mensaje'] === 'eliminado'): ?>
+            <script>
+                alert("✅ Reserva eliminada correctamente.");
+            </script>
+        <?php endif; ?>
         
 
         <section class="pa-calendario">
             <h2 class="pa-h2">Calendario de Reservas</h2>
-            <div id="calendar" style="max-width: 900px; margin: 0 auto;"></div>
+            <div id="calendar" ></div>
         </section>
 
 </main>
