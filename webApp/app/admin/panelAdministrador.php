@@ -58,12 +58,11 @@ session_start();
                                 <input class="pa-input-numero-vuelo" type="text" id="numero-vuelo-ida" name="numero_vuelo_entrada" required>
                             </div>
                             <div class="pa-form-aeropuerto-origen">
-                                <label for="aeropuerto-origen">Aeropuerto de origen:</label>
-                                <select class="pa-input-aeropuerto-origen aeropuerto-select" name="id_destino" required>
-                                    <option value="" disabled selected>Selecciona un aeropuerto</option>
-                                </select>
-                            </div>
-
+                                        <label for="aeropuerto-origen" >Aeropuerto de origen:</label>
+                                        <select class="pa-input-aeropuerto-origen aeropuerto-select" name="id_destino" required>
+                                            <option value="" disabled selected>Selecciona un aeropuerto</option>
+                                        </select>
+                                    </div>
                             <div class="pa-form-zona">
                                 <label for="id-zona">Zona:</label>
                                 <select class="pa-input-zona" id="id-zona" name="id_zona" required>
@@ -277,9 +276,12 @@ session_start();
                                         <label for="numero-vuelo">Numero de vuelo:</label>
                                         <input class="pa-input-numero-vuelo" type="text" id="numero-vuelo-ida" name="numero_vuelo_entrada" required>
                                     </div>
-                                    <div class="pa-form-aeropuerto-origen">
-                                        <label for="aeropuerto-origen" >Aeropuerto de origen:</label>
-                                        <input class="pa-input-aeropuerto-origen" type="text" id="aeropuerto-origen" name="aeropuerto_origen" required>
+                                    < <div class="pa-form-aeropuerto-origen">
+                                        <label for="aeropuerto-origen">Aeropuerto de destino:</label>
+                                        <select class="pa-input-aeropuerto-origen aeropuerto-select" name="id_destino" required>
+                                            <option value="" disabled selected>Selecciona un aeropuerto</option>
+                                            
+                                        </select>
                                     </div>
 
                                     <div class="pa-form-zona">

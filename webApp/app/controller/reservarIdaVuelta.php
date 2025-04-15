@@ -5,7 +5,7 @@ if ($_SERVER["REQUEST_METHOD"]==="POST"){
     $fechaEntrada = $_POST ['fecha_llegada']?? null;
     $horaEntrada = $_POST ['hora_llegada']?? null;
     $numeroVueloEntrada= $_POST['numero_vuelo_entrada']??null;
-    $aeropuertoOrigen = $_POST['aeropuerto_origen'] ?? null;
+    $aeropuertoOrigen = $_POST['id_destino'] ?? null;
     $hotel = $_POST['id_hotel'] ?? null;
     $numViajeros = $_POST['num_viajeros'] ?? null;
     $diaVuelo = $_POST['dia_vuelo'] ?? null;
