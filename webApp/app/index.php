@@ -90,10 +90,11 @@ if ($result['total'] == 0) {
     <section class="contact" id="contacto">
         
         
-
+    
         <!-- Formulario básico -->
         <form action="#" method="post">
-             <h2>Contáctanos</h2>
+        
+          <h2>Contáctanos</h2>
             <label for="nombre">Nombre:</label><br/>
             <input type="text" id="nombre" name="nombre" required><br/><br/>
 

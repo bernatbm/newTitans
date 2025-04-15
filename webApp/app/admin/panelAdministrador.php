@@ -15,8 +15,7 @@ session_start();
 <?php include '../shared/header.php'; ?>
 
 <main class="pa-main">
-    <h1 class="pa-h1">Perfil de Administrador</h1>
-    <p class="pa-p1">Bienvenido, aquí puedes crear y gestionar reservas</p>
+
     <!-- Formulario "Crear reserva"-->
         <section class="pa-crear-reserva"  style="display: none;" id= "options">
             <div>

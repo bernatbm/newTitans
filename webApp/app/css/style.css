@@ -361,13 +361,14 @@ header nav a:hover {
     
 }
 
-.contact h2{
-    font-size: 4em;
+.contact form h2{
+    font-size: 3em;
     text-align: center;
     font-weight: bold;
-    width: 95%; 
-    margin-bottom: 30px;
+    width: 100%; 
     box-sizing: border-box;
+    
+
 }
 
 .contact p{
@@ -432,6 +433,12 @@ button[type="submit"] {
     margin-bottom: 30px;
 
 }
+.pa-h2-lista{
+    font-size: 36px;
+    color: rgb(245, 205, 118);
+    padding-top: 80px;
+    padding-bottom:25px ;
+}
 
 
 .admin-label {
@@ -440,6 +447,7 @@ button[type="submit"] {
     margin-top: 4px;
     font-weight: bold;
 }
+
 /* RESPONSIVE */
 @media screen and (max-width: 433px) {
     .header-content {
@@ -529,3 +537,85 @@ button[type="submit"] {
     font-size: 16px;
 }
 }
+
+@media (max-width: 768px) {
+    .tabla-wrapper {
+        width: 100%; 
+        -webkit-overflow-scrolling: touch;
+        border: none; 
+        box-sizing: border-box; 
+        overflow-x:hidden ;
+       
+        
+    }
+    .pa-lista-reservas {
+        width: 100%;
+        padding: 70 0px;
+        box-sizing: border-box;
+        text-align: center;
+    }
+    .pa-h2{
+        padding-top: 30px;
+        align-items: center;
+        margin-left: auto;
+    }
+   
+    .pa-tabla-reservas {
+        width: auto; 
+        border-collapse: fixed; 
+    }
+
+    .pa-tabla-reservas thead {
+        display: none; 
+    }
+
+    .pa-tabla-reservas tr {
+        display: block; 
+        width: 100%;
+        margin-bottom: 1rem; 
+        background-color: #fff3e0;
+        border-radius: 10px;
+        padding: 10px;
+        box-sizing: border-box; 
+        color:black;
+       
+    }
+
+    .pa-tabla-reservas td {
+        text-align: left;
+        padding: 10px;
+        border: none;
+        position: flex;
+        display: block;
+    }
+
+    .pa-tabla-reservas td::before {
+        content: attr(data-label);
+        font-weight: bold;
+        display: flex;
+        margin-bottom: 4px;
+        color: #ec6e05;
+    }
+
+
+    .btn-reserva {
+        display: inline-block;
+        margin: 5px 5px 0 0;
+        font-size: 0.8rem; 
+    }
+
+
+
+
+
+}
+
+#calendar {
+    width: 98%;
+    box-sizing: border-box;
+    margin: auto;
+    padding-top: 30px;
+    height: 'auto',        
+    
+}
+  

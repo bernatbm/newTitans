@@ -27,7 +27,7 @@ try {
 ?>
 
 <section class="pa-lista-reservas">
-    <h2 class="pa-h2">Listado de Reservas</h2>
+    <h2 class="pa-h2-lista">Listado de Reservas</h2>
     <div class="tabla-wrapper" style="overflow-x:auto;">
         <table class="pa-tabla-reservas" style="width:100%; border-collapse: collapse; font-size: 0.9rem;">
             <thead>
@@ -45,19 +45,20 @@ try {
             <tbody>
             <?php foreach ($reservas as $reserva): ?>
                 <tr class="pa-casillas-reservas">
-                    <td style="padding: 6px; border: 1px solid #ddd;"><?= htmlspecialchars($reserva['id_reserva']) ?></td>
-                    <td style="padding: 6px; border: 1px solid #ddd;"><?= htmlspecialchars($reserva['localizador']) ?></td>
-                    <td style="padding: 6px; border: 1px solid #ddd;"><?= htmlspecialchars($reserva['nombre_hotel'] ?? 'Sin nombre') ?></td>
-                    <td style="padding: 6px; border: 1px solid #ddd;"><?= htmlspecialchars($reserva['tipo_reserva']) ?></td>
-                    <td style="padding: 6px; border: 1px solid #ddd;"><?= htmlspecialchars($reserva['email_cliente']) ?></td>
-                    <td style="padding: 6px; border: 1px solid #ddd;"><?= htmlspecialchars($reserva['fecha_reserva']) ?></td>
-                    <td style="padding: 6px; border: 1px solid #ddd;"><?= htmlspecialchars($reserva['fecha_modificacion'] ?? 'Sin modificar') ?></td>
-                    <td style="padding: 6px; border: 1px solid #ddd;">
+                    <td data-label="ID"><?= htmlspecialchars($reserva['id_reserva']) ?></td>
+                    <td data-label="Localizador"><?= htmlspecialchars($reserva['localizador']) ?></td>
+                    <td data-label="Hotel"><?= htmlspecialchars($reserva['nombre_hotel'] ?? 'Sin nombre') ?></td>
+                    <td data-label="Tipo"><?= htmlspecialchars($reserva['tipo_reserva']) ?></td>
+                    <td data-label="Email"><?= htmlspecialchars($reserva['email_cliente']) ?></td>
+                    <td data-label="Fecha Reserva"><?= htmlspecialchars($reserva['fecha_reserva']) ?></td>
+                    <td data-label="Fecha Modificación"><?= htmlspecialchars($reserva['fecha_modificacion'] ?? 'Sin modificar') ?></td>
+                    <td data-label="Acciones">
                         <a href="../controller/verReserva.php?id=<?= $reserva['id_reserva'] ?>" class="btn-detalles">Detalles</a>
                         <a href="../controller/editarReserva.php?id=<?= $reserva['id_reserva'] ?>" class="btn-reserva btn-editar">Editar</a>
                         <a href="../controller/borrarReserva.php?id=<?= $reserva['id_reserva'] ?>" class="btn-reserva btn-borrar" onclick="return confirm('¿Seguro que quieres borrar esta reserva?')">Borrar</a>
                     </td>
                 </tr>
+
             <?php endforeach; ?>
             </tbody>
         </table>

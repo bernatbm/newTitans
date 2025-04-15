@@ -3,7 +3,8 @@ document.addEventListener('DOMContentLoaded', function() {
     if (!calendarEl) return;
   
     const calendar = new FullCalendar.Calendar(calendarEl, {
-      initialView: 'dayGridMonth',
+      initialView: 'dayGridMonth',     
+      windowResize: true,     
       locale: 'es',
       headerToolbar: {
         left: 'prev,next today',
