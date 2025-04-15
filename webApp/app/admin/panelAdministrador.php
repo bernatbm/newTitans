@@ -253,7 +253,7 @@ session_start();
 
                         <!-- Formulario ida y vuelta-->
 
-                    <div id="from-ida-vuelta" style="display: none;">
+                    <div id="form-ida-vuelta" style="display: none;">
                         <form class="pa-form" action="../controller/reservarIdaVuelta.php" method="POST">
                         <input type="hidden" name="id_tipo_reserva" value="3">
 

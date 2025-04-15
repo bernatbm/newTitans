@@ -124,7 +124,6 @@ header nav a:hover {
     color: #f3c158;
     
 }
-
 .addUser{
     content: url("../assets/imagenes/addNewUser.svg");
     width: 32px; 
@@ -146,6 +145,29 @@ header nav a:hover {
 
 .aerohotel:hover {
     content: url("../assets/imagenes/aerohotelhover-3.svg");
+    width: 32px; 
+    height: 32px;
+}
+
+.hotelaero{
+    content: url("../assets/imagenes/hotelaero.svg");
+    width: 32px; 
+    height: 32px;
+}
+
+.hotelaero:hover {
+    content: url("../assets/imagenes/hotelaerohover.svg");
+    width: 32px; 
+    height: 32px;
+}
+.idaVuelta{
+    content: url("../assets/imagenes/idaVuelta.svg");
+    width: 32px; 
+    height: 32px;
+}
+
+.idaVuelta:hover {
+    content: url("../assets/imagenes/idaVueltahover.svg");
     width: 32px; 
     height: 32px;
 }

@@ -51,6 +51,10 @@
             <a class="aerohotel" href="javascript:void(0);" onclick="redirigirFormulario('aeropuerto-hotel')">
                 <img src="../assets/imagenes/AeroHotel.svg" alt="Trayectos">
             </a>
+            <a class="hotelaero" href="javascript:void(0);" onclick="redirigirFormulario('hotel-aeropuerto')">
+            </a>
+            <a class="idaVuelta" href="javascript:void(0);" onclick="redirigirFormulario('ida-vuelta')">
+            </a>
 
         </nav>
     </header>

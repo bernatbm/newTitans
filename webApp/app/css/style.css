@@ -150,6 +150,29 @@ header nav a:hover {
     height: 32px;
 }
 
+.hotelaero{
+    content: url("../assets/imagenes/hotelaero.svg");
+    width: 32px; 
+    height: 32px;
+}
+
+.hotelaero:hover {
+    content: url("../assets/imagenes/hotelaerohover.svg");
+    width: 32px; 
+    height: 32px;
+}
+.idaVuelta{
+    content: url("../assets/imagenes/idaVuelta.svg");
+    width: 32px; 
+    height: 32px;
+}
+
+.idaVuelta:hover {
+    content: url("../assets/imagenes/idaVueltahover.svg");
+    width: 32px; 
+    height: 32px;
+}
+
 
 .hero {
     background-image: url('../assets/imagenes/barcelona.jpg'); 
