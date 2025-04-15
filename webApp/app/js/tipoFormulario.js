@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const selectorTrayecto = document.querySelector(".pa-selector-trayecto");
     const formularioAeropuertoHotel = document.getElementById("form-aeropuerto-hotel");
     const formularioHotelAeropuerto = document.getElementById("form-hotel-aeropuerto");
-    const formularioIdaVuelta = document.getElementById("from-ida-vuelta");
+    const formularioIdaVuelta = document.getElementById("form-ida-vuelta");
     const tituloSelector = document.getElementById("h2-selector");
     const tituloTrayecto = document.getElementById("titulo-trayecto");
     const botonesCambiarTrayecto = document.querySelectorAll(".pa-btn-cambiar-trayecto");

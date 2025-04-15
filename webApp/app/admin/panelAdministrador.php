@@ -15,7 +15,8 @@ session_start();
 <?php include '../shared/header.php'; ?>
 
 <main class="pa-main">
-
+    <h1 class="pa-h1"style="display: none;">Perfil de Administrador</h1>
+    <p class="pa-p1"style="display: none;">Bienvenido, aquí puedes crear y gestionar reservas</p>
     <!-- Formulario "Crear reserva"-->
         <section class="pa-crear-reserva"  style="display: none;" id= "options">
             <div>
@@ -427,5 +428,23 @@ session_start();
 <script src="../js/comprobarEmail.js"></script>
 <script src="../js/cargarAeropuertos.js"></script>
 <script src="../js/adminsections.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    // Obtener los parámetros de la URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const reservado = urlParams.get('reservado');
+    const localizador = urlParams.get('localizador');
+
+    // Verificar si la URL contiene los parámetros adecuados
+    if (reservado === "reserva" && localizador) {
+        // Mostrar el popup con el localizador de la reserva
+        alert(`¡Reserva creada con éxito! Localizador: ${localizador}`);
+
+        // Limpiar la URL para evitar mostrar el popup dos veces
+        const nuevaURL = window.location.origin + window.location.pathname;
+        window.history.replaceState({}, document.title, nuevaURL);
+    }
+});
+</script>
 </body>
 </html>

@@ -100,7 +100,8 @@ if ($_SERVER["REQUEST_METHOD"]==="POST"){
         $stmt->bindParam(':id_tipo_reserva', $idTipoReserva);
         $stmt->execute();
 
-        echo "Reserva creada con éxito. Localizador: $localizador";
+        header("Location: ../admin/panelAdministrador.php?reservado=reserva&localizador=$localizador");
+        exit();
     }catch (PDOException $e){
         echo "Error al insertar: " . $e->getMessage();
     }

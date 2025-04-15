@@ -100,8 +100,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $stmt->bindParam(':fecha_reserva', $fechaReserva);
         $stmt->execute();
         
-        
-            echo "Reserva creada con éxito. Localizador: $localizador.";
+
+        header("Location: ../admin/panelAdministrador.php?reservado=reserva&localizador=$localizador");
+        exit();
+
         
     } catch (PDOException $e) {
         echo "Error al insertar: " . $e->getMessage();
@@ -109,3 +111,4 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 } else {
     echo "Método no permitido.";
 }
+?>
