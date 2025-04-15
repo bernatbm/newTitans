@@ -47,6 +47,16 @@
             <a class= "addUser" href="/registro/registro.php">
                 <img  src="../assets/imagenes/addNewUser.svg" alt="Añadir Usuario">
             </a>
+
+            <a class="aerohotel" href="javascript:void(0);" onclick="redirigirFormulario('aeropuerto-hotel')">
+                <img src="../assets/imagenes/AeroHotel.svg" alt="Trayectos">
+            </a>
+            <a class="hotelaero" href="javascript:void(0);" onclick="redirigirFormulario('hotel-aeropuerto')">
+            </a>
+            <a class="idaVuelta" href="javascript:void(0);" onclick="redirigirFormulario('ida-vuelta')">
+            </a>
+
         </nav>
     </header>
 <?php endif; ?>
+<script src="../js/adminsections.js"></script>

@@ -15,23 +15,31 @@ session_start();
  <?php include '../shared/header.php'; ?>
     <!---FIN ENCABEZADO-->
 
+<<<<<<< HEAD
     <!--EL FORM DEL REGISTRO-->
     <div class="registroForm">
     <h1>REGISTRAR USUARIO</h1>
     <form method="POST" action="registroDB.php">
+=======
+>>>>>>> fa94572e544b8ccb4487c460f1aa3025d3a13f48
         <!-- USUARIO -->
+        <form method="POST" action="registroDB.php">
         <div class="tab-content active" id="usuario">
             <?php include 'formComposeBase.php'; ?>
             <input type="hidden" name="isAdmin" value="0">
         </div>
+        </form>
 
         <!-- ADMINISTRADOR -->
+        <form method="POST" action="registroDB.php">
         <div class="tab-content" id="administrador">
             <?php include 'formComposeAdmin.php'; ?>
             <input type="hidden" name="isAdmin" value="1">
         </div>
+        </form>
 
         <!-- CORPORATIVO -->
+        <form method="POST" action="registroDB.php">
         <div class="tab-content" id="corporativo">
             <?php include 'formComposeBase.php'; ?>
             <input type="hidden" name="isAdmin" value="2">

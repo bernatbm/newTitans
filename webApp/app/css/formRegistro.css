@@ -126,10 +126,50 @@ header nav a:hover {
 }
 .addUser{
     content: url("../assets/imagenes/addNewUser.svg");
+    width: 32px; 
+    height: 32px;
+    
 }
 
 .addUser:hover {
     content: url("../assets/imagenes/addNewUserHover.svg");
+    width: 32px; 
+    height: 32px;
+   
+}
+.aerohotel{
+    content: url("../assets/imagenes/aerohotel-2.svg");
+    width: 32px; 
+    height: 32px;
+}
+
+.aerohotel:hover {
+    content: url("../assets/imagenes/aerohotelhover-3.svg");
+    width: 32px; 
+    height: 32px;
+}
+
+.hotelaero{
+    content: url("../assets/imagenes/hotelaero.svg");
+    width: 32px; 
+    height: 32px;
+}
+
+.hotelaero:hover {
+    content: url("../assets/imagenes/hotelaerohover.svg");
+    width: 32px; 
+    height: 32px;
+}
+.idaVuelta{
+    content: url("../assets/imagenes/idaVuelta.svg");
+    width: 32px; 
+    height: 32px;
+}
+
+.idaVuelta:hover {
+    content: url("../assets/imagenes/idaVueltahover.svg");
+    width: 32px; 
+    height: 32px;
 }
 
 
@@ -176,10 +216,10 @@ header nav a:hover {
         #f3c158
     );
     background-size: 400% 400%;
-    -webkit-mask:
+    mask:
         linear-gradient(#000 0 0) content-box,
         linear-gradient(#000 0 0);
-    -webkit-mask-composite: xor;
+
     mask-composite: exclude;
 }
 

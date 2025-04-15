@@ -1,4 +1,5 @@
 <?php
+
 require_once '../model/database.php';
 
 // Recogemos los datos del form (login.php)
