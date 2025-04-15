@@ -57,8 +57,10 @@ session_start();
                                 <input class="pa-input-numero-vuelo" type="text" id="numero-vuelo-ida" name="numero_vuelo_entrada" required>
                             </div>
                             <div class="pa-form-aeropuerto-origen">
-                                <label for="aeropuerto-origen" >Aeropuerto de origen:</label>
-                                <input class="pa-input-aeropuerto-origen" type="text" id="aeropuerto-origen" name="aeropuerto_origen" required>
+                                <label for="aeropuerto-origen">Aeropuerto de origen:</label>
+                                <select class="pa-input-aeropuerto-origen aeropuerto-select" name="id_destino" required>
+                                    <option value="" disabled selected>Selecciona un aeropuerto</option>
+                                </select>
                             </div>
 
                             <div class="pa-form-zona">
