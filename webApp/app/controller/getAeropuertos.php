@@ -8,7 +8,10 @@ try {
     $stmt = $conn->query("SELECT id_destino, aeropuerto FROM transfer_aero");
     $aeropuertos = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-    echo json_encode($aeropuertos);
+    foreach ($aeropuertos as $aeropuerto) {
+        echo '<option value="' . $aeropuerto['id_destino'] . '">' . htmlspecialchars($aeropuerto['aeropuerto']) . '</option>';
+    }
 } catch (PDOException $e) {
-    echo json_encode([]);
+    echo '<option disabled>Error al cargar aeropuertos</option>';
 }
+?>

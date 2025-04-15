@@ -1,5 +1,6 @@
 <?php
 session_start();
+$minDate = date('Y-m-d', strtotime('+2 days'));
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -45,9 +46,9 @@ session_start();
                     
                         <form class="pa-form" action="../controller/reservarAeropuertoHotel.php" method="POST">
                         <input type="hidden" name="id_tipo_reserva" value="1">
-                            <div class="pa-form-dia-llegada">
+                        <div class="pa-form-dia-llegada">
                                 <label for="fecha-llegada">Dia de llegada:</label>
-                                <input class="pa-input-dia-llegada" type="date" id="fecha-llegada" name="fecha_llegada" required>
+                                <input class="pa-input-dia-llegada" type="date" id="fecha-llegada" name="fecha_llegada" min="<?php echo $minDate; ?>" required>
                             </div>
 
                             <div class="pa-form-hora-llegada">
@@ -100,40 +101,7 @@ session_start();
 
                             <!---------------------- Formulario Opcional Usuario------------------------>
 
-                            <div class="datos-viajero-adicionales" style="display: none;">
-                                <div>
-                                    <label>Nombre:</label>
-                                    <input class="pa-form-opcional" type="text" name="nombre" id="nombre" >
-                                </div>
-                                <div>
-                                    <label>Apellido 1:</label>
-                                    <input class="pa-form-opcional" type="text" name="apellido1" id="apellido1" >
-                                </div>
-                                <div>
-                                    <label>Apellido 2:</label>
-                                    <input class="pa-form-opcional" type="text" name="apellido2" id="apellido2">
-                                </div>
-                                <div>
-                                    <label>Dirección:</label>
-                                    <input class="pa-form-opcional" type="text" name="direccion" id="direccion" >
-                                </div>
-                                <div>
-                                    <label>Código Postal:</label>
-                                    <input class="pa-form-opcional" type="text" name="codigoPostal" id="codigoPostal" >
-                                </div>
-                                <div>
-                                    <label>Ciudad:</label>
-                                    <input class="pa-form-opcional" type="text" name="ciudad" id="ciudad" >
-                                </div>
-                                <div>
-                                    <label>País:</label>
-                                    <input class="pa-form-opcional" type="text" name="pais" id="pais" >
-                                </div>
-                                <div>
-                                    <label>Contraseña:</label>
-                                    <input class="pa-form-opcional" type="password" name="password" id="password" >
-                                </div>
-                            </div>
+                            
                         </form>
 
                         
@@ -146,9 +114,9 @@ session_start();
                     <div id="form-hotel-aeropuerto" style="display: none;">
                         <form class="pa-form" action="../controller/reservarHotelAeropuerto.php" method="POST">
                         <input type="hidden" name="id_tipo_reserva" value="2">
-                            <div class="pa-form-dia-vuelo">
+                        <div class="pa-form-dia-vuelo">
                                 <label for="dia-vuelo">Dia del vuelo:</label>
-                                <input class="pa-input-dia-vuelo" type="date" name="dia_vuelo" id="dia-vuelo" required>
+                                <input class="pa-input-dia-vuelo" type="date" name="dia_vuelo" id="dia-vuelo" min="<?php echo $minDate; ?>" required>
                             </div>
                             <div class="pa-form-hora-vuelo">
                                 <label for="hora-vuelo">Hora del vuelo:</label>
@@ -180,6 +148,8 @@ session_start();
                                 <label for="aeropuerto-origen">Aeropuerto de destino:</label>
                                 <select class="pa-input-aeropuerto-origen" id="aeropuerto-destino" name="id_destino" required>
                                     <option value="" disabled selected>Selecciona un aeropuerto</option>
+                                    <?php include '../controller/getAeropuertos.php'; ?>
+
                                 </select>
                             </div>
 
@@ -206,45 +176,10 @@ session_start();
                                 <button class="pa-hotel-aeropuerto-button" id="hotel-aeropuerto" type="submit">Confirmar reserva</button>
                             </div>
 
-                            <!---------------------- Formulario Opcional Usuario------------------------>
-                            <div class="datos-viajero-adicionales" style="display: none;">
-                                <div>
-                                    <label>Nombre:</label>
-                                    <input class="pa-form-opcional" type="text" name="nombre" id="nombre" >
-                                </div>
-                                <div>
-                                    <label>Apellido 1:</label>
-                                    <input class="pa-form-opcional" type="text" name="apellido1" id="apellido1" >
-                                </div>
-                                <div>
-                                    <label>Apellido 2:</label>
-                                    <input class="pa-form-opcional" type="text" name="apellido2" id="apellido2">
-                                </div>
-                                <div>
-                                    <label>Dirección:</label>
-                                    <input class="pa-form-opcional" type="text" name="direccion" id="direccion" >
-                                </div>
-                                <div>
-                                    <label>Código Postal:</label>
-                                    <input class="pa-form-opcional" type="text" name="codigoPostal" id="codigoPostal" >
-                                </div>
-                                <div>
-                                    <label>Ciudad:</label>
-                                    <input class="pa-form-opcional" type="text" name="ciudad" id="ciudad" >
-                                </div>
-                                <div>
-                                    <label>País:</label>
-                                    <input class="pa-form-opcional" type="text" name="pais" id="pais" >
-                                </div>
-                                <div>
-                                    <label>Contraseña:</label>
-                                    <input class="pa-form-opcional" type="password" name="password" id="password" >
-                                </div>
-                            </div>
+
                         </form>
 
 
-                        </form>
 
                     </div>
 
@@ -263,7 +198,7 @@ session_start();
 
                                     <div class="pa-form-dia-llegada">
                                         <label for="dia-llegada">Dia de llegada:</label>
-                                        <input class="pa-input-dia-llegada" type="date" id="dia-llegada" name="dia-llegada" required>
+                                        <input class="pa-input-dia-llegada" type="date" id="dia-llegada" name="dia-llegada" min="<?php echo $minDate; ?>" required>
                                     </div>
                                     <div class="pa-form-hora-llegada">
                                         <label for="hora-llegada">Hora de llegada:</label>
@@ -277,9 +212,12 @@ session_start();
                                         <label for="aeropuerto-origen" >Aeropuerto de origen:</label>
                                         <input class="pa-input-aeropuerto-origen" type="text" id="aeropuerto-origen" name="aeropuerto_origen" required>
                                     </div>
-                                    <div class="pa-form-hotel-destino">
-                                        <label for="hotel-destino">Hotel de destino:</label>
-                                        <input class="pa-input-hotel-destino" type="text" id="hotel-destino" name="hotel_destino" required>
+                                    <div class="pa-form-aeropuerto-origen">
+                                        <label for="aeropuerto-origen" >Aeropuerto de origen:</label>
+                                        <select class="pa-input-aeropuerto-origen" id="aeropuerto-destino" name="id_destino" required>
+                                            <option value="" disabled selected>Selecciona un aeropuerto</option>
+                                            <?php include '../controller/getAeropuertos.php'; ?>
+                                        </select>
                                     </div>
                                     <div class="pa-form-numero-viajeros">
                                         <label for="numero-viajeros">Número de viajeros:</label>

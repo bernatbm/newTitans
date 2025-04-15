@@ -1,86 +1,211 @@
+@import url(style.css);
+
+
 .user-panel-menu {
-    list-style: none;
-    padding: 0;
-    margin: 20px auto;
-    max-width: 300px;
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    font-family: 'Segoe UI', sans-serif;
+  list-style: none;
+  padding: 0;
+  margin: 20px auto;
+  max-width: 300px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  font-family: "Segoe UI", sans-serif;
 }
 
 .user-panel-menu li a {
-    display: block;
-    text-decoration: none;
-    background: #2c2c2c; 
-    color: white; 
-    padding: 12px 20px;
-    border-radius: 10px;
-    font-size: 16px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-    border: 2px solid #ffd700; 
-    position: relative;
-    overflow: hidden;
-    transition: all 0.3s ease;
+  display: block;
+  text-decoration: none;
+  background: #2c2c2c;
+  color: white;
+  padding: 12px 20px;
+  border-radius: 10px;
+  font-size: 16px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  border: 2px solid #ffd700;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
 }
 
-
-
-/* Estilo general para el formulario */
-.editar-datos-form {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    max-width: 600px;
-    margin: 0 auto;
-    padding: 30px;
-    background-color: #333; 
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+.pa-reservas {
+  margin: 30px auto;
+  padding: 20px;
+  max-width: 1200px;
+  background-color: #f8ce70;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
-/* Títulos y texto */
-.pa-h1 {
-    font-size: 2.5rem;
-    text-align: center;
-    color: #f3c158; */
-    margin-bottom: 20px;
+.pa-tabla-reservas {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  background-color: #fff;
+  border: 1px solid #f8ce70;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
-.pa-p1 {
-    font-size: 1.1rem;
-    color: #ddd;
-    text-align: center;
-    margin-bottom: 30px;
+.pa-tabla-reservas th {
+  padding: 15px;
+  text-align: left;
+  background-color: #007bff;
+  color: white;
+  font-size: 1.1em;
+  border-bottom: 2px solid #ddd;
+  font-weight: bold;
 }
 
-/* Estilo de las etiquetas de los campos */
-.editar-datos-form label {
-    font-size: 1.2rem;
-    font-weight: 600;
-    color: #f3c158;  
+.pa-tabla-reservas td {
+  padding: 12px;
+  text-align: left;
+  font-size: 1rem;
+  color: #333;
+  border-bottom: 1px solid #ddd;
 }
 
-/* Estilo de los campos de entrada */
-.editar-datos-form input {
-    padding: 12px;
-    font-size: 1rem;
-    border: 1px solid #555;
-    border-radius: 6px;
-    background-color: #222;
-    color: #ddd;
-    outline: none;
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+.pa-tabla-reservas tr:nth-child(even) {
+  background-color: #f7f7f7;
 }
 
-/* Efecto cuando el campo está en foco */
-.editar-datos-form input:focus {
-    border-color: #f3c158;
-    box-shadow: 0 0 8px rgba(243, 194, 88, 0.4); 
+.pa-tabla-reservas tr:hover {
+  background-color: #f1f1f1;
 }
 
-/* Estilo para el botón de envío */
-.editar-datos-form button {
+.pa-btn-ver,
+.pa-btn-editar,
+.pa-btn-eliminar {
+  padding: 8px 16px;
+  text-decoration: none;
+  color: white;
+  border-radius: 6px;
+  margin-right: 12px;
+  font-weight: bold;
+  display: inline-block;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.pa-btn-ver {
+  background-color: #28a745;
+}
+
+.pa-btn-ver:hover {
+  background-color: #218838;
+  transform: scale(1.05);
+}
+
+.pa-btn-editar {
+  background-color: #ffc107;
+}
+
+.pa-btn-editar:hover {
+  background-color: #e0a800;
+  transform: scale(1.05);
+}
+
+.pa-btn-eliminar {
+  background-color: #dc3545;
+}
+
+.pa-btn-eliminar:hover {
+  background-color: #c82333;
+  transform: scale(1.05);
+}
+
+.pa-no-reservas {
+  font-size: 1.5rem;
+  background-color: #e0a800;
+  color: white;
+  text-align: center;
+  margin-top: 30px;
+  font-weight: bold;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.pa-no-reservas::before {
+  content: "🔍 ";
+  font-size: 2rem;
+  color: #007bff;
+  margin-right: 10px;
+  vertical-align: middle;
+}
+
+.pa-reservas .pa-tabla-reservas {
+  display: block;
+}
+
+.pa-tabla-reservas td,
+.pa-tabla-reservas th {
+  text-align: center;
+  padding: 12px;
+  font-size: 1rem;
+  border: 1px solid #f8ce70;
+}
+
+.pa-tabla-reservas tr:nth-child(even) {
+  background-color: #f1f1f1;
+}
+
+.pa-tabla-reservas tr:hover {
+  background-color: #f1f1f1;
+}
+
+.pa-btn-ver,
+.pa-btn-editar,
+.pa-btn-eliminar {
+  cursor: pointer;
+  padding: 8px 12px;
+  font-size: 1rem;
+  border-radius: 6px;
+  border: 1px solid #f8ce70;
+  background-color: #726963;
+  color: white;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.pa-btn-ver:hover,
+.pa-btn-editar:hover,
+.pa-btn-eliminar:hover {
+  background-color: #f8ce70;
+  color: #333;
+  transform: scale(1.05);
+}
+/*  Formulario de edición  */
+.editar-perfil {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 30px;
+  background-color: #333;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  color: #ddd;
+}
+
+/*  Estilo de los campos de entrada  */
+.editar-perfil input {
+  padding: 12px;
+  font-size: 1rem;
+  border: 1px solid #555;
+  border-radius: 6px;
+  background-color: #222;
+  color: #ddd;
+  outline: none;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/*  Efecto cuando los campos están en foco  */
+.editar-perfil input:focus {
+  border-color: #f3c158; 
+}
+
+/*  Botón de guardar cambios  */
+  .editar-perfil button {
     padding: 12px 20px;
     font-size: 1.1rem;
     border: none;
@@ -89,168 +214,57 @@
     color: #222;
     cursor: pointer;
     transition: background-color 0.3s ease;
+  }
+
+  /*  Efecto al pasar el ratón sobre el botón  */
+  .editar-perfil button:hover {
+    background-color: #e1a32d;
+  }
+
+  .editar-perfil a:hover {
+    color: #e1a32d;
+    */
+
+/* Para móvil */
+    .editar-perfil {
+      padding: 20px;
+    }
+
+    .editar-perfil input,
+    .editar-perfil button {
+      font-size: 1rem;
+    }
+
+    h2 {
+      font-size: 2rem;
+    }
+  }
+
+  .tarjetas-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
 }
 
-/* Efecto cuando el botón está en hover */
-.editar-datos-form button:hover {
-    background-color: #e1a32d;  /* Cambio de color al pasar el ratón */
-}
-
-/ * Estilo para botones */
-@media (max-width: 768px) {
-    .pa-h1 {
-        font-size: 2rem;
-    }
-
-    .pa-p1 {
-        font-size: 1rem;
-    }
-
-    .editar-datos-form {
-        padding: 20px;
-    }
-
-    .editar-datos-form input, .editar-datos-form button {
-        font-size: 1rem;
-    }
-}
-
-.pa-reservas {
-    margin: 30px auto;
-    padding: 20px;
-    max-width: 1200px;
-    background-color: #f8ce70;
+.tarjeta {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
     border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 15px 20px;
+    width: 300px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    transition: box-shadow 0.3s ease;
+    margin-bottom: 20px;
 }
 
-.pa-tabla-reservas {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-    background-color: #fff;
-    border: 1px solid #f8ce70;
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+.tarjeta:hover {
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
 }
 
-.pa-tabla-reservas th {
-    padding: 15px;
-    text-align: left;
-    background-color: #007bff;
-    color: white;
-    font-size: 1.1em;
-    border-bottom: 2px solid #ddd;
-    font-weight: bold;
-}
-
-.pa-tabla-reservas td {
-    padding: 12px;
-    text-align: left;
-    font-size: 1rem;
+.tarjeta p {
+    margin: 8px 0;
+    font-size: 14px;
     color: #333;
-    border-bottom: 1px solid #ddd;
 }
 
-.pa-tabla-reservas tr:nth-child(even) {
-    background-color: #f7f7f7;
-}
 
-.pa-tabla-reservas tr:hover {
-    background-color: #f1f1f1;
-}
-
-.pa-btn-ver, .pa-btn-editar, .pa-btn-eliminar {
-    padding: 8px 16px;
-    text-decoration: none;
-    color: white;
-    border-radius: 6px;
-    margin-right: 12px;
-    font-weight: bold;
-    display: inline-block;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-}
-
-.pa-btn-ver {
-    background-color: #28a745;
-}
-
-.pa-btn-ver:hover {
-    background-color: #218838;
-    transform: scale(1.05);
-}
-
-.pa-btn-editar {
-    background-color: #ffc107;
-}
-
-.pa-btn-editar:hover {
-    background-color: #e0a800;
-    transform: scale(1.05);
-}
-
-.pa-btn-eliminar {
-    background-color: #dc3545;
-}
-
-.pa-btn-eliminar:hover {
-    background-color: #c82333;
-    transform: scale(1.05);
-}
-
-.pa-no-reservas {
-    font-size: 1.5rem;
-    background-color: #e0a800;
-    color: white;
-    text-align: center;
-    margin-top: 30px;
-    font-weight: bold;
-    padding: 15px;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-}
-
-.pa-no-reservas::before {
-    content: "🔍 ";
-    font-size: 2rem;
-    color: #007bff;
-    margin-right: 10px;
-    vertical-align: middle;
-}
-
-.pa-reservas .pa-tabla-reservas {
-    display: block;
-}
-
-.pa-tabla-reservas td, .pa-tabla-reservas th {
-    text-align: center;
-    padding: 12px;
-    font-size: 1rem;
-    border: 1px solid #f8ce70;
-}
-
-.pa-tabla-reservas tr:nth-child(even) {
-    background-color: #f1f1f1;
-}
-
-.pa-tabla-reservas tr:hover {
-    background-color: #f1f1f1;
-}
-
-.pa-btn-ver, .pa-btn-editar, .pa-btn-eliminar {
-    cursor: pointer;
-    padding: 8px 12px;
-    font-size: 1rem;
-    border-radius: 6px;
-    border: 1px solid #f8ce70;
-    background-color: #726963;
-    color: white;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-}
-
-.pa-btn-ver:hover, .pa-btn-editar:hover, .pa-btn-eliminar:hover {
-    background-color: #f8ce70;
-    color: #333;
-    transform: scale(1.05);
-}
