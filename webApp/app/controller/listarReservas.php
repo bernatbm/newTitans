@@ -1,7 +1,7 @@
 <?php
 require_once '../model/database.php';
 
-try {
+/*try {
     $db = new database();
     $conn = $db->getConn();
 
@@ -23,7 +23,7 @@ try {
 } catch (PDOException $e) {
     echo "<p>Error al obtener reservas: " . $e->getMessage() . "</p>";
     exit;
-}
+}*/
 ?>
 
 <section class="pa-lista-reservas">

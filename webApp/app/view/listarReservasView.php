@@ -21,6 +21,8 @@
                     </tr>
                 </thead>
                 <tbody>
+                
+
                 <?php if (!empty($reservas)): ?>
                     <?php foreach ($reservas as $reserva): ?>
                         <tr class="pa-casillas-reservas" style="color:white">

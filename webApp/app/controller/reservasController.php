@@ -15,11 +15,11 @@ class ReservasController {
     public function procesarReserva() {
         if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $tipoReserva = $_POST['id_tipo_reserva'] ?? null;
-
+            
             if ($tipoReserva == '1') {
                 $this->model->addAeropuertoHotel();
             } elseif ($tipoReserva == '2') {
-                $this->model->addHotelaeropuerto();
+                $this->model->addHotelAeropuerto();
             } else {
                 $this->model->addIdaVuelta();
             }
@@ -38,6 +38,7 @@ class ReservasController {
     }
 
     public function listarReservas() {
+        
         $reservas = $this->model->obtenerTodasLasReservas();
         require_once '../view/listarReservasView.php';
     }
@@ -48,14 +49,16 @@ $controller = new ReservasController();
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $controller->procesarReserva();
+    $controller->listarReservas();
 } else {
-    $accion = $_GET['accion'] ?? '';
+    echo "Que pasaaa";
+    /*$accion = $_GET['accion'] ?? '';
     switch ($accion) {
         case 'listar':
             $controller->listarReservas();
             break;
 
         default:
-            echo "Acción no válida";
+            echo "Acción no válida";*/
     }
-}
+

@@ -1,5 +1,7 @@
 <?php
 session_start();
+require_once '../controller/reservasController.php';
+$controller = new ReservasController();
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -144,7 +146,7 @@ session_start();
                         <!---------------------- Formulario Hotel -> Aeropuerto---------------------->
 
                     <div id="form-hotel-aeropuerto" style="display: none;">
-                        <form class="pa-form" action="../controller/reservarHotelAeropuerto.php" method="POST">
+                        <form class="pa-form" action="../controller/reservasController.php" method="POST">
                         <input type="hidden" name="id_tipo_reserva" value="2">
                             <div class="pa-form-dia-vuelo">
                                 <label for="dia-vuelo">Dia del vuelo:</label>
@@ -177,11 +179,11 @@ session_start();
                             </div>
 
                             <div class="pa-form-aeropuerto-origen">
-                                <label for="aeropuerto-origen">Aeropuerto de destino:</label>
-                                <select class="pa-input-aeropuerto-origen aeropuerto-select" name="id_destino" required>
-                                    <option value="" disabled selected>Selecciona un aeropuerto</option>
-                                </select>
-                            </div>
+                                        <label for="aeropuerto-origen">Aeropuerto de destino:</label>
+                                        <select class="pa-input-aeropuerto-origen aeropuerto-select" name="id_destino" required>
+                                            <option value="" disabled selected>Selecciona un aeropuerto</option>
+                                        </select>
+                                    </div>
 
                         
                             <div class="pa-form-numero-viajeros">
@@ -255,7 +257,7 @@ session_start();
                         <!-- Formulario ida y vuelta-->
 
                     <div id="form-ida-vuelta" style="display: none;">
-                        <form class="pa-form" action="../controller/reservarIdaVuelta.php" method="POST">
+                        <form class="pa-form" action="../controller/reservasController.php" method="POST">
                         <input type="hidden" name="id_tipo_reserva" value="3">
 
                             <div class="pa-dos-columnas">
@@ -403,7 +405,7 @@ session_start();
         
         </section>
 
-        <?php include '../controller/listarReservas.php'; ?>
+        <?php $controller->listarReservas(); ?>
         <?php if (isset($_GET['mensaje']) && $_GET['mensaje'] === 'eliminado'): ?>
             <script>
                 alert("✅ Reserva eliminada correctamente.");
