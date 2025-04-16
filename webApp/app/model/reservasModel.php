@@ -375,5 +375,60 @@ class ReservasModel {
     
         return $result;
     }
-    
+    public function actualizarReserva($id, $datos) {
+        // Obtener los datos actuales de la reserva
+        $stmt = $this->conn->prepare("SELECT * FROM transfer_reservas WHERE id_reserva = :id");
+        $stmt->bindParam(':id', $id);
+        $stmt->execute();
+        $reserva = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if (!$reserva) {
+            return false; 
+        }
+
+        // Preparamos los datos, usando los valores antiguos si no hay nuevos
+        $data = [
+            ':id_hotel' => $datos['id_hotel'] !== '' ? $datos['id_hotel'] : $reserva['id_hotel'],
+            ':id_tipo_reserva' => $datos['id_tipo_reserva'] !== '' ? $datos['id_tipo_reserva'] : $reserva['id_tipo_reserva'],
+            ':email_cliente' => $datos['email_cliente'] !== '' ? $datos['email_cliente'] : $reserva['email_cliente'],
+            ':fecha_reserva' => $datos['fecha_reserva'] !== '' ? $datos['fecha_reserva'] : $reserva['fecha_reserva'],
+            ':id_destino' => $datos['id_destino'] !== '' ? $datos['id_destino'] : $reserva['id_destino'],
+            ':fecha_entrada' => $datos['fecha_entrada'] !== '' ? $datos['fecha_entrada'] : $reserva['fecha_entrada'],
+            ':hora_entrada' => $datos['hora_entrada'] !== '' ? $datos['hora_entrada'] : $reserva['hora_entrada'],
+            ':numero_vuelo_entrada' => $datos['numero_vuelo_entrada'] !== '' ? $datos['numero_vuelo_entrada'] : $reserva['numero_vuelo_entrada'],
+            ':origen_vuelo_entrada' => $datos['origen_vuelo_entrada'] !== '' ? $datos['origen_vuelo_entrada'] : $reserva['origen_vuelo_entrada'],
+            ':hora_vuelo_salida' => $datos['hora_vuelo_salida'] !== '' ? $datos['hora_vuelo_salida'] : $reserva['hora_vuelo_salida'],
+            ':fecha_vuelo_salida' => $datos['fecha_vuelo_salida'] !== '' ? $datos['fecha_vuelo_salida'] : $reserva['fecha_vuelo_salida'],
+            ':num_viajeros' => $datos['num_viajeros'] !== '' ? $datos['num_viajeros'] : $reserva['num_viajeros'],
+            ':id_vehiculo' => $datos['id_vehiculo'] !== '' ? $datos['id_vehiculo'] : $reserva['id_vehiculo'],
+            ':numero_vuelo_salida' => $datos['numero_vuelo_salida'] !== '' ? $datos['numero_vuelo_salida'] : $reserva['numero_vuelo_salida'],
+            ':hora_recogida' => $datos['hora_recogida'] !== '' ? $datos['hora_recogida'] : $reserva['hora_recogida'],
+            ':id' => $id
+        ];
+
+        // Preparar la consulta para actualizar los datos
+        $sql = "UPDATE transfer_reservas SET
+            id_hotel = :id_hotel,
+            id_tipo_reserva = :id_tipo_reserva,
+            email_cliente = :email_cliente,
+            fecha_reserva = :fecha_reserva,
+            fecha_modificacion = NOW(),
+            id_destino = :id_destino,
+            fecha_entrada = :fecha_entrada,
+            hora_entrada = :hora_entrada,
+            numero_vuelo_entrada = :numero_vuelo_entrada,
+            origen_vuelo_entrada = :origen_vuelo_entrada,
+            hora_vuelo_salida = :hora_vuelo_salida,
+            fecha_vuelo_salida = :fecha_vuelo_salida,
+            num_viajeros = :num_viajeros,
+            id_vehiculo = :id_vehiculo,
+            numero_vuelo_salida = :numero_vuelo_salida,
+            hora_recogida = :hora_recogida
+            WHERE id_reserva = :id";
+
+        // Ejecutar la actualización
+        $stmt = $this->conn->prepare($sql);
+        return $stmt->execute($data); // Devuelve true o false
+    }
 }
+?>

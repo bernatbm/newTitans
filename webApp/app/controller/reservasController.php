@@ -54,6 +54,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         case 'listar':
             $controller->listarReservas();
             break;
+
         default:
             echo "Acción no válida";
     }

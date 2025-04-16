@@ -42,7 +42,7 @@ session_start();
 
                     <div id="form-aeropuerto-hotel" style="display: none;">
                     
-                        <form class="pa-form" action="../controller/reservarAeropuertoHotel.php" method="POST">
+                        <form class="pa-form" action="../controller/reservasController.php" method="POST">
                         <input type="hidden" name="id_tipo_reserva" value="1">
                             <div class="pa-form-dia-llegada">
                                 <label for="fecha-llegada">Dia de llegada:</label>
