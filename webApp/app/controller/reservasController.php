@@ -18,14 +18,11 @@ class ReservasController {
         if (!empty($datos['id_reserva'])) {
             // Actualizar reserva
             $this->model->actualizarReserva($datos['id_reserva'], $datos);
-
-            // ⚠️ Aquí estaba el error: $id no estaba definido
             $id = $datos['id_reserva'];
             header("Location: ../public/verReserva.php?id=" . $id . "&mensaje=Reserva%20Actualizada");
             exit;
         } else {
-            // Insertar nueva reserva
-            // Añadir tipo específico de reserva (aeropuerto-hotel, etc.)
+            //añadir reserva segun tipo
             $tipoReserva = $datos['id_tipo_reserva'] ?? null;
     
             if ($tipoReserva == '1') {
@@ -58,6 +55,7 @@ class ReservasController {
         $reservas = $this->model->obtenerTodasLasReservas();
         require_once '../view/listarReservasView.php';
     }
+    //Creo que se puede deletear.
     public function updateReservas($id, $datos) {
         if (!$id || empty($datos)) {
             echo "ID o datos de reserva no proporcionados.";
