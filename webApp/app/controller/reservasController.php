@@ -64,7 +64,7 @@ class ReservasController {
     
         $resultado = $this->model->actualizarReserva($id, $datos);
     
-        // Redirigir con mensaje (puedes cambiar la ruta según tu estructura real)
+       
         header("Location: ../public/verReserva.php?id=" . $id . "&mensaje=Reserva%20Actualizada");
         exit;
     }
