@@ -31,6 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {//Esto luego, cuando demos clic a EN
         if ($resultado['success']) {
             $_SESSION['userName'] = $resultado['user']['nombre'];
             $_SESSION['isAdmin'] = $resultado['user']['isAdmin'];
+            $_SESSION['email'] = $usuario; 
 
             // Redirección según el tipo de usuario
             if ($_SESSION['isAdmin'] == 1) {
