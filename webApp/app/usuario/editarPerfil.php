@@ -2,20 +2,6 @@
 require_once '../model/database.php';
 session_start();
 
-<<<<<<< HEAD
-$db = new Database();
-$conn = $db->getConn();
-
-if ($emailExiste > 0) {
-
-    $getUser = $conn->prepare("SELECT * FROM $tablaUser WHERE email = :email");
-    $getUser->bindParam(':email', $email);
-    $getUser->execute();
-    $usuarioExistente = $getUser->fetch(PDO::FETCH_ASSOC);
-}
-
-// Procesar actualización
-=======
 // 1. Comprobar si el usuario está logueado
 if (!isset($_SESSION['email'])) {
     echo "Debes iniciar sesión para ver tu perfil.";
@@ -50,7 +36,6 @@ if (!$usuario) {
 }
 
 // 3. Procesar actualización del perfil
->>>>>>> 4b44858c71d8a0dd944137cca2377773d65cc230
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $nombre = $_POST['nombre'] ?? '';
     $apellido1 = $_POST['apellido1'] ?? '';
@@ -63,11 +48,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $password = $_POST['password'] ?? '';
 
     try {
-<<<<<<< HEAD
-        $stmt = $conn->prepare("UPDATE transfer_viajeros SET 
-=======
+
         $stmt = $conn->prepare("UPDATE $tablaUser SET 
->>>>>>> 4b44858c71d8a0dd944137cca2377773d65cc230
+
             nombre = :nombre, 
             apellido1 = :apellido1, 
             apellido2 = :apellido2, 
@@ -77,12 +60,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             pais = :pais, 
             email = :email, 
             password = :password
-<<<<<<< HEAD
-            WHERE id = :id");
-=======
-            WHERE email = :email_usuario");
->>>>>>> 4b44858c71d8a0dd944137cca2377773d65cc230
 
+            WHERE email = :email_usuario");
         $stmt->bindParam(':nombre', $nombre);
         $stmt->bindParam(':apellido1', $apellido1);
         $stmt->bindParam(':apellido2', $apellido2);
@@ -92,13 +71,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $stmt->bindParam(':pais', $pais);
         $stmt->bindParam(':email', $email);
         $stmt->bindParam(':password', $password); 
-<<<<<<< HEAD
-        $stmt->bindParam(':id', $userId);
-
-        $stmt->execute();
-
-        header("Location: perfil.php?actualizado=1");
-=======
         $stmt->bindParam(':email_usuario', $email_usuario);
 
         $stmt->execute();
@@ -107,7 +79,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $_SESSION['email'] = $email;
 
         header("Location: editarPerfil.php?actualizado=1");
->>>>>>> 4b44858c71d8a0dd944137cca2377773d65cc230
         exit;
 
     } catch (PDOException $e) {
@@ -116,10 +87,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 ?>
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 4b44858c71d8a0dd944137cca2377773d65cc230
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -140,11 +107,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <?php if (isset($_GET['actualizado'])): ?>
         <p class="pa-p1">Perfil actualizado correctamente.</p>
     <?php endif; ?>
-<<<<<<< HEAD
-<form class="editar-formulario" method="POST" action="editarPerfil.php">
-=======
+
     <form class="editar-formulario" method="POST" action="editarPerfil.php">
->>>>>>> 4b44858c71d8a0dd944137cca2377773d65cc230
     <label>Nombre: <input type="text" name="nombre" value="<?= htmlspecialchars($usuario['nombre']) ?>" required></label><br>
     <label>Apellido 1: <input type="text" name="apellido1" value="<?= htmlspecialchars($usuario['apellido1']) ?>" required></label><br>
     <label>Apellido 2: <input type="text" name="apellido2" value="<?= htmlspecialchars($usuario['apellido2']) ?>"></label><br>
@@ -157,13 +121,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     <button type="submit">Guardar cambios</button>
     <a href="perfilUsuario.php" class="btn-cancelar">Cancelar</a>
-<<<<<<< HEAD
-
 </form>
-
-=======
-</form>
-
-
->>>>>>> 4b44858c71d8a0dd944137cca2377773d65cc230
 <?php
