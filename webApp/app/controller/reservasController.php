@@ -70,6 +70,14 @@ class ReservasController {
         header("Location: ../public/verReserva.php?id=" . $id . "&mensaje=Reserva%20Actualizada");
         exit;
     }
+    public function eliminarReserva() {
+        if (isset($_GET['id']) && is_numeric($_GET['id'])) {
+            $id = (int) $_GET['id'];
+            $this->model->deleteReserva($id);
+        } else {
+            echo "<p style='color: red;'>❌ ID de reserva no válido.</p>";
+        }
+    }
     
         
         
@@ -81,4 +89,9 @@ class ReservasController {
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $controller->procesarReserva();
 } 
+if (isset($_GET['action'])) {
+    if ($_GET['action'] === 'eliminar') {
+        $controller->eliminarReserva();
+    }
+}
   

@@ -36,7 +36,7 @@
                             <td data-label="Acciones">
                                 <a href="../public/verReserva.php?id=<?= $reserva['id_reserva'] ?>" class="btn-detalles">Detalles</a>
                                 <a href="../view/editarReservaView.php?id=<?= $reserva['id_reserva'] ?>" class="btn-reserva btn-editar">Editar</a>
-                                <a href="../controller/borrarReserva.php?id=<?= $reserva['id_reserva'] ?>" class="btn-reserva btn-borrar" onclick="return confirm('¿Seguro que quieres borrar esta reserva?')">Borrar</a>
+                                <a href="../controller/reservasController.php?action=eliminar&id=<?= $reserva['id_reserva'] ?>" class="btn-reserva btn-borrar" onclick="return confirm('¿Seguro que quieres borrar esta reserva?')">Borrar</a>
                             </td>
                         </tr>
                     <?php endforeach; ?>

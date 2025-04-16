@@ -454,6 +454,19 @@ class ReservasModel {
             $stmt = $this->conn->prepare($sql);
             return $stmt->execute($data);
         }
+    public function deleteReserva($id){
+        try {
+            $stmt = $this->conn->prepare("DELETE FROM transfer_reservas WHERE id_reserva = :id");
+            $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+            $stmt->execute();
+    
+            // Redirección tras eliminar
+            header("Location: ../admin/panelAdministrador.php?mensaje=eliminado");
+            exit;
+        } catch (PDOException $e) {
+            echo "<p style='color: red;'>❌ Error al borrar la reserva: " . $e->getMessage() . "</p>";
+        }
+    }
         
 }    
 ?>
