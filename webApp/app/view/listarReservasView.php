@@ -34,8 +34,8 @@
                             <td data-label="Fecha Reserva"><?= htmlspecialchars($reserva['fecha_reserva']) ?></td>
                             <td data-label="Fecha Modificación"><?= htmlspecialchars($reserva['fecha_modificacion'] ?? 'Sin modificar') ?></td>
                             <td data-label="Acciones">
-                                <a href="../controller/verReserva.php?id=<?= $reserva['id_reserva'] ?>" class="btn-detalles">Detalles</a>
-                                <a href="../controller/editarReserva.php?id=<?= $reserva['id_reserva'] ?>" class="btn-reserva btn-editar">Editar</a>
+                                <a href="../public/verReserva.php?id=<?= $reserva['id_reserva'] ?>" class="btn-detalles">Detalles</a>
+                                <a href="../view/editarReservaView.php?id=<?= $reserva['id_reserva'] ?>" class="btn-reserva btn-editar">Editar</a>
                                 <a href="../controller/borrarReserva.php?id=<?= $reserva['id_reserva'] ?>" class="btn-reserva btn-borrar" onclick="return confirm('¿Seguro que quieres borrar esta reserva?')">Borrar</a>
                             </td>
                         </tr>

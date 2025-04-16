@@ -13,9 +13,21 @@ class ReservasController {
     }
 
     public function procesarReserva() {
-        if ($_SERVER["REQUEST_METHOD"] === "POST") {
-            $tipoReserva = $_POST['id_tipo_reserva'] ?? null;
-            
+        $datos = $_POST;
+    
+        if (!empty($datos['id_reserva'])) {
+            // Actualizar reserva
+            $this->model->actualizarReserva($datos['id_reserva'], $datos);
+
+            // ⚠️ Aquí estaba el error: $id no estaba definido
+            $id = $datos['id_reserva'];
+            header("Location: ../public/verReserva.php?id=" . $id . "&mensaje=Reserva%20Actualizada");
+            exit;
+        } else {
+            // Insertar nueva reserva
+            // Añadir tipo específico de reserva (aeropuerto-hotel, etc.)
+            $tipoReserva = $datos['id_tipo_reserva'] ?? null;
+    
             if ($tipoReserva == '1') {
                 $this->model->addAeropuertoHotel();
             } elseif ($tipoReserva == '2') {
@@ -23,42 +35,50 @@ class ReservasController {
             } else {
                 $this->model->addIdaVuelta();
             }
-        } else {
-            echo "Método no permitido.";
         }
+        header("Location: ../admin/panelAdministrador.php");
+        exit;
     }
 
     public function verReserva($id) {
+       
         $reserva = $this->model->obtenerReservaPorId($id);
-        if (!$reserva) {
-            echo "❌ No se encontró la reserva.";
-            exit;
+    
+        if ($reserva) {
+            require '../view/verReservaView.php';
+        } else {
+            echo "❌ Reserva no encontrada.";
         }
-        require_once '../view/verReserva.php';
     }
+    
+    
 
     public function listarReservas() {
         
         $reservas = $this->model->obtenerTodasLasReservas();
         require_once '../view/listarReservasView.php';
     }
+    public function updateReservas($id, $datos) {
+        if (!$id || empty($datos)) {
+            echo "ID o datos de reserva no proporcionados.";
+            exit;
+        }
+    
+        $resultado = $this->model->actualizarReserva($id, $datos);
+    
+        // Redirigir con mensaje (puedes cambiar la ruta según tu estructura real)
+        header("Location: ../public/verReserva.php?id=" . $id . "&mensaje=Reserva%20Actualizada");
+        exit;
+    }
+    
+        
+        
 }
 
 
-$controller = new ReservasController();
+ $controller = new ReservasController();
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $controller->procesarReserva();
-    $controller->listarReservas();
-} else {
-    echo "Que pasaaa";
-    /*$accion = $_GET['accion'] ?? '';
-    switch ($accion) {
-        case 'listar':
-            $controller->listarReservas();
-            break;
-
-        default:
-            echo "Acción no válida";*/
-    }
-
+} 
+  
