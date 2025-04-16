@@ -25,96 +25,6 @@
 }
 
 
-
-/* Estilo general para el formulario */
-.editar-datos-form {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    max-width: 600px;
-    margin: 0 auto;
-    padding: 30px;
-    background-color: #333; 
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-}
-
-/* Títulos y texto */
-.pa-h1 {
-    font-size: 2.5rem;
-    text-align: center;
-    color: #f3c158; */
-    margin-bottom: 20px;
-}
-
-.pa-p1 {
-    font-size: 1.1rem;
-    color: #ddd;
-    text-align: center;
-    margin-bottom: 30px;
-}
-
-/* Estilo de las etiquetas de los campos */
-.editar-datos-form label {
-    font-size: 1.2rem;
-    font-weight: 600;
-    color: #f3c158;  
-}
-
-/* Estilo de los campos de entrada */
-.editar-datos-form input {
-    padding: 12px;
-    font-size: 1rem;
-    border: 1px solid #555;
-    border-radius: 6px;
-    background-color: #222;
-    color: #ddd;
-    outline: none;
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
-}
-
-/* Efecto cuando el campo está en foco */
-.editar-datos-form input:focus {
-    border-color: #f3c158;
-    box-shadow: 0 0 8px rgba(243, 194, 88, 0.4); 
-}
-
-/* Estilo para el botón de envío */
-.editar-datos-form button {
-    padding: 12px 20px;
-    font-size: 1.1rem;
-    border: none;
-    border-radius: 6px;
-    background-color: #f3c158;
-    color: #222;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-/* Efecto cuando el botón está en hover */
-.editar-datos-form button:hover {
-    background-color: #e1a32d;  /* Cambio de color al pasar el ratón */
-}
-
-/ * Estilo para botones */
-@media (max-width: 768px) {
-    .pa-h1 {
-        font-size: 2rem;
-    }
-
-    .pa-p1 {
-        font-size: 1rem;
-    }
-
-    .editar-datos-form {
-        padding: 20px;
-    }
-
-    .editar-datos-form input, .editar-datos-form button {
-        font-size: 1rem;
-    }
-}
-
 .pa-reservas {
     margin: 30px auto;
     padding: 20px;
@@ -253,4 +163,71 @@
     background-color: #f8ce70;
     color: #333;
     transform: scale(1.05);
+}
+/* ===== Formulario de edición ===== */
+.editar-perfil {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 30px;
+    background-color: #333;  /* Fondo oscuro */
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    color: #ddd;  /* Color del texto */
+}
+
+/* ===== Estilo de los campos de entrada ===== */
+.editar-perfil input {
+    padding: 12px;
+    font-size: 1rem;
+    border: 1px solid #555; 
+    border-radius: 6px;
+    background-color: #222;  
+    color: #ddd;  
+    outline: none;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* ===== Efecto cuando los campos están en foco ===== */
+.editar-perfil input:focus {
+    border-color: #f3c158;  /*
+    box-shadow: 0 0 8px rgba(243, 194, 88, 0.4); 
+}
+
+/*  Botón de guardar cambios  */
+.editar-perfil button {
+    padding: 12px 20px;
+    font-size: 1.1rem;
+    border: none;
+    border-radius: 6px;
+    background-color: #f3c158;  
+    color: #222;  
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/*  Efecto al pasar el ratón sobre el botón  */
+.editar-perfil button:hover {
+    background-color: #e1a32d;  
+}
+
+
+.editar-perfil a:hover {
+    color: #e1a32d;  */
+
+/* Para móvil */
+    .editar-perfil {
+        padding: 20px;
+    }
+
+    .editar-perfil input,
+    .editar-perfil button {
+        font-size: 1rem;
+    }
+
+    h2 {
+        font-size: 2rem;
+    }
 }

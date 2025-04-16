@@ -1,110 +1,84 @@
 <?php
 session_start();
 
-// Verifica que el correo esté en la sesión
-var_dump($_SESSION['email']); 
-
 require_once '../model/database.php';
 
-$reservas = [];
+if (!isset($_GET['id'])) {
+    echo "❌ ID de reserva no especificado.";
+    exit;
+}
 
-if (isset($_SESSION['email'])) {  // Abre el bloque if
-    $email = $_SESSION['email'];
+$id = $_GET['id'];
 
-    try {
-        $db = new database();
-        $conn = $db->getConn();
+try {
+    $db = new database();
+    $conn = $db->getConn();
 
-        $sql = "
-        SELECT        
-            r.id_reserva,
-            tr.tipo_reserva,
-            r.fecha_entrada AS fecha_llegada,
-            r.hora_entrada AS hora_llegada,
-            r.numero_vuelo_entrada AS numero_vuelo,
-            r.origen_vuelo_entrada AS zona,
-            h.nombre AS hotel,
-            r.localizador,  
-            r.fecha_reserva,  
-            r.fecha_modificacion  
-        FROM transfer_reservas r
-        JOIN transfer_tipo_reserva tr ON r.id_tipo_reserva = tr.id_tipo_reserva
-        JOIN transfer_hotel h ON r.id_hotel = h.id_hotel
-        WHERE r.email_cliente = :email;
-        ";
+    $sql = "SELECT r.*, email_cliente AS email_usuario
+    FROM transfer_reservas r
+    LEFT JOIN transfer_hotel h ON r.id_hotel = h.id_hotel
+    LEFT JOIN transfer_tipo_reserva t ON r.id_tipo_reserva = t.id_tipo_reserva
+    WHERE r.id_reserva = :id";
 
-        $stmt = $conn->prepare($sql);
-        $stmt->bindParam(':email', $email);
-        $stmt->execute();
-        $reservas = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    } catch (PDOException $e) {
-        echo "Error al obtener las reservas: " . $e->getMessage();
+    $stmt = $conn->prepare($sql);
+    $stmt->bindParam(':id', $id);
+    $stmt->execute();
+    $reserva = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    if (!$reserva) {
+        echo "❌ No se encontró la reserva.";
+        exit;
     }
-} else {
-    echo "⚠️ No has iniciado sesión.";
-} // Cierra el bloque if
+} catch (PDOException $e) {
+    echo "❌ Error al obtener los datos: " . $e->getMessage();
+    exit;
+}
 ?>
 
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Panel Usuario</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <title>Detalles de la Reserva</title>
     <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/panelUsuario.css">
 </head>
 <body>
 
-<?php include '../shared/header.php'; ?>
+<section class="pa-detalle-reserva">
+    <h2 class="pa-h2">Detalles de la Reserva</h2>
+    <ul>
+        <?php
+            $etiquetas = [
+                'id_reserva' => 'Número de reserva',
+                'localizador' => 'Localizador',
+                'nombre_hotel' => 'Hotel',
+                'tipo_reserva' => 'Tipo de reserva',
+                'email_cliente' => 'Email del cliente',
+                'fecha_reserva' => 'Fecha de reserva',
+                'fecha_modificacion' => 'Fecha de modificación',
+                'id_destino' => 'Destino',
+                'fecha_entrada' => 'Fecha de entrada',
+                'hora_entrada' => 'Hora de entrada',
+                'numero_vuelo_entrada' => 'Número de vuelo (ida)',
+                'origen_vuelo_entrada' => 'Origen del vuelo',
+                'hora_vuelo_salida' => 'Hora del vuelo de salida',
+                'fecha_vuelo_salida' => 'Fecha del vuelo de salida',
+                'num_viajeros' => 'Número de viajeros',
+                'numero_vuelo_salida' => 'Número de vuelo (vuelta)',
+                'hora_recogida' => 'Hora de recogida',
+                
+            ];
 
-<main class="pa-main">
-    <h1 class="pa-h1">Tus reservas</h1>
-    <p class="pa-p1">Bienvenid@, aquí puedes ver todas tus reservas</p>
+            foreach ($reserva as $campo => $valor):
+                if (!isset($etiquetas[$campo])) continue;
+            ?>
+                <li><strong><?= $etiquetas[$campo] ?>:</strong> <?= htmlspecialchars($valor ?? '—') ?></li>
+            <?php endforeach; ?>
+    </ul>
 
-    <!-- Sección para mostrar las reservas -->
-    <section class="pa-reservas">
-        <?php if (!empty($reservas)): ?>  <!-- Abre el bloque de la condición -->
-            <table class="pa-tabla-reservas">
-                <thead>
-                    <tr>
-                        <th>ID Reserva</th>
-                        <th>Tipo de Reserva</th>
-                        <th>Fecha de Llegada</th>
-                        <th>Hora de Llegada</th>
-                        <th>Numero de Vuelo</th>
-                        <th>Zona</th>
-                        <th>Hotel</th>
-                        <th>Acciones</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php foreach ($reservas as $reserva): ?> <!-- Abre el foreach -->
-                        <tr>
-                            <td><?php echo $reserva['id_reserva']; ?></td>
-                            <td><?php echo $reserva['tipo_reserva']; ?></td>
-                            <td><?php echo $reserva['fecha_llegada']; ?></td>
-                            <td><?php echo $reserva['hora_llegada']; ?></td>
-                            <td><?php echo $reserva['numero_vuelo']; ?></td>
-                            <td><?php echo $reserva['zona']; ?></td>
-                            <td><?php echo $reserva['hotel']; ?></td>
-                            <td>
-                                <a href="ver_reserva.php?id=<?php echo $reserva['id_reserva']; ?>" class="pa-btn-ver">Ver</a>
-                                <a href="editar_reserva.php?id=<?php echo $reserva['id_reserva']; ?>" class="pa-btn-editar">Editar</a>
-                                <a href="eliminar_reserva.php?id=<?php echo $reserva['id_reserva']; ?>" class="pa-btn-eliminar">Eliminar</a>
-                            </td>
-                        </tr>
-                    <?php endforeach; ?> <!-- Cierra el foreach -->
-                </tbody>
-            </table>
-        <?php else: ?>  <!-- Cierra la condición -->
-            <p class="pa-no-reservas">No tienes reservas actuales.</p>
-        <?php endif; ?> <!-- Cierra el bloque if -->
-    </section>
-</main>
+    <a href="panelUsuario.php" class="btn-volver">⬅ Volver al panel</a>
+</section>
 
 </body>
 </html>
-
 <?php

@@ -529,3 +529,96 @@ button[type="submit"] {
     font-size: 16px;
 }
 }
+
+/* ===== Estilo general para el formulario de edición ===== */
+.editar-perfil {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 30px;
+    background-color: #333;  /* Fondo oscuro */
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    color: #ddd;  /* Color del texto */
+}
+
+/* ===== Títulos y texto del formulario ===== */
+h2 {
+    font-size: 2.5rem;
+    text-align: center;
+    color: #f3c158;  /* Color dorado para los títulos */
+    margin-bottom: 20px;
+}
+
+.editar-perfil label {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #f3c158;  /* Etiquetas en color dorado */
+    margin-bottom: 5px;
+}
+
+/* ===== Estilo de los campos de entrada ===== */
+.editar-perfil input {
+    padding: 12px;
+    font-size: 1rem;
+    border: 1px solid #555;  /* Borde gris */
+    border-radius: 6px;
+    background-color: #222;  /* Fondo oscuro de los campos */
+    color: #ddd;  /* Texto claro */
+    outline: none;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* ===== Efecto cuando los campos están en foco ===== */
+.editar-perfil input:focus {
+    border-color: #f3c158;  /* Borde dorado al hacer foco */
+    box-shadow: 0 0 8px rgba(243, 194, 88, 0.4); /* Resplandor dorado al hacer foco */
+}
+
+/* ===== Botón de guardar cambios ===== */
+.editar-perfil button {
+    padding: 12px 20px;
+    font-size: 1.1rem;
+    border: none;
+    border-radius: 6px;
+    background-color: #f3c158;  /* Fondo dorado para el botón */
+    color: #222;  /* Texto oscuro para el botón */
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* ===== Efecto al pasar el ratón sobre el botón ===== */
+.editar-perfil button:hover {
+    background-color: #e1a32d;  /* Cambio de color a un tono más oscuro */
+}
+
+/* ===== Enlace para cancelar ===== */
+.editar-perfil a {
+    text-align: center;
+    font-size: 1.1rem;
+    color: #f3c158;  /* Color dorado para el enlace */
+    text-decoration: none;
+    margin-top: 20px;
+}
+
+.editar-perfil a:hover {
+    color: #e1a32d;  /* Cambio de color al pasar el ratón */
+}
+
+/* ===== Responsive para dispositivos móviles ===== */
+@media (max-width: 768px) {
+    .editar-perfil {
+        padding: 20px;
+    }
+
+    .editar-perfil input,
+    .editar-perfil button {
+        font-size: 1rem;
+    }
+
+    h2 {
+        font-size: 2rem;
+    }
+}
