@@ -615,7 +615,27 @@ button[type="submit"] {
     box-sizing: border-box;
     margin: auto;
     padding-top: 30px;
-    height: 'auto',        
+    height: 'auto';
+    color:white;      
     
 }
   
+/* Títulos del calendario (mes, días) */
+.fc-toolbar-title,
+.fc-col-header-cell-cushion,
+.fc-daygrid-day-number {
+    color: white !important;
+}
+
+/* Eventos en el calendario */
+.fc-event-title,
+.fc-event-time {
+    color: white !important;
+
+}
+
+/* Por si me da por actualizar el fondo del evento*/
+.fc-daygrid-event {
+    font-size: 0.8rem;
+   
+}
