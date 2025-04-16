@@ -13,8 +13,7 @@ $db = new Database();
 $conn = $db->getConn();
 
 // 2. Obtener datos del usuario
-$tablaUser = 'transfer_viajeros'; // Cambia esto si tu tabla tiene otro nombre
-
+$tablaUser = 'transfer_viajeros'; 
 $getUser = $conn->prepare("SELECT * FROM $tablaUser WHERE email = :email");
 $getUser->bindParam(':email', $email_usuario);
 $getUser->execute();
@@ -105,8 +104,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <p class="pa-p1">Aquí puedes editar tu perfil de usuario</p>
 
     <?php if (isset($_GET['actualizado'])): ?>
-        <p class="pa-p1">Perfil actualizado correctamente.</p>
-    <?php endif; ?>
+    <p class="perfil-actualizado">✅ Perfil actualizado correctamente.</p>
+<?php endif; ?>
 
     <form class="editar-formulario" method="POST" action="editarPerfil.php">
     <label>Nombre: <input type="text" name="nombre" value="<?= htmlspecialchars($usuario['nombre']) ?>" required></label><br>

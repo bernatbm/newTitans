@@ -173,107 +173,105 @@
   color: #333;
   transform: scale(1.05);
 }
-/*  Formulario de edici贸n  */
-.editar-perfil {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-  max-width: 600px;
-  margin: 0 auto;
-  padding: 30px;
-  background-color: #333;
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-  color: #ddd;
-}
-
-/*  Estilo de los campos de entrada  */
-.editar-perfil input {
-  padding: 12px;
-  font-size: 1rem;
-  border: 1px solid #555;
-  border-radius: 6px;
-  background-color: #222;
-  color: #ddd;
-  outline: none;
-  transition: border-color 0.3s ease, box-shadow 0.3s ease;
-}
-
-/*  Efecto cuando los campos est谩n en foco  */
-.editar-perfil input:focus {
-  border-color: #f3c158; 
-}
-
-/*  Bot贸n de guardar cambios  */
-  .editar-perfil button {
-    padding: 12px 20px;
-    font-size: 1.1rem;
+/* === CONTENEDOR DEL FORMULARIO === */
+/* === CONTENEDOR DEL FORMULARIO === */
+.editar-formulario {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    max-width: 500px;
+    margin: 30px auto;
+    padding: 20px 25px;
+    background-color: #1c1c1c;
+    border-radius: 10px;
+    border: 2px solid #ffd700;
+    box-shadow: 0 3px 10px rgba(255, 215, 0, 0.1);
+    color: #fff;
+    font-family: 'Roboto', sans-serif;
+  }
+  
+  /* === CAMPOS DE TEXTO === */
+  .editar-formulario input {
+    padding: 10px;
+    font-size: 0.95rem;
+    border: 1px solid #444;
+    border-radius: 5px;
+    background-color: #222;
+    color: #fff;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .editar-formulario input:focus {
+    border-color: #ffd700;
+    box-shadow: 0 0 4px rgba(255, 215, 0, 0.25);
+  }
+  
+  /* === BOTÓN GUARDAR CAMBIOS === */
+  .editar-formulario button {
+    padding: 10px 18px;
+    font-size: 1rem;
     border: none;
-    border-radius: 6px;
-    background-color: #f3c158;
-    color: #222;
+    border-radius: 5px;
+    background-color: #ffd700;
+    color: #1c1c1c;
+    font-weight: 600;
     cursor: pointer;
     transition: background-color 0.3s ease;
   }
-
-  /*  Efecto al pasar el rat贸n sobre el bot贸n  */
-  .editar-perfil button:hover {
+  
+  .editar-formulario button:hover {
     background-color: #e1a32d;
   }
-
-  .editar-perfil a:hover {
-    color: #e1a32d;
-    */
-
-/* Para m贸vil */
-    .editar-perfil {
-      padding: 20px;
-    }
-
-    .editar-perfil input,
-    .editar-perfil button {
-      font-size: 1rem;
-    }
-
-    h2 {
-      font-size: 2rem;
-    }
+  
+  /* === ENLACE CANCELAR === */
+  .editar-formulario .btn-cancelar {
+    margin-top: 8px;
+    text-align: center;
+    padding: 8px 12px;
+    background-color: transparent;
+    border: 2px solid #ffd700;
+    color: #ffd700;
+    border-radius: 5px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.3s ease;
+  }
+  
+  .editar-formulario .btn-cancelar:hover {
+    background-color: #ffd700;
+    color: #1c1c1c;
+  }
+  
+  /* === TÍTULOS === */
+  .pa-h1 {
+    color: #ffd700;
+    text-align: center;
+    font-size: 2rem;
+    margin-top: 25px;
+    margin-bottom: 10px;
+    text-decoration: underline;
+  }
+  
+  .pa-p1 {
+    text-align: center;
+    color: #fff;
+    font-size: 1rem;
+    margin-bottom: 15px;
   }
 
-  .tarjetas-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-}
-
-.tarjeta {
-    background-color: #f9f9f9;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    padding: 15px 20px;
-    width: 300px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    transition: box-shadow 0.3s ease;
-    margin-bottom: 20px;
-}
-
-.tarjeta:hover {
-    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-}
-
-.tarjeta p {
-    margin: 8px 0;
-    font-size: 14px;
-    color: #333;
-}
-
-.pa-h2 {
-  margin-left: 30px;
-  text-align: center;
-  padding-top: 10px;
-  color: #f8ce70;
-  font-size: 35px;
-}
+  .perfil-actualizado {
+    text-align: center;
+    background-color: #2a2a2a;
+    color: #ffd700;
+    padding: 10px 15px;
+    border: 1px solid #ffd700;
+    border-radius: 6px;
+    margin: 15px auto;
+    max-width: 500px;
+    font-size: 1rem;
+    font-weight: 500;
+  }
 
 /* No hay reservas  */
 .mensaje-vacio {
