@@ -125,6 +125,44 @@ header nav a:hover {
     color: #f3c158;
     
 }
+/*HEADER button reserva*/
+/*NO LOGIN BUTTONS*/
+.aerohotelNoLogin{
+    content: url("../assets/imagenes/aerohotelWhite.svg");
+    width: 20px; 
+    height: 20px;
+}
+
+.aerohotelNoLogin:hover {
+    content: url("../assets/imagenes/aerohotel-2.svg");
+    width: 20px; 
+    height: 20px;
+}
+
+.hotelaeroNoLogin{
+    content: url("../assets/imagenes/hotelaeroWhite.svg");
+    width: 20px; 
+    height: 20px;
+}
+
+.hotelaeroNoLogin:hover {
+    content: url("../assets/imagenes/hotelaero.svg");
+    width: 20px; 
+    height: 20px;
+}
+.idaVueltaNoLogin{
+    content: url("../assets/imagenes/idaVueltaWhite.svg");
+    width: 20px; 
+    height: 20px;;
+}
+
+.idaVueltaNoLogin:hover {
+    content: url("../assets/imagenes/idaVuelta.svg");
+    width: 20px; 
+    height: 20px;
+}
+
+/*ADMIN BUTTONS*/
 .addUser{
     content: url("../assets/imagenes/addNewUser.svg");
     width: 32px; 
@@ -172,6 +210,8 @@ header nav a:hover {
     width: 32px; 
     height: 32px;
 }
+
+/*END HEADER BUTTONS OPTIONS*/
 
 
 .hero {

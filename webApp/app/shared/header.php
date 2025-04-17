@@ -34,7 +34,14 @@
 
             <a href="../model/logout.php">CERRAR SESIÓN</a>
         <?php else: ?>
-            
+            <a class="aerohotelNoLogin" href="javascript:void(0);" onclick="redirigirFormulario('aeropuerto-hotel')">
+                <img src="../assets/imagenes/AeroHotel.svg" alt="Trayectos">
+            </a>
+            <a class="hotelaeroNoLogin" href="javascript:void(0);" onclick="redirigirFormulario('hotel-aeropuerto')">
+            </a>
+            <a class="idaVueltaNoLogin" href="javascript:void(0);" onclick="redirigirFormulario('ida-vuelta')">
+            </a>
+
             <?php if (in_array(basename($_SERVER['PHP_SELF']), ['index.php','registro.php'])): ?>
                 <a href="../model/login.php">LOGIN</a>
             <?php endif; ?>
@@ -59,4 +66,9 @@
         </nav>
     </header>
 <?php endif; ?>
-<script src="../js/adminsections.js"></script>
+<?php if (isset($_SESSION['isAdmin'])): ?>
+    <script src="../js/adminsections.js"></script>
+<?php else: ?>
+    <script src="../js/getReservaNoLogin.js"></script>
+<?php endif; ?>
+
