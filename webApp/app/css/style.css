@@ -207,6 +207,7 @@ header nav a:hover {
     flex-wrap: wrap;
     justify-content: center; 
     gap: 30px; 
+    height: 550px;
 }
 
 .services h2 {

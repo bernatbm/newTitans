@@ -92,6 +92,8 @@ $etiquetas = [
                     <p><strong><?= $etiqueta ?>:</strong> <?= htmlspecialchars($reserva[$campo]) ?></p>
                 <?php endif; ?>
             <?php endforeach; ?>
+            <a href="editarReservas.php?id=<?= $reserva['id_reserva'] ?>" class="btn-reserva btn-editar">Editar</a>
+            <a href="borrarReservas.php?id=<?= $reserva['id_reserva'] ?>" class="btn-reserva btn-borrar" onclick="return confirm('¿Seguro que quieres borrar esta reserva?')">Borrar</a>
         </div>
     <?php endforeach; ?>
     </div>
