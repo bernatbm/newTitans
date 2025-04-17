@@ -58,9 +58,9 @@ class ReservasModel {
 
                 $insertViajero = $this->conn->prepare("
                     INSERT INTO transfer_viajeros 
-                    (nombre, apellido1, apellido2, direccion, codigoPostal, ciudad, pais, email, password)
+                    (nombre, apellido1, apellido2, direccion, codigoPostal, ciudad, pais, email, password, isAdmin)
                     VALUES 
-                    (:nombre, :apellido1, :apellido2, :direccion, :codigoPostal, :ciudad, :pais, :email, :password)
+                    (:nombre, :apellido1, :apellido2, :direccion, :codigoPostal, :ciudad, :pais, :email, :password, 0)
                 ");
                 $insertViajero->bindParam(':nombre', $nombre);
                 $insertViajero->bindParam(':apellido1', $apellido1);
@@ -180,10 +180,11 @@ class ReservasModel {
         
                     $insertViajero = $this->conn->prepare("
                     INSERT INTO transfer_viajeros 
-                    (nombre, apellido1, apellido2, direccion, codigoPostal, ciudad, pais, email, password)
+                    (nombre, apellido1, apellido2, direccion, codigoPostal, ciudad, pais, email, password, isAdmin)
                     VALUES 
-                    (:nombre, :apellido1, :apellido2, :direccion, :codigoPostal, :ciudad, :pais, :email, :password)
+                    (:nombre, :apellido1, :apellido2, :direccion, :codigoPostal, :ciudad, :pais, :email, :password, 0)
                 ");
+
                 $insertViajero->bindParam(':nombre', $nombre);
                 $insertViajero->bindParam(':apellido1', $apellido1);
                 $insertViajero->bindParam(':apellido2', $apellido2);
@@ -291,9 +292,9 @@ class ReservasModel {
         
                     $insertViajero = $this->conn->prepare("
                         INSERT INTO transfer_viajeros 
-                        (nombre, apellido1, apellido2, direccion, codigoPostal, ciudad, pais, email, password)
+                        (nombre, apellido1, apellido2, direccion, codigoPostal, ciudad, pais, email, password, isAdmin)
                         VALUES 
-                        (:nombre, :apellido1, :apellido2, :direccion, :codigoPostal, :ciudad, :pais, :email, :password)
+                        (:nombre, :apellido1, :apellido2, :direccion, :codigoPostal, :ciudad, :pais, :email, :password, 0)
                     ");
                     $insertViajero->bindParam(':nombre', $nombre);
                     $insertViajero->bindParam(':apellido1', $apellido1);
