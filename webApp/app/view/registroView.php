@@ -1,5 +1,7 @@
 <?php
-session_start();
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();// Iniciar la sesión
+}
 require_once '../model/database.php'; 
 $db = new database();
 $conn = $db->getConn();
@@ -11,6 +13,7 @@ $totalAdmins = $administrador['total'];
 
 $adminLogIn = isset($_SESSION['isAdmin']) && $_SESSION['isAdmin'] == 1;
 ?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -34,27 +37,27 @@ $adminLogIn = isset($_SESSION['isAdmin']) && $_SESSION['isAdmin'] == 1;
     </div>
 
         <!-- USUARIO -->
-        <form method="POST" action="registroDB.php">
+        <form method="POST" action="../registro/registroDB.php">
         <div class="tab-content active" id="usuario">
-            <?php include 'formComposeBase.php'; ?>
+            <?php include '../registro/formComposeBase.php'; ?>
             <input type="hidden" name="isAdmin" value="0">
             <button id="btnRegistro" type="submit">REGISTRAR</button>
         </div>
         </form>
 
         <!-- ADMINISTRADOR -->
-        <form method="POST" action="registroDB.php">
+        <form method="POST" action="../registro/registroDB.php">
         <div class="tab-content" id="administrador">
-            <?php include 'formComposeAdmin.php'; ?>
+            <?php include '../registro/formComposeAdmin.php'; ?>
             <input type="hidden" name="isAdmin" value="1">
             <button id="btnRegistro" type="submit">REGISTRAR</button>
         </div>
         </form>
 
         <!-- CORPORATIVO -->
-        <form method="POST" action="registroDB.php">
+        <form method="POST" action="../registro/registroDB.php">
         <div class="tab-content" id="corporativo">
-            <?php include 'formComposeBase.php'; ?>
+            <?php include '../registro/formComposeBase.php'; ?>
             <input type="hidden" name="isAdmin" value="2">
             <button id="btnRegistro" type="submit">REGISTRAR</button>
         </div>
@@ -63,7 +66,7 @@ $adminLogIn = isset($_SESSION['isAdmin']) && $_SESSION['isAdmin'] == 1;
         </form>
 
     <?php elseif ($totalAdmins == 0): ?>
-        <form method="POST" action="registroDB.php">
+        <form method="POST" action="../registro/registroDB.php">
             <h1>BIENVENIDO, ADMINISTRADOR</h1>
             <label class="registerName">Nombre:</label>
             <input type="text" name="nombre" required>
@@ -83,7 +86,7 @@ $adminLogIn = isset($_SESSION['isAdmin']) && $_SESSION['isAdmin'] == 1;
         </form>
 
     <?php elseif (!$adminLogIn): ?>
-        <form method="POST" action="registroDB.php">
+        <form method="POST" action="../registro/registroDB.php">
             <h1>REGISTRATE</h1>
             <label class="registerName">Nombre:</label>
             <input type="text" name="nombre" required>

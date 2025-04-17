@@ -13,7 +13,7 @@ $result = $stmt->fetch(PDO::FETCH_ASSOC);
 
 if ($result['total'] == 0) {
     // No hay administradores, redirige a la página de registro inicial
-    header("Location: /registro/registro.php");
+    header("Location: /view/registroView.php");
     exit();
 }
 ?>

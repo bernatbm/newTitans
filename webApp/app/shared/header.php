@@ -1,5 +1,7 @@
-<?php if (session_status() === PHP_SESSION_NONE) session_start(); ?>
-
+<?php if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+?>
 <header>
     <div class="titleLogo">
     <a href="/index.php">
@@ -43,7 +45,7 @@
             </a>
 
             <?php if (in_array(basename($_SERVER['PHP_SELF']), ['index.php','registro.php'])): ?>
-                <a href="../model/login.php">LOGIN</a>
+                <a href="../view/login.php">LOGIN</a>
             <?php endif; ?>
         <?php endif; ?>
     </nav>
@@ -51,7 +53,7 @@
 <?php if (isset($_SESSION['isAdmin']) && $_SESSION['isAdmin'] == 1): ?>
     <header class="header-secundario">
         <nav>
-            <a class= "addUser" href="/registro/registro.php">
+            <a class= "addUser" href="../view/registroView.php">
                 <img  src="../assets/imagenes/addNewUser.svg" alt="Añadir Usuario">
             </a>
 
