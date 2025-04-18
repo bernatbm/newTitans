@@ -338,7 +338,7 @@ $minDate = date('Y-m-d', strtotime('+2 days'));
 </main>
 <script src="../js/tipoFormulario.js"></script>
 <script src="../js/filtroHoteles.js"></script>
-<script src="../js/comprobarEmail.js"></script>
+<script src="../controller/comprobarEmail.js"></script>
 <script src="../js/cargarAeropuertos.js"></script>
 </body>
 </html>
