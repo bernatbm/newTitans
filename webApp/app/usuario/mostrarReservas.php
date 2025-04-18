@@ -8,7 +8,6 @@ if (!isset($_SESSION['userName']) || $_SESSION['isAdmin'] != 0) {
     exit;
 }
 
-$email_usuario = $_SESSION['email'];
 
 try {
     $db = new database();
