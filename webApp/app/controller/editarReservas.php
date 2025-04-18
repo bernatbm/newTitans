@@ -106,8 +106,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <?php endforeach; ?>
 
     <button type="submit" class="pa-ida-vuelta-button">Guardar Cambios</button>
-    <a href="mostrarReservas.php" class="btn-cancelar">Cancelar</a>
-</form>
+    <a href="../usuario/perfilUsuario.php" class="btn-cancelar">Cancelar</a>
+    </form>
 
 </body>
 </html>
