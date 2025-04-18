@@ -15,12 +15,6 @@ if (isset($_GET['registro']) && $_GET['registro'] == 'registrado') {
             });
           </script>";
 }
-// conexión a la base de datos
-$db = new database(); // database
-$conn = $db->getConn(); //conexión database
-$usuario = $_POST['user'] ?? '';
-$password = $_POST['password'] ?? '';
-
 
 ?>
 
@@ -46,6 +40,7 @@ $password = $_POST['password'] ?? '';
         <input type="text" name="user" required>
         <label class="Name">Contraseña</label><br>
         <input type="password" name="password" required><br>
+        <input type="hidden" name="isAdmin" value="2">
     
         <div class="botones">
             <button type="submit" id="btnLogIn">ENTRAR</button>

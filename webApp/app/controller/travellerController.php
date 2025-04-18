@@ -25,7 +25,7 @@ class TravellerController {
         $usuario = $_POST['user'];
         $password = $_POST['password'];
 
-        $resultado = $this->model->loginTraveller($usuario, $password);
+        $resultado = $this->model->loginUnificado($usuario, $password);
 
         if ($resultado['success']) {
             $_SESSION['userName'] = $resultado['user']['nombre'];
@@ -35,7 +35,7 @@ class TravellerController {
             if ($_SESSION['isAdmin'] == 1) {
                 header("Location: ../admin/panelAdministrador.php");
             } elseif ($_SESSION['isAdmin'] == 2) {
-                header("Location: ../corporativo/panelCorporativo.php");
+                header("Location: ../view/panelCorpView.php");
             } else {
                 header("Location: ../usuario/perfilUsuario.php");
             }

@@ -58,5 +58,57 @@ class TravellerModel {
     
         echo json_encode($response);
     }
+    public function loginCorporate($usuario, $password) {
+        $sql = "SELECT * FROM transfer_corporativos WHERE (email = :usuario OR nombre_empresa = :usuario) AND password = :password LIMIT 1";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bindParam(':usuario', $usuario);
+        $stmt->bindParam(':password', $password);
+        $stmt->execute();
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+    
+        if ($result) {
+            return [
+                'success' => true,
+                'user' => $result
+            ];
+        }
+        return ['success' => false];
+    }
+    public function loginUnificado($usuario, $password) {
+        $sql = "
+            SELECT email, nombre, apellido1, password, isAdmin FROM transfer_viajeros 
+            WHERE email = :usuario OR (nombre = :nombre AND apellido1 = :apellido)
+            UNION
+            SELECT email, nombre, apellido1, password, isAdmin FROM transfer_administradores 
+            WHERE email = :usuario OR (nombre = :nombre AND apellido1 = :apellido)
+            UNION
+            SELECT email, nombre_empresa AS nombre, '' AS apellido1, password, isAdmin FROM transfer_corporativos 
+            WHERE email = :usuario OR nombre_empresa = :usuario
+            LIMIT 1;
+        ";
+    
+        $stmt = $this->conn->prepare($sql);
+    
+        if (str_contains($usuario, ' ')) {
+            [$nombre, $apellido] = explode(' ', $usuario, 2);
+        } else {
+            $nombre = $usuario;
+            $apellido = '';
+        }
+    
+        $stmt->execute([
+            ':usuario' => $usuario,
+            ':nombre' => $nombre,
+            ':apellido' => $apellido
+        ]);
+    
+        $user = $stmt->fetch(PDO::FETCH_ASSOC);
+    
+        if ($user && trim($user['password']) === trim($password)) {
+            return ['success' => true, 'user' => $user];
+        } else {
+            return ['success' => false, 'message' => 'Credenciales incorrectas'];
+        }
+    }
     
 }

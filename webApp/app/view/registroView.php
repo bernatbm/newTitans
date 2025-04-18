@@ -58,7 +58,7 @@ $adminLogIn = isset($_SESSION['isAdmin']) && $_SESSION['isAdmin'] == 1;
         <!-- CORPORATIVO -->
         <form method="POST" action="../registro/registroDB.php">
         <div class="tab-content" id="corporativo">
-            <?php include '../registro/formComposeBase.php'; ?>
+            <?php include '../registro/formComposeCorp.php'; ?>
             <input type="hidden" name="isAdmin" value="2">
             <button id="btnRegistro" type="submit">REGISTRAR</button>
         </div>
