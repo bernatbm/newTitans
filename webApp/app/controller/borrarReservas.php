@@ -32,9 +32,6 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
             $stmt->bindParam(':id', $id, PDO::PARAM_INT);
             $stmt->execute();
 
-            // Redirige con mensaje
-            header("Location: mostrarReservas.php?mensaje=eliminado");
-            exit;
         } else {
             echo "<p style='color: red;'>❌ No puedes borrar esta reserva hasta que pasen 2 días desde la fecha de creación.</p>";
             exit;
