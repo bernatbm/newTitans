@@ -28,7 +28,7 @@ $dias = $diferencia->days;
 
 if ($dias < 2) {
     echo "<p style='color: red;'>❌ No puedes editar esta reserva hasta que pasen 2 días desde la fecha de creación.</p>";
-    echo "<a href='mostrarReservas.php'>Volver a mis reservas</a>";
+    echo "<a href='../controller/reservasUsuarioController.php'>Volver a mis reservas</a>";
     exit;
 }
 
