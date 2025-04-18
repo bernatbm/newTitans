@@ -6,7 +6,7 @@ class RegistroModel {
         $this->conn = $conn;
     }
 
-    // Contar administradores
+    // Contar administradores para la primera session
     public function contarAdministradores() {
         $stmt = $this->conn->prepare("SELECT COUNT(*) as total FROM transfer_administradores WHERE isAdmin = 1");
         $stmt->execute();

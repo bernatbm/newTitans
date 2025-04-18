@@ -19,11 +19,17 @@ if (!isset($_SESSION['isAdmin']) || ($_SESSION['isAdmin']) != 1) {
 if (isset($_GET['exito'])): ?>
     <script>alert("Aeropuerto añadido correctamente.");</script>
 <?php endif; ?>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css?v=<?php echo time(); ?>">
+</head>
+
   <!-- Encabezado -->
   <?php include '../shared/header.php'; ?>
     <!---FIN ENCABEZADO-->
-    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../css/style.css?v=<?php echo time(); ?>">
+
 
 
 <form class= "form-h2-airport" method="POST" action="../controller/airportController.php">

@@ -28,8 +28,9 @@ if (!$zona) {
 <link rel="stylesheet" href="../css/style.css?v=<?php echo time(); ?>">
 
 <div class="form-list">
-    <h2 class="pa-h2-airport">Editar Zona</h2>
+    
     <form class="form-h2-airport" method="POST" action="../controller/zoneController.php">
+    <h2 class="pa-h2-airport">Editar Zona</h2>
         <input type="hidden" name="editar" value="1">
         <input type="hidden" name="id" value="<?= $zona['id_zona'] ?>">
 

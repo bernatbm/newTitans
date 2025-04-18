@@ -1,6 +1,5 @@
 <?php if (session_status() === PHP_SESSION_NONE) {
-    session_start();
-}
+    session_start();}
 ?>
 <header>
     <div class="titleLogo">
@@ -64,12 +63,10 @@
             </a>
             <a class="idaVuelta" href="javascript:void(0);" onclick="redirigirFormulario('ida-vuelta')">
             </a>
-            <a class="addAirport" href="../view/airportView.php">
-                <img src="../assets/imagenes/addAirport.svg" alt="Añadir Aeropuerto">
-            </a>
-            <a class="addAirport" href="../view/hotelView.php">
-                <img src="../assets/imagenes/addAirport.svg" alt="Añadir Aeropuerto">
-            </a>
+            <a class="addAirport" href="../view/airportView.php"></a>
+            <a class="addHotel" href="../view/hotelView.php"> </a>
+            <a class="addZona" href="../view/zoneView.php"></a>
+           
 
         </nav>
     </header>

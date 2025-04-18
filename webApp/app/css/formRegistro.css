@@ -171,7 +171,40 @@ header nav a:hover {
     width: 32px; 
     height: 32px;
 }
+.addAirport{
+    content: url("../assets/imagenes/addAirport.svg");
+    width: 24px; 
+    height: 24px;
+}
 
+.addAirport:hover {
+    content: url("../assets/imagenes/addAirportHover.svg");
+    width: 24px; 
+    height: 24px;
+}
+.addHotel{
+    content: url("../assets/imagenes/addHotel.svg");
+    width: 24px; 
+    height: 24px;
+}
+
+.addHotel:hover {
+    content: url("../assets/imagenes/addHotelHover.svg");
+    width: 24px; 
+    height: 24px;
+}
+.addZona{
+    content: url("../assets/imagenes/addZone.svg");
+    width: 24px; 
+    height: 24px;
+}
+
+.addZona:hover {
+    content: url("../assets/imagenes/addZoneHovver.svg");
+    width: 24px; 
+    height: 24px;
+}
+/*END HEADER BUTTONS OPTIONS*/
 
 .service img {
     max-width: 100%; 

@@ -8,7 +8,7 @@ if (isset($_GET['mensaje'])) {
           </script>";
 }
 
-include '../shared/header.php'; 
+
    
 if (isset($reserva) && !empty($reserva)): ?>
     <section class="pa-detalle-reserva">
