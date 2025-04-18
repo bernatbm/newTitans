@@ -35,6 +35,9 @@
 
             <a href="../model/logout.php">CERRAR SESIÓN</a>
         <?php else: ?>
+            <?php
+            if (basename($_SERVER['PHP_SELF']) != 'login.php') {
+                ?>
             <a class="aerohotelNoLogin" href="javascript:void(0);" onclick="redirigirFormulario('aeropuerto-hotel')">
                 <img src="../assets/imagenes/AeroHotel.svg" alt="Trayectos">
             </a>
@@ -42,6 +45,9 @@
             </a>
             <a class="idaVueltaNoLogin" href="javascript:void(0);" onclick="redirigirFormulario('ida-vuelta')">
             </a>
+            <?php
+            }
+            ?>
 
             <?php if (in_array(basename($_SERVER['PHP_SELF']), ['index.php','registro.php'])): ?>
                 <a href="../view/login.php">LOGIN</a>

@@ -194,6 +194,11 @@ button[type="submit"] {
     gap: 10px; /* espacio entre botones */
     margin-top: 15px;
 }
+.login-page .aerohotelNoLogin,
+.login-page .hotelaeroNoLogin,
+.login-page .idaVueltaNoLogin {
+    display: none;
+}
 
 .botones a,
 .botones button {
