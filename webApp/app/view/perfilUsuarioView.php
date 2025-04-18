@@ -32,7 +32,7 @@ function mostrarVistaPerfilUsuario($usuario, $actualizado) {
         <label>Contraseña: <input type="password" name="password" value="<?= htmlspecialchars($usuario['password']) ?>" required></label><br>
 
         <button type="submit">Guardar cambios</button>
-        <a href="perfilUsuario.php" class="btn-cancelar">Cancelar</a>
+        <a href="../usuario/perfilUsuario.php" class="btn-cancelar">Cancelar</a>
     </form>
 </main>
 </body>
