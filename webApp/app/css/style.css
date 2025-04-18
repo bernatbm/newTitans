@@ -729,9 +729,6 @@ button[type="submit"] {
    .registerName{
     font-size: 10px;
 }
-}
-
-<<<<<<< HEAD
 /* ===== Estilo general para el formulario de edición ===== */
 .editar-perfil {
     display: flex;
@@ -823,7 +820,7 @@ h2 {
     h2 {
         font-size: 2rem;
     }
-=======
+}
 @media (max-width: 768px) {
     body {
         padding-top: 50px;
@@ -1031,5 +1028,5 @@ h2 {
 .fc-daygrid-event {
     font-size: 0.8rem;
    
->>>>>>> c38d21f562e983a9fb4347f1b65b0df46cace884
+}
 }
