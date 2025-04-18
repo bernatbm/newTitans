@@ -13,16 +13,23 @@ try {
     $db = new database();
     $conn = $db->getConn();
 
+    $userName_usuario = $_SESSION['userName'];
+    $sql_email = "SELECT email FROM transfer_viajeros WHERE nombre = :nombre";
+    $stmt_email = $conn->prepare($sql_email);
+    $stmt_email->bindParam(':nombre', $userName_usuario);
+    $stmt_email->execute();
+    $email_usuario = $stmt_email->fetchColumn();
+
+
     $sql = "SELECT r.*, t.`Descripción` AS tipo_reserva_desc
         FROM transfer_reservas r
         LEFT JOIN transfer_tipo_reserva t ON r.id_tipo_reserva = t.id_tipo_reserva
         WHERE r.email_cliente = :email";
-
     $stmt = $conn->prepare($sql);
     $stmt->bindParam(':email', $email_usuario);
     $stmt->execute();
-
     $reservas = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
 
     if (!$reservas) {
         ?>

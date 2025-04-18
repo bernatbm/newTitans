@@ -4,18 +4,18 @@ session_start();
  
 // 1. Comprobar si el usuario está logueado
 if (!isset($_SESSION['userName']) || $_SESSION['isAdmin'] != 0) {
-    echo "Debes iniciar sesión para ver tu perfil.";
+    header("Location: ../view/login.php?error=acceso_denegado");
     exit;
 }
 
-$email_usuario = $_SESSION['userName'];
+$userName_original = $_SESSION['userName'];
 $db = new Database();
 $conn = $db->getConn();
 
 // 2. Obtener datos del usuario
 $tablaUser = 'transfer_viajeros'; 
-$getUser = $conn->prepare("SELECT * FROM $tablaUser WHERE email = :email");
-$getUser->bindParam(':email', $email_usuario);
+$getUser = $conn->prepare("SELECT * FROM $tablaUser WHERE nombre = :nombre");
+$getUser->bindParam(':nombre', $userName_original);
 $getUser->execute();
 $usuario = $getUser->fetch(PDO::FETCH_ASSOC);
 
@@ -29,7 +29,7 @@ if (!$usuario) {
         'codigoPostal' => '',
         'ciudad' => '',
         'pais' => '',
-        'email' => $email_usuario,
+        'email' => '',
         'password' => ''
     ];
 }
@@ -47,9 +47,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $password = $_POST['password'] ?? '';
 
     try {
-
         $stmt = $conn->prepare("UPDATE $tablaUser SET 
-
             nombre = :nombre, 
             apellido1 = :apellido1, 
             apellido2 = :apellido2, 
@@ -59,8 +57,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             pais = :pais, 
             email = :email, 
             password = :password
+            WHERE nombre = :nombre_original"); 
 
-            WHERE email = :email_usuario");
         $stmt->bindParam(':nombre', $nombre);
         $stmt->bindParam(':apellido1', $apellido1);
         $stmt->bindParam(':apellido2', $apellido2);
@@ -69,13 +67,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $stmt->bindParam(':ciudad', $ciudad);
         $stmt->bindParam(':pais', $pais);
         $stmt->bindParam(':email', $email);
-        $stmt->bindParam(':password', $password); 
-        $stmt->bindParam(':email_usuario', $email_usuario);
+        $stmt->bindParam(':password', $password);
+        $stmt->bindParam(':nombre_original', $userName_original); 
 
         $stmt->execute();
 
-        // Actualiza el email en la sesión si el usuario lo cambió
-        $_SESSION['email'] = $email;
+        // Actualizar el nombre en sesión si se modificó
+        if ($nombre != $userName_original) {
+            $_SESSION['userName'] = $nombre;
+        }
 
         header("Location: editarPerfil.php?actualizado=1");
         exit;
