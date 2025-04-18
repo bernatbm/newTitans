@@ -21,7 +21,7 @@ session_start();
 
     <ul class="user-panel-menu">
         <li><a href="../controller/reservasUsuarioController.php">📄 Mis reservas</a></li>
-        <li><a href="nuevaReserva.php">➕ Nueva reserva</a></li>
+        <li><a href="../view/nuevaResUsuarioView.php">➕ Nueva reserva</a></li>
         <li><a href="../controller/perfilUsuarioController.php">👤 Editar perfil</a></li>
     </ul>
 
