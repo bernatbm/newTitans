@@ -3,8 +3,8 @@ require_once '../model/database.php';
 session_start();
 
 // 1. Comprobar si el usuario está logueado
-if (!isset($_SESSION['email'])) {
-    echo "Debes iniciar sesión para ver tu perfil.";
+if (!isset($_SESSION['userName']) || $_SESSION['isAdmin'] != 0) {
+    header("Location: ../view/login.php?error=acceso_denegado");
     exit;
 }
 

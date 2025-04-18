@@ -333,8 +333,6 @@ $minDate = date('Y-m-d', strtotime('+2 days'));
             </div>
         
         </section>
-        <a href="perfilUsuario.php" class="btn-cancelar">Cancelar</a>
-
         
         
 </main>

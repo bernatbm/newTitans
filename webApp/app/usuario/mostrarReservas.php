@@ -3,8 +3,8 @@ session_start();
 
 require_once '../model/database.php';
 
-if (!isset($_SESSION['email'])) {
-    echo "Debes iniciar sesión para ver tus reservas.";
+if (!isset($_SESSION['userName']) || $_SESSION['isAdmin'] != 0) {
+    header("Location: ../view/login.php?error=acceso_denegado");
     exit;
 }
 
