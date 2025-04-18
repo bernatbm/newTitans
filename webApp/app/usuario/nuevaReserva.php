@@ -44,8 +44,8 @@ $minDate = date('Y-m-d', strtotime('+2 days'));
 
                     <div id="form-aeropuerto-hotel" style="display: none;">
                     
-                        <form class="pa-form" action="../controller/reservarAeropuertoHotel.php" method="POST">
-                        <input type="hidden" name="id_tipo_reserva" value="1">
+                    <form class="pa-form" action="../controller/reservasController.php" method="POST">
+                    <input type="hidden" name="id_tipo_reserva" value="1">
                         <div class="pa-form-dia-llegada">
                                 <label for="fecha-llegada">Dia de llegada:</label>
                                 <input class="pa-input-dia-llegada" type="date" id="fecha-llegada" name="fecha_llegada" min="<?php echo $minDate; ?>" required>
@@ -116,8 +116,8 @@ $minDate = date('Y-m-d', strtotime('+2 days'));
                         <!---------------------- Formulario Hotel -> Aeropuerto---------------------->
 
                     <div id="form-hotel-aeropuerto" style="display: none;">
-                        <form class="pa-form" action="../controller/reservarHotelAeropuerto.php" method="POST">
-                        <input type="hidden" name="id_tipo_reserva" value="2">
+                    <form class="pa-form" action="../controller/reservasController.php" method="POST">
+                    <input type="hidden" name="id_tipo_reserva" value="2">
                         <div class="pa-form-dia-vuelo">
                                 <label for="dia-vuelo">Dia del vuelo:</label>
                                 <input class="pa-input-dia-vuelo" type="date" name="dia_vuelo" id="dia-vuelo" min="<?php echo $minDate; ?>" required>
@@ -216,9 +216,11 @@ $minDate = date('Y-m-d', strtotime('+2 days'));
                                 <input class="pa-input-numero-vuelo" type="text" id="numero-vuelo-ida" name="numero_vuelo_entrada" required>
                             </div>
                             <div class="pa-form-aeropuerto-origen">
-                                <label for="aeropuerto-origen" >Aeropuerto de origen:</label>
-                                <input class="pa-input-aeropuerto-origen" type="text" id="aeropuerto-origen" name="aeropuerto_origen" required>
-                            </div>
+                                        <label for="aeropuerto-origen" >Aeropuerto de origen:</label>
+                                        <select class="pa-input-aeropuerto-origen aeropuerto-select" name="id_destino" required>
+                                            <option value="" disabled selected>Selecciona un aeropuerto</option>
+                                        </select>
+                                    </div>
 
                             <div class="pa-form-zona">
                                 <label for="id-zona">Zona:</label>
