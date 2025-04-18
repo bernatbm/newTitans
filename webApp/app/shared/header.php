@@ -1,5 +1,6 @@
-<?php if (session_status() === PHP_SESSION_NONE) session_start(); ?>
-
+<?php if (session_status() === PHP_SESSION_NONE) {
+    session_start();}
+?>
 <header>
     <div class="titleLogo">
     <a href="/index.php">
@@ -34,9 +35,22 @@
 
             <a href="../model/logout.php">CERRAR SESIÓN</a>
         <?php else: ?>
-            
+            <?php
+            if (basename($_SERVER['PHP_SELF']) != 'login.php') {
+                ?>
+            <a class="aerohotelNoLogin" href="javascript:void(0);" onclick="redirigirFormulario('aeropuerto-hotel')">
+                <img src="../assets/imagenes/AeroHotel.svg" alt="Trayectos">
+            </a>
+            <a class="hotelaeroNoLogin" href="javascript:void(0);" onclick="redirigirFormulario('hotel-aeropuerto')">
+            </a>
+            <a class="idaVueltaNoLogin" href="javascript:void(0);" onclick="redirigirFormulario('ida-vuelta')">
+            </a>
+            <?php
+            }
+            ?>
+
             <?php if (in_array(basename($_SERVER['PHP_SELF']), ['index.php','registro.php'])): ?>
-                <a href="../model/login.php">LOGIN</a>
+                <a href="../view/login.php">LOGIN</a>
             <?php endif; ?>
         <?php endif; ?>
     </nav>
@@ -44,7 +58,7 @@
 <?php if (isset($_SESSION['isAdmin']) && $_SESSION['isAdmin'] == 1): ?>
     <header class="header-secundario">
         <nav>
-            <a class= "addUser" href="/registro/registro.php">
+            <a class= "addUser" href="../view/registroView.php">
                 <img  src="../assets/imagenes/addNewUser.svg" alt="Añadir Usuario">
             </a>
 
@@ -55,8 +69,17 @@
             </a>
             <a class="idaVuelta" href="javascript:void(0);" onclick="redirigirFormulario('ida-vuelta')">
             </a>
+            <a class="addAirport" href="../view/airportView.php"></a>
+            <a class="addHotel" href="../view/hotelView.php"> </a>
+            <a class="addZona" href="../view/zoneView.php"></a>
+           
 
         </nav>
     </header>
 <?php endif; ?>
-<script src="../js/adminsections.js"></script>
+<?php if (isset($_SESSION['isAdmin'])): ?>
+    <script src="../js/adminsections.js"></script>
+<?php else: ?>
+    <script src="../js/getReservaNoLogin.js"></script>
+<?php endif; ?>
+

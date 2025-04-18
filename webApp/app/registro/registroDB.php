@@ -1,6 +1,9 @@
 <?php
 
 require_once '../model/database.php';
+require_once '../controller/registroController.php';
+$controller = new RegistroController;
+
 
 
 // Recogemos los datos del form (login.php)
@@ -104,9 +107,10 @@ try {
 
     $nombre = urlencode($nombre);
     $isAdmin = urlencode($isAdmin);
+   
+   $controller->nextPage($nombre, $isAdmin);
 
-    header("Location: ../model/login.php?registro=registrado&nombre=$nombre&isAdmin=$isAdmin");
-    exit();
+    
 
 } catch (PDOException $e) {
     echo "Error al registrar el usuario: " . $e->getMessage();

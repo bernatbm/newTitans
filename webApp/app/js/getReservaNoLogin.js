@@ -1,10 +1,10 @@
 function redirigirFormulario(formulario) {
-    const estaEnPanel = window.location.pathname.includes('panelAdministrador.php');
+    const estaEnPanel = window.location.pathname.includes('../view/paneladdReservaNoLogin.php');
 
     if (estaEnPanel) {
         mostrarFormulario(formulario);
     } else {
-        window.location.href = `../admin/panelAdministrador.php?form=${formulario}`;
+        window.location.href = `../view/paneladdReservaNoLogin.php?form=${formulario}`;
     }
 }
 

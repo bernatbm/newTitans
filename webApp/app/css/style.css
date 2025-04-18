@@ -112,6 +112,7 @@ header nav a:hover {
 .header-secundario nav a {
     padding: 8px 20px;
     font-size: 1em;
+    flex: 1 1 auto; 
     font-weight: bold;
     background-color:  #f3c158; 
     color:black;
@@ -125,53 +126,125 @@ header nav a:hover {
     color: #f3c158;
     
 }
+/*HEADER button reserva*/
+/*NO LOGIN BUTTONS*/
+.aerohotelNoLogin{
+    content: url("../assets/imagenes/aerohotelWhite.svg");
+    width: 20px; 
+    height: 20px;
+}
+
+.aerohotelNoLogin:hover {
+    content: url("../assets/imagenes/aerohotel-2.svg");
+    width: 20px; 
+    height: 20px;
+}
+
+.hotelaeroNoLogin{
+    content: url("../assets/imagenes/hotelaeroWhite.svg");
+    width: 20px; 
+    height: 20px;
+}
+
+.hotelaeroNoLogin:hover {
+    content: url("../assets/imagenes/hotelaero.svg");
+    width: 20px; 
+    height: 20px;
+}
+.idaVueltaNoLogin{
+    content: url("../assets/imagenes/idaVueltaWhite.svg");
+    width: 20px; 
+    height: 20px;;
+}
+
+.idaVueltaNoLogin:hover {
+    content: url("../assets/imagenes/idaVuelta.svg");
+    width: 20px; 
+    height: 20px;
+}
+
+/*ADMIN BUTTONS*/
 .addUser{
     content: url("../assets/imagenes/addNewUser.svg");
-    width: 32px; 
-    height: 32px;
+    width: 20px; 
+    height: 20px;
     
 }
 
 .addUser:hover {
     content: url("../assets/imagenes/addNewUserHover.svg");
-    width: 32px; 
-    height: 32px;
+    width: 24px; 
+    height: 24px;
    
 }
 .aerohotel{
     content: url("../assets/imagenes/aerohotel-2.svg");
-    width: 32px; 
-    height: 32px;
+    width: 24px; 
+    height: 24px;
 }
 
 .aerohotel:hover {
     content: url("../assets/imagenes/aerohotelhover-3.svg");
-    width: 32px; 
-    height: 32px;
+    width: 24px; 
+    height: 24px;
 }
 
 .hotelaero{
     content: url("../assets/imagenes/hotelaero.svg");
-    width: 32px; 
-    height: 32px;
+    width: 24px; 
+    height: 24px;
 }
 
 .hotelaero:hover {
     content: url("../assets/imagenes/hotelaerohover.svg");
-    width: 32px; 
-    height: 32px;
+    width: 24px; 
+    height: 24px;
 }
 .idaVuelta{
     content: url("../assets/imagenes/idaVuelta.svg");
-    width: 32px; 
-    height: 32px;
+    width: 24px; 
+    height: 24px;
 }
 
 .idaVuelta:hover {
     content: url("../assets/imagenes/idaVueltahover.svg");
-    width: 32px; 
-    height: 32px;
+    width: 24px; 
+    height: 24px;
 }
+.addAirport{
+    content: url("../assets/imagenes/addAirport.svg");
+    width: 24px; 
+    height: 24px;
+}
+
+.addAirport:hover {
+    content: url("../assets/imagenes/addAirportHover.svg");
+    width: 24px; 
+    height: 24px;
+}
+.addHotel{
+    content: url("../assets/imagenes/addHotel.svg");
+    width: 24px; 
+    height: 24px;
+}
+
+.addHotel:hover {
+    content: url("../assets/imagenes/addHotelHover.svg");
+    width: 24px; 
+    height: 24px;
+}
+.addZona{
+    content: url("../assets/imagenes/addZone.svg");
+    width: 24px; 
+    height: 24px;
+}
+
+.addZona:hover {
+    content: url("../assets/imagenes/addZoneHovver.svg");
+    width: 24px; 
+    height: 24px;
+}
+/*END HEADER BUTTONS OPTIONS*/
 
 
 .hero {
@@ -316,7 +389,111 @@ header nav a:hover {
     
 
 }
+.form-h2-airport{
+    position: relative;
+    margin: auto;
+    margin-top: 160px;
+    padding: 30px;
+    max-width: 600px;
+    border-radius: 15px;
+    color: #ffffff;
+    background-color: #2b2323;
+    background-size: 200% 200%;
+    animation: moveback 10s ease infinite;
+    overflow: hidden;
+    border: 1px solid transparent;
+     
+    
+}
+/* Borde animado */
+.form-h2-airport::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    border: 1px solid transparent;
+    border-radius: 15px;
+    box-sizing: border-box;
+    z-index: 2;
+    pointer-events: none;
+    animation: borderAnim 10s linear infinite;
+    background: linear-gradient(
+        90deg,
+        #f3c158,
+        transparent,
+        #f3c158
+    );
+    background-size: 400% 400%;
+    mask:
+        linear-gradient(#000 0 0) content-box,
+        linear-gradient(#000 0 0);
+    mask-composite: exclude;
+}
 
+
+.pa-h2-airport{
+    font-size: 36px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 15px; 
+    color: #f3c158;   
+    
+}
+
+
+
+.form-h2-airport h2{
+    font-size: 36px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 15px; 
+    color: #f3c158;   
+    
+}
+.optionbuttons {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+    margin-right: 80px;
+}
+
+.left, .right {
+    
+    margin-right: 10px;
+    
+}
+.right {
+    
+    margin-left: 30px;
+    margin-right: 150px;
+    text-align: left;
+    
+}
+.left{
+    text-align: left;
+    justify-items: center;
+   
+
+}
+.optionbuttons a{
+    background-color: #f3c158 ;
+    border-radius: 15px;
+}
+
+
+
+.name-airport{
+    color: #f3c158;
+    margin-top: 25px; 
+    font-size: 20px;  
+
+}
+.form-edit-airport{
+    text-align: center;
+    margin-top: 220px;
+}
 .ventaja {
     width: 400px;
     padding: 20px;
@@ -362,13 +539,14 @@ header nav a:hover {
     
 }
 
-.contact h2{
-    font-size: 4em;
+.contact form h2{
+    font-size: 3em;
     text-align: center;
     font-weight: bold;
-    width: 95%; 
-    margin-bottom: 30px;
+    width: 100%; 
     box-sizing: border-box;
+    
+
 }
 
 .contact p{
@@ -433,6 +611,12 @@ button[type="submit"] {
     margin-bottom: 30px;
 
 }
+.pa-h2-lista{
+    font-size: 36px;
+    color: rgb(245, 205, 118);
+    padding-top: 80px;
+    padding-bottom:25px ;
+}
 
 
 .admin-label {
@@ -441,8 +625,20 @@ button[type="submit"] {
     margin-top: 4px;
     font-weight: bold;
 }
+
 /* RESPONSIVE */
 @media screen and (max-width: 433px) {
+    .header-secundario nav {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .header-secundario nav a {
+        flex: 1 1 10%; /* 2 por fila */
+        max-width: 48%;
+        justify-content: center;
+        text-align: center;
+    }
     .header-content {
         flex-wrap: wrap;
         flex-direction: row;
@@ -453,7 +649,7 @@ button[type="submit"] {
 
     .titleLogo img {
         margin-top: 2px;
-        height: 25px;
+        height: 10px;
     }
 
     .titleLogo h1 {
@@ -462,14 +658,18 @@ button[type="submit"] {
 
     
     .admin-label {
-        font-size: 7.65px;
+        font-size: 7px;
     }
     header nav a{
-        font-size: 11.45px;
+        font-size: 8px;
     }
    .registerName{
-    font-size: 11.5px;
+    font-size: 8px;
     }
+
+   
+
+    
 }
 /* RESPONSIVE */
 @media screen and (max-width: 512px) {
@@ -495,10 +695,10 @@ button[type="submit"] {
         font-size: 8px;
     }
     header nav a{
-        font-size: 12.2px;
+        font-size: 11px;
     }
    .registerName{
-    font-size: 12.5px;
+    font-size: 11px;
     }
 }
 @media screen and (max-width: 768px) {
@@ -524,13 +724,14 @@ button[type="submit"] {
         font-size: 10px;
     }
     header nav a{
-        font-size: 16px;
+        font-size: 10px;
     }
    .registerName{
-    font-size: 16px;
+    font-size: 10px;
 }
 }
 
+<<<<<<< HEAD
 /* ===== Estilo general para el formulario de edición ===== */
 .editar-perfil {
     display: flex;
@@ -622,4 +823,213 @@ h2 {
     h2 {
         font-size: 2rem;
     }
+=======
+@media (max-width: 768px) {
+    body {
+        padding-top: 50px;
+    }
+    .tabla-wrapper {
+        width: 100%; 
+        -webkit-overflow-scrolling: touch;
+        border: none; 
+        box-sizing: border-box; 
+        overflow-x:hidden ;
+       
+        
+    }
+    .pa-lista-reservas {
+        width: 100%;
+        padding: 70 0px;
+        box-sizing: border-box;
+        text-align: center;
+    }
+    .pa-h2{
+        padding-top: 30px;
+        align-items: center;
+        margin-left: auto;
+    }
+   
+    .pa-tabla-reservas {
+        width: auto; 
+        border-collapse: fixed; 
+    }
+
+    .pa-tabla-reservas thead {
+        display: none; 
+    }
+
+    .pa-tabla-reservas tr {
+        display: block; 
+        width: 100%;
+        margin-bottom: 1rem; 
+        background-color: #fff3e0;
+        border-radius: 10px;
+        padding: 10px;
+        box-sizing: border-box; 
+        color:black;
+       
+    }
+
+    .pa-tabla-reservas td {
+        text-align: left;
+        padding: 10px;
+        border: none;
+        position: flex;
+        display: block;
+        color: black;
+    }
+
+    .pa-tabla-reservas td::before {
+        content: attr(data-label);
+        font-weight: bold;
+        display: flex;
+        margin-bottom: 4px;
+        color: #ec6e05;
+    }
+
+
+    .btn-reserva {
+        display: inline-block;
+        margin: 5px 5px 0 0;
+        font-size: 0.8rem; 
+    }
+    .form-h2-airport {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+        padding: 20px;
+    }
+
+    .pa-h2-airport {
+        font-size: 1.2rem;
+        text-align: center;
+        margin-top: 20px;
+        color: #333;
+    }
+
+    .name-airport {
+        font-size: 0.95rem;
+        text-align: left;
+        width: 100%;
+        max-width: 300px;
+    }
+
+    .input-name {
+        width: 100%;
+        max-width: 300px;
+        padding: 10px;
+        border-radius: 8px;
+        border: 1px solid #ccc;
+        font-size: 1rem;
+        box-sizing: border-box;
+    }
+
+    .form-h2-airport button {
+        padding: 10px 20px;
+        font-size: 1rem;
+        background-color: #f3c158;
+        color: black;
+        border: 1px solid #22222230;
+        border-radius: 8px;
+        cursor: pointer;
+    }
+
+    .form-h2-airport button:hover {
+        background-color: black;
+        color: #f3c158;
+    }
+
+    .form-list {
+        padding: 0 15px;
+    }
+
+    .pa-lista-reservas {
+        padding: 20px 0;
+        text-align: center;
+    }
+
+    .pa-h2-lista {
+        font-size: 1.2rem;
+        margin-bottom: 20px;
+    }
+
+    .tabla-wrapper {
+        width: 100%;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .pa-tabla-reservas {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    .pa-tabla-reservas thead {
+        display: none;
+    }
+
+    .pa-tabla-reservas tr {
+        display: block;
+        margin-bottom: 1rem;
+        background-color: #fff3e0;
+        border-radius: 10px;
+        padding: 10px;
+        color: black;
+    }
+
+    .pa-tabla-reservas td {
+        display: block;
+        padding: 10px;
+        border: none;
+        text-align: left;
+        color: black;
+    }
+
+    .pa-tabla-reservas td::before {
+        content: attr(data-label);
+        font-weight: bold;
+        display: block;
+        margin-bottom: 4px;
+        color: #ec6e05;
+    }
+
+    .btn-reserva {
+        display: inline-block;
+        margin-top: 5px;
+        font-size: 0.85rem;
+    }
+   
+
+}
+
+#calendar {
+    width: 98%;
+    box-sizing: border-box;
+    margin: auto;
+    padding-top: 30px;
+    height: 'auto';
+    color:white;      
+    
+}
+  
+/* Títulos del calendario (mes, días) */
+.fc-toolbar-title,
+.fc-col-header-cell-cushion,
+.fc-daygrid-day-number {
+    color: white !important;
+}
+
+/* Eventos en el calendario */
+.fc-event-title,
+.fc-event-time {
+    color: white !important;
+
+}
+
+/* Por si me da por actualizar el fondo del evento*/
+.fc-daygrid-event {
+    font-size: 0.8rem;
+   
+>>>>>>> c38d21f562e983a9fb4347f1b65b0df46cace884
 }

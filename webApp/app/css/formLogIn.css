@@ -121,10 +121,9 @@ header nav a:hover {
         #f3c158
     );
     background-size: 400% 400%;
-    -webkit-mask:
+    mask:
         linear-gradient(#000 0 0) content-box,
         linear-gradient(#000 0 0);
-    -webkit-mask-composite: xor;
     mask-composite: exclude;
 }
 
@@ -194,6 +193,11 @@ button[type="submit"] {
     justify-content: center; /* centra horizontalmente */
     gap: 10px; /* espacio entre botones */
     margin-top: 15px;
+}
+.login-page .aerohotelNoLogin,
+.login-page .hotelaeroNoLogin,
+.login-page .idaVueltaNoLogin {
+    display: none;
 }
 
 .botones a,

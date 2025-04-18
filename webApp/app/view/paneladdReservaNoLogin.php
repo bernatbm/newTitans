@@ -404,35 +404,12 @@ $controller = new ReservasController();
             </div>
         
         </section>
-
-        <?php $controller->listarReservas(); ?>
-        <?php if (isset($_GET['mensaje']) && $_GET['mensaje'] === 'eliminado'): ?>
-            <script>
-                alert("✅ Reserva eliminada correctamente.");
-            </script>
-        <?php endif; ?>
-        
-
-        <section class="pa-calendario">
-            <h2 class="pa-h2">Calendario de Reservas</h2>
-            <div id="calendar" ></div>
-        </section>
-
-</main>
-
-
-<!--<link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/main.min.css" rel="stylesheet">-->
-
-<script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"></script>
-
-<script src="../js/calendarioAdmin.js"></script>
-
-<script src="../js/tipoFormulario.js"></script>
-<script src="../js/filtroHoteles.js"></script>
-<script src="../js/comprobarEmail.js"></script>
-<script src="../js/cargarAeropuertos.js"></script>
-<script src="../js/adminsections.js"></script>
-<script>
+        <script src="../js/tipoFormulario.js"></script>
+        <script src="../js/filtroHoteles.js"></script>
+        <script src="../js/comprobarEmail.js"></script>
+        <script src="../js/cargarAeropuertos.js"></script>
+        <script src="../js/getReservaNoLogin.js"></script>
+        <script>
 document.addEventListener("DOMContentLoaded", () => {
     // Obtener los parámetros de la URL
     const urlParams = new URLSearchParams(window.location.search);

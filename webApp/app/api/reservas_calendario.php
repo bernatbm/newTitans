@@ -7,7 +7,13 @@ try {
     $db = new database();
     $conn = $db->getConn();
 
-    $sql = "SELECT * FROM transfer_reservas";
+    $sql = "SELECT r.*, v.Descripción AS nombre_vehiculo, h.nombre_hotel AS nombre_hotel, u.nombre AS nombre, u.apellido1 AS apellido,t.Descripción AS tipo_reserva 
+        FROM transfer_reservas r
+        JOIN transfer_vehiculo v ON r.id_vehiculo = v.id_vehiculo 
+        JOIN transfer_hotel h ON r.id_hotel = h.id_hotel
+        JOIN transfer_viajeros u ON r.email_cliente = u.email
+        JOIN transfer_tipo_reserva t ON r.id_tipo_reserva = t.id_tipo_reserva";
+   
     $stmt = $conn->prepare($sql);
     $stmt->execute();
     $reservas = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -35,13 +41,24 @@ try {
                 break;
         }
 
+        $propsFiltradas['id_reserva'] = $reserva['id_reserva'];
+        $propsFiltradas['nombre'] = $reserva['nombre'].' '.$reserva['apellido'];
+        $propsFiltradas['Email Cliente'] = $reserva['email_cliente']; 
+        $propsFiltradas['nombre_hotel'] = $reserva['nombre_hotel']; 
+        $propsFiltradas['tipo_reserva'] = $reserva['tipo_reserva'];
+        $propsFiltradas['Fecha Reserva'] = $reserva['fecha_reserva']; 
+        $propsFiltradas['Fecha Modificacion'] = $reserva['fecha_modificacion']; 
+        $propsFiltradas['Fecha Entrada'] = $reserva['fecha_entrada'];
+        $propsFiltradas['Hora Entrada'] = $reserva['hora_entrada']; 
+        $propsFiltradas['Numero Vuelo Entrada'] = $reserva['numero_vuelo_entrada']; 
+        $propsFiltradas['Origen Vuelo Entrada'] = $reserva['origen_vuelo_entrada']; 
+        $propsFiltradas['Hora Vuelo Salida'] = $reserva['fecha_vuelo_salida'];  
+        $propsFiltradas['Num. Viajeros'] = $reserva['num_viajeros']; 
+        $propsFiltradas['nombre_vehiculo'] = $reserva['nombre_vehiculo'];
         
-        $propsFiltradas = array_filter($reserva, function ($value) {
-            return !is_null($value);
-        });
 
         $eventos[] = [
-            'title' => 'Reserva #' . $reserva['id_reserva'],
+            'title' => '#'. " " .$reserva['id_reserva']. " - ". $reserva['localizador']." ".$reserva['nombre']. " " . $reserva['apellido'],
             'start' => $startDateTime,
             'id'    => $reserva['localizador'],
             'extendedProps' => $propsFiltradas
