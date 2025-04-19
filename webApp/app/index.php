@@ -1,5 +1,21 @@
 <?php
 session_start();
+require_once './model/database.php'; 
+$db = new database(); // database
+$conn = $db->getConn(); //conexión database
+
+// Crear tabla transfer_administradores si no existe
+$db->crearTablaAdmin();
+
+$stmt = $conn->prepare("SELECT COUNT(*) as total FROM transfer_administradores WHERE isAdmin = 1");
+$stmt->execute();
+$result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+if ($result['total'] == 0) {
+    // No hay administradores, redirige a la página de registro inicial
+    header("Location: /view/registroView.php");
+    exit();
+}
 ?>
 
 <!DOCTYPE html>
@@ -9,35 +25,13 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Isla Transfers</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="../css/style.css?v=<?php echo time(); ?>">
 </head>
 <body>
     <!-- Encabezado -->
-    <header>
-    <div class="titleLogo">
-        <img src="assets/imagenes/newTitans.svg" class="service-img">
-        <a href="./index.php"><h1>Isla Transfers</h1></a>
-    </div>
-    <nav>
-    <?php if (isset($_SESSION['userName'])): ?>
-        <span>
-            <a href="../model/perfil.php"><?php echo "Hola, " . strtoupper($_SESSION['userName']); ?></a>
-        </span>
-        
-        <?php if (!empty($_SESSION['isAdmin']) && $_SESSION['isAdmin'] == 1): ?>
-            <p class="admin-label">[ Admin ]</p>
-            <?php elseif (!empty($_SESSION['isAdmin']) && $_SESSION['isAdmin'] == 2): ?>
-            <p class="admin-label">[ Corp ]</p>
-        
-        <?php endif; ?>
+    <?php include 'shared/header.php'; ?>
+    <!---FIN ENCABEZADO-->
 
-        <a href="../model/logout.php">CERRAR SESIÓN</a>
-    <?php else: ?>
-        <a href="../registro/registro.php">REGISTRO</a>
-        <a href="../model/login.php">LOGIN</a>
-    <?php endif; ?>
-    </nav>
-</header>
 
     <section class="hero" id="inicio">
         <div class="hero-content">
@@ -94,11 +88,13 @@ session_start();
 
     <!-- Sección Contacto -->
     <section class="contact" id="contacto">
-        <h2>Contáctanos</h2>
         
-
+        
+    
         <!-- Formulario básico -->
         <form action="#" method="post">
+        
+          <h2>Contáctanos</h2>
             <label for="nombre">Nombre:</label><br/>
             <input type="text" id="nombre" name="nombre" required><br/><br/>
 
@@ -118,6 +114,6 @@ session_start();
 
 
     <!-- JavaScript -->
-    <script src="model/script.js"></script>
+    <script src="js/script.js"></script>
 </body>
 </html>

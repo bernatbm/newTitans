@@ -1,38 +1,67 @@
 <?php
-class travellerController{
-    private $conn;
+session_start();
+require_once '../model/database.php';
+require_once '../model/travellerModel.php';
 
-    function __construct($connDB) {
-        $this->conn = $connDB;
+class TravellerController {
+
+    private $model;
+
+    public function __construct() {
+        $db = new Database();
+        $conn = $db->getConn();
+        $this->model = new TravellerModel($conn);
     }
-    
-    public function loginTraveller($usuario, $password) {
-        $stmt = $this->conn->prepare("SELECT * FROM transfer_viajeros WHERE email = ? OR (nombre = ? AND apellido1 = ?)"); //Para iniciar sesión con email OR nombre y apellido1
-        
-        if (str_contains($usuario, ' ')) {//Si hau un espacio quiere decir que se iniciara la ssion con name + surname
-            [$nombre, $apellido1] = explode(' ', $usuario, 2);// separara la cadena de usuario en 2( nombre " " apellido)
-            $stmt->execute([$usuario, $nombre, $apellido1]);// Mira si hay email o nombre y apellido
-        } else {
-            $stmt->execute([$usuario, '', '']);// Si no, solo hay email
+
+    public function logIn() {
+        if (session_status() === PHP_SESSION_NONE) {
+        session_start();
+    }
+        if (!isset($_POST['user']) || !isset($_POST['password'])) {
+            echo 'Faltan datos';
+            return;
         }
-    
-        $user = $stmt->fetch(PDO::FETCH_ASSOC);
-        
-        if ($user) {
-            
-            $storedPassword = trim($user['password']);
-            $inputPassword = trim($password);
-            
-            if ($inputPassword === $storedPassword) {//Ahora que tenemos al user con nombre + apellido o email buscamos match con password
-                return ['success' => true, 'user' => $user];
+
+        $usuario = $_POST['user'];
+        $password = $_POST['password'];
+
+        $resultado = $this->model->loginUnificado($usuario, $password);
+
+        if ($resultado['success']) {
+            $_SESSION['userName'] = $resultado['user']['nombre'];
+            $_SESSION['isAdmin'] = $resultado['user']['isAdmin'];
+
+            // Redirección según el tipo de usuario
+            if ($_SESSION['isAdmin'] == 1) {
+                header("Location: ../admin/panelAdministrador.php");
+            } elseif ($_SESSION['isAdmin'] == 2) {
+                header("Location: ../view/panelCorpView.php");
             } else {
-                return ['success' => false, 'message' => 'Credenciales incorrectas'];
+                header("Location: ../usuario/perfilUsuario.php");
             }
+            exit;
         } else {
-            return ['success' => false, 'message' => 'Credenciales incorrectas'];
+            // Login fallido
+            header("Location: ../view/login.php?error=1");
+            exit;
         }
     }
-    
-    
-    
+
+    public function emailExist() {
+        $this->model->emailExist();
+    }
+}
+
+// Llamador del controlador por acción
+if (isset($_GET['accion'])) {
+    $controller = new TravellerController();
+
+    switch ($_GET['accion']) {
+        case 'checkEmail':
+            $controller->emailExist();
+            break;
+        case 'login':
+            $controller->logIn();
+            break;
+    }
 }

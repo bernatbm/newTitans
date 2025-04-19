@@ -10,9 +10,9 @@ body, h1, h2, h3, p, ul, li, form {
 
 body {
     font-family: "Roboto", sans-serif;
-    line-height: 1.6;
     color: #333;
     background-color: #221a1a;
+    
 }
 
 
@@ -23,23 +23,24 @@ body {
 }
 
 
+/*HEADER PRINCIPAL*/
 header {
-    background-color: transparent;
-    position: absolute;
+    background: linear-gradient(180deg, #221a1a, rgba(34, 26, 26, 0.8));
+    position: fixed; 
     top: 0;
     left: 0;
-    width: 99%;
+    width: 100%; 
     z-index: 1000;
     display: flex;
     justify-content: space-between;
     align-items: center;
     color: white;
-    margin-left: 15px;
-    
+    padding: 10px 15px; 
+   
 }
 .titleLogo {
     display: flex;
-    align-items: center;
+    align-items: center;   
     gap: 10px; 
 }
 
@@ -50,6 +51,8 @@ header a {
     color: inherit;
     padding: 0; 
     font-size: 1.2em;
+    font-weight: bold;
+   
 }
 
 header h1 {
@@ -61,22 +64,186 @@ header nav {
     display: flex; 
     justify-content: center; 
     gap:15px;
+    padding-right: 15px;
+    margin-right: 10px;
+    
 
 }
 
 header nav a {
-    padding: 0 15px;
+    padding: 8px 20px;
     font-size: 1em;
-
+    font-weight: bold;
+    border: 1.5px solid #f3c158; 
+    border-radius: 10px;
 }
 
 header nav a:hover {
-    background-color: #333333; 
-    border-radius: 5px;
+    background-color: #f3c158; 
+    border-radius: 10px;
+    color:black;
     
 
     
 }
+/*HEADER SECUNDARIO*/
+.header-secundario {
+    background: linear-gradient(180deg, rgba(34, 26, 26, 0.8), #f3c258);
+    color: white;
+    padding: 8px 15px;
+    text-align: center;
+    font-size: 1em;
+    margin-top: 75px; /* Espacio debajo del header principal */
+    transition: background 0.5s ease-in-out; /* Transición suave en el color */
+}
+
+
+/* Estilo para los enlaces del header secundario */
+.header-secundario nav {
+    display: flex; 
+    justify-content: flex-end;
+    gap: 15px;
+    margin-right: 10px;
+    width: 100%;
+
+    
+}
+.header-secundario nav a {
+    padding: 8px 20px;
+    font-size: 1em;
+    flex: 1 1 auto; 
+    font-weight: bold;
+    background-color:  #f3c158; 
+    color:black;
+    border-radius: 10px;
+    border: 1px solid #221a1a4f;
+}
+
+.header-secundario nav a:hover {
+    background-color: black; 
+    border-radius: 10px;
+    color: #f3c158;
+    
+}
+/*HEADER button reserva*/
+/*NO LOGIN BUTTONS*/
+.aerohotelNoLogin{
+    content: url("../assets/imagenes/aerohotelWhite.svg");
+    width: 20px; 
+    height: 20px;
+}
+
+.aerohotelNoLogin:hover {
+    content: url("../assets/imagenes/aerohotel-2.svg");
+    width: 20px; 
+    height: 20px;
+}
+
+.hotelaeroNoLogin{
+    content: url("../assets/imagenes/hotelaeroWhite.svg");
+    width: 20px; 
+    height: 20px;
+}
+
+.hotelaeroNoLogin:hover {
+    content: url("../assets/imagenes/hotelaero.svg");
+    width: 20px; 
+    height: 20px;
+}
+.idaVueltaNoLogin{
+    content: url("../assets/imagenes/idaVueltaWhite.svg");
+    width: 20px; 
+    height: 20px;;
+}
+
+.idaVueltaNoLogin:hover {
+    content: url("../assets/imagenes/idaVuelta.svg");
+    width: 20px; 
+    height: 20px;
+}
+
+/*ADMIN BUTTONS*/
+.addUser{
+    content: url("../assets/imagenes/addNewUser.svg");
+    width: 20px; 
+    height: 20px;
+    
+}
+
+.addUser:hover {
+    content: url("../assets/imagenes/addNewUserHover.svg");
+    width: 24px; 
+    height: 24px;
+   
+}
+.aerohotel{
+    content: url("../assets/imagenes/aerohotel-2.svg");
+    width: 24px; 
+    height: 24px;
+}
+
+.aerohotel:hover {
+    content: url("../assets/imagenes/aerohotelhover-3.svg");
+    width: 24px; 
+    height: 24px;
+}
+
+.hotelaero{
+    content: url("../assets/imagenes/hotelaero.svg");
+    width: 24px; 
+    height: 24px;
+}
+
+.hotelaero:hover {
+    content: url("../assets/imagenes/hotelaerohover.svg");
+    width: 24px; 
+    height: 24px;
+}
+.idaVuelta{
+    content: url("../assets/imagenes/idaVuelta.svg");
+    width: 24px; 
+    height: 24px;
+}
+
+.idaVuelta:hover {
+    content: url("../assets/imagenes/idaVueltahover.svg");
+    width: 24px; 
+    height: 24px;
+}
+.addAirport{
+    content: url("../assets/imagenes/addAirport.svg");
+    width: 24px; 
+    height: 24px;
+}
+
+.addAirport:hover {
+    content: url("../assets/imagenes/addAirportHover.svg");
+    width: 24px; 
+    height: 24px;
+}
+.addHotel{
+    content: url("../assets/imagenes/addHotel.svg");
+    width: 24px; 
+    height: 24px;
+}
+
+.addHotel:hover {
+    content: url("../assets/imagenes/addHotelHover.svg");
+    width: 24px; 
+    height: 24px;
+}
+.addZona{
+    content: url("../assets/imagenes/addZone.svg");
+    width: 24px; 
+    height: 24px;
+}
+
+.addZona:hover {
+    content: url("../assets/imagenes/addZoneHovver.svg");
+    width: 24px; 
+    height: 24px;
+}
+/*END HEADER BUTTONS OPTIONS*/
 
 .service img {
     max-width: 100%; 
@@ -86,21 +253,58 @@ header nav a:hover {
   }
   
 
-.registroForm {
-    
+  .registroForm {
+    position: relative;
+    margin: auto;
     margin-top: 150px;
-    margin-left: 650px;
     padding: 30px;
     max-width: 600px;
     border-radius: 15px;
     color: #ffffff;
-    background:linear-gradient(100deg, #dadada43,#ffffff5a,#a0a0a027);
+    background-color: #2b2323;
     background-size: 200% 200%;
-    position: relative;
     animation: moveback 10s ease infinite;
-    border: solid 1px rgba(255, 255, 255, 0.609);
-
+    overflow: hidden;
 }
+
+/* borde animado */
+.registroForm::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    border: 1px solid transparent;
+    border-radius: 15px;
+    box-sizing: border-box;
+    z-index: 2;
+    pointer-events: none;
+    animation: borderAnim 10s linear infinite;
+    background: linear-gradient(
+        90deg,
+        #f3c158,
+        transparent,
+        #f3c158
+    );
+    background-size: 400% 400%;
+    mask:
+        linear-gradient(#000 0 0) content-box,
+        linear-gradient(#000 0 0);
+
+    mask-composite: exclude;
+}
+
+/* clave: animamos la posición del degradado para simular el movimiento */
+@keyframes borderAnim {
+    0% {
+        background-position: 0% 0%;
+    }
+    100% {
+        background-position: 400% 0%;
+    }
+}
+
 
 @keyframes moveback {
     0%{background-position: 0 50%;}
@@ -109,8 +313,11 @@ header nav a:hover {
     
 }
 
+
 .registroForm h1{
     text-align: center;
+    color:#f3c158;
+    font-weight: bold;
 }
 
 input[type="text"],
@@ -126,20 +333,407 @@ input[type="password"]{
 }
 
 button[type="submit"] {
-    background-color: #007bff;
+    background-color: #f3c158;
     color: white;
-    padding: 10px 20px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 5px 20px;
+    border-radius: 10px;
     
 }
 
-#btnRegistro{
-    margin-top: 25px;
-    margin-left: 215px;
+#btnRegistro {
+    display: block;
+    margin: 25px auto 0 auto;
     font-size: large;
+    color: #2b2323;
+    font-weight: bold;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
 }
 
+#btnRegistro:hover{
+    background-color: #ffd577;
+}
 .admin-label{
     font-size: 12px;
-    color: #666;
+    color: #f3c158;
     margin-top: 4px;
+    font-weight: bold;
+}
+
+/*PESTAÑAS REGISTRO*/
+
+/* === ESTILO DE LAS PESTAÑAS === */
+.tabs {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    gap: 10px;
+}
+
+.tab {
+    padding: 10px 20px;
+    background: linear-gradient(135deg, #ffffff20, #a0a0a027);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+    color: #fff;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.3s, color 0.3s, transform 0.2s;
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.1);
+}
+
+.tab:hover {
+    background: rgba(255, 255, 255, 0.1);
+    
+}
+
+.tab.active {
+    background-color:#edb843;
+    color: #fff;
+    border-color:  #f8ce70;
+}
+
+/* CONTENIDO DE LAS PESTAÑAS */
+.tab-content {
+    display: none;
+    margin-top: 20px;
+    animation: fadeIn 0.4s ease-in-out;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* RESPONSIVE */
+@media screen and (max-width: 433px) {
+    .header-content {
+        flex-wrap: wrap;
+        flex-direction: row;
+        justify-content: center;
+        gap: 10px;
+    }
+
+
+    .titleLogo img {
+        margin-top: 2px;
+        height: 25px;
+    }
+
+    .titleLogo h1 {
+        font-size: 0px;
+    }
+
+    
+    .admin-label {
+        font-size: 7.65px;
+    }
+    header nav a{
+        font-size: 11.45px;
+    }
+   .registerName{
+    font-size: 11.5px;
+    }
+}
+
+/* REGISTER */
+.registerName{
+    
+    color:#f3c158;
+    font-weight: bold;
+    
+}
+input{
+    margin: auto;
+}
+
+
+/* RESPONSIVE */
+@media screen and (max-width: 433px) {
+    .header-secundario nav {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .header-secundario nav a {
+        flex: 1 1 10%; /* 2 por fila */
+        max-width: 48%;
+        justify-content: center;
+        text-align: center;
+    }
+    .header-content {
+        flex-wrap: wrap;
+        flex-direction: row;
+        justify-content: center;
+        gap: 10px;
+    }
+
+
+    .titleLogo img {
+        margin-top: 2px;
+        height: 10px;
+    }
+
+    .titleLogo h1 {
+        font-size: 0px;
+    }
+
+    
+    .admin-label {
+        font-size: 7px;
+    }
+    header nav a{
+        font-size: 8px;
+    }
+   .registerName{
+    font-size: 8px;
+    }
+
+   
+
+    
+}
+/* RESPONSIVE */
+@media screen and (max-width: 512px) {
+    .header-content {
+        flex-wrap: wrap;
+        flex-direction: row;
+        justify-content: center;
+        gap: 10px;
+    }
+
+
+    .titleLogo img {
+        margin-top: 2px;
+        height: 32px;
+    }
+
+    .titleLogo h1 {
+        font-size: 0px;
+    }
+
+    
+    .admin-label {
+        font-size: 8px;
+    }
+    header nav a{
+        font-size: 11px;
+    }
+   .registerName{
+    font-size: 11px;
+    }
+}
+@media screen and (max-width: 768px) {
+    .header-content {
+        flex-wrap: wrap;
+        flex-direction: row;
+        justify-content: center;
+        gap: 10px;
+    }
+
+
+    .titleLogo img {
+        margin-top: 2px;
+        height: 60px;
+    }
+
+    .titleLogo h1 {
+        font-size: 0px;
+    }
+
+    
+    .admin-label {
+        font-size: 10px;
+    }
+    header nav a{
+        font-size: 10px;
+    }
+   .registerName{
+    font-size: 10px;
+}
+}
+
+@media (max-width: 768px) {
+    body {
+        padding-top: 50px;
+    }
+    .tabla-wrapper {
+        width: 100%; 
+        -webkit-overflow-scrolling: touch;
+        border: none; 
+        box-sizing: border-box; 
+        overflow-x:hidden ;
+       
+        
+    }
+    .pa-lista-reservas {
+        width: 100%;
+        padding: 70 0px;
+        box-sizing: border-box;
+        text-align: center;
+    }
+    .pa-h2{
+        padding-top: 30px;
+        align-items: center;
+        margin-left: auto;
+    }
+   
+    .pa-tabla-reservas {
+        width: auto; 
+        border-collapse: fixed; 
+    }
+
+    .pa-tabla-reservas thead {
+        display: none; 
+    }
+
+    .pa-tabla-reservas tr {
+        display: block; 
+        width: 100%;
+        margin-bottom: 1rem; 
+        background-color: #fff3e0;
+        border-radius: 10px;
+        padding: 10px;
+        box-sizing: border-box; 
+        color:black;
+       
+    }
+
+    .pa-tabla-reservas td {
+        text-align: left;
+        padding: 10px;
+        border: none;
+        position: flex;
+        display: block;
+        color: black;
+    }
+
+    .pa-tabla-reservas td::before {
+        content: attr(data-label);
+        font-weight: bold;
+        display: flex;
+        margin-bottom: 4px;
+        color: #ec6e05;
+    }
+
+
+    .btn-reserva {
+        display: inline-block;
+        margin: 5px 5px 0 0;
+        font-size: 0.8rem; 
+    }
+    .form-h2-airport {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+        padding: 20px;
+    }
+
+    .pa-h2-airport {
+        font-size: 1.2rem;
+        text-align: center;
+        margin-top: 20px;
+        color: #333;
+    }
+
+    .name-airport {
+        font-size: 0.95rem;
+        text-align: left;
+        width: 100%;
+        max-width: 300px;
+    }
+
+    .input-name {
+        width: 100%;
+        max-width: 300px;
+        padding: 10px;
+        border-radius: 8px;
+        border: 1px solid #ccc;
+        font-size: 1rem;
+        box-sizing: border-box;
+    }
+
+    .form-h2-airport button {
+        padding: 10px 20px;
+        font-size: 1rem;
+        background-color: #f3c158;
+        color: black;
+        border: 1px solid #22222230;
+        border-radius: 8px;
+        cursor: pointer;
+    }
+
+    .form-h2-airport button:hover {
+        background-color: black;
+        color: #f3c158;
+    }
+
+    .form-list {
+        padding: 0 15px;
+    }
+
+    .pa-lista-reservas {
+        padding: 20px 0;
+        text-align: center;
+    }
+
+    .pa-h2-lista {
+        font-size: 1.2rem;
+        margin-bottom: 20px;
+    }
+
+    .tabla-wrapper {
+        width: 100%;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .pa-tabla-reservas {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    .pa-tabla-reservas thead {
+        display: none;
+    }
+
+    .pa-tabla-reservas tr {
+        display: block;
+        margin-bottom: 1rem;
+        background-color: #fff3e0;
+        border-radius: 10px;
+        padding: 10px;
+        color: black;
+    }
+
+    .pa-tabla-reservas td {
+        display: block;
+        padding: 10px;
+        border: none;
+        text-align: left;
+        color: black;
+    }
+
+    .pa-tabla-reservas td::before {
+        content: attr(data-label);
+        font-weight: bold;
+        display: block;
+        margin-bottom: 4px;
+        color: #ec6e05;
+    }
+
+    .btn-reserva {
+        display: inline-block;
+        margin-top: 5px;
+        font-size: 0.85rem;
+    }
+   
+
 }

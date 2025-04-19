@@ -1,0 +1,476 @@
+.pa-main{
+    margin-top: 75px;
+    color: white;
+}
+
+.pa-h1{
+    font-size: 50px;
+    text-align: center;
+    margin-bottom: 20px;
+    text-decoration: underline;
+}
+
+.pa-p1{
+    text-align: center;
+    font-size: 25px;
+}
+
+.pa-crear-reserva{
+    min-height: 300px;
+    margin-top: 25px;
+    margin-left: auto;
+    margin-right: auto;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 10px;
+    border-color: grey;
+    background-color: #2b2323;
+    width: 80%;
+    max-width: 1000px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.pa-crear-reserva:hover{
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+}
+
+.pa-selector-trayecto {
+    display: flex;
+    justify-content: center;
+    gap: 30px; 
+    margin: 30px 0;
+    flex-wrap: wrap;
+}
+
+.pa-trayecto-opcion {
+    width: 300px; 
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.pa-trayecto-opcion:hover {
+    transform: scale(1.05);
+}
+
+.pa-trayecto-opcion img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+}
+
+.pa-h2{
+    margin-left: 30px;
+    text-align: center;
+    padding-top: 10px;
+    color: #f8ce70;
+    font-size: 35px;
+}
+
+.pa-h3-titulo-trayecto {
+    margin-left: 30px;
+    text-align: center;
+    padding-top: 10px;
+    color: #f8ce70;
+    font-size: 35px;
+}
+
+.pa-btn-cambiar-trayecto {
+    margin: 10px 30px 20px;
+    padding: 8px 16px;
+    font-size: 0.95rem;
+    background-color: #726963;
+    color: white;
+    border: 1px solid #f8ce70;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.pa-btn-cambiar-trayecto:hover {
+    background-color: #8d827c;
+}
+
+.pa-form{
+    padding-left: 30px;
+    margin-left: 0;
+}
+
+.pa-form-tipo{
+    margin-top: 10px;
+}
+.pa-form-tipo select {
+    margin-left: 10px;
+    border-radius: 6px;
+    border: 1px solid #f8ce70;
+    background-color: #726963;
+    color: white;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4); 
+    transition: box-shadow 0.3s ease; 
+}
+
+
+.pa-form-hora-llegada,
+.pa-form-dia-llegada,
+.pa-form-numero-vuelo,
+.pa-form-aeropuerto-origen,
+.pa-form-zona,
+.pa-form-hotel-destino,
+.pa-form-numero-viajeros,
+.pa-form-nombre-cliente,
+.pa-form-email,
+.pa-form-dia-vuelo,
+.pa-form-hora-vuelo,
+.pa-form-hora-recogida,
+.pa-form-hotel-recogida,
+.pa-form-aeropuerto-destino{
+    margin-top: 20px;
+    padding-left: 40px;
+}
+
+.pa-form-email{
+    margin-bottom: 20px;
+}
+
+.pa-input-dia-llegada,
+.pa-input-dia-vuelo{
+    margin-left: 23px;
+    border-radius: 6px;
+    border: 1px solid #f8ce70;
+    background-color: #726963;
+    color: white;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4); 
+    transition: box-shadow 0.3s ease; 
+}
+
+.pa-input-hora-llegada,
+.pa-input-hora-vuelo,
+.pa-input-hora-recogida{
+    margin-left: 13px;
+    border-radius: 6px;
+    border: 1px solid #f8ce70;
+    background-color: #726963;
+    color: white;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4); 
+    transition: box-shadow 0.3s ease; 
+}
+
+
+.pa-form-opcional{ 
+    margin-left: 30px;
+    margin-bottom: 10px;
+    width: 20%;            
+    max-width: 160px;       
+    height: 5px;          
+    padding: 10px;          
+    font-size: 1rem;
+    border-radius: 6px;
+    border: 1px solid #f8ce70;
+    background-color: #726963;
+    color: white;
+    cursor: text;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4); 
+    transition: box-shadow 0.3s ease; 
+}
+
+.pa-input-numero-vuelo{
+    margin-left: 10px;
+    width: 20%;            
+    max-width: 60px;       
+    height: 5px;          
+    padding: 10px;          
+    font-size: 1rem;
+    border-radius: 6px;
+    border: 1px solid #f8ce70;
+    background-color: #726963;
+    color: white;
+    cursor: text;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4); 
+    transition: box-shadow 0.3s ease; 
+}
+
+
+
+.pa-input-aeropuerto-origen,
+.pa-input-aeropuerto-destino{
+    margin-left: 10px;
+    width: 50%;            
+    max-width: 200px;       
+    height: 5px;          
+    padding: 10px;          
+    font-size: 1rem;
+    border-radius: 6px;
+    border: 1px solid #f8ce70;
+    background-color: #726963;
+    color: white;
+    cursor: text;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4); 
+    transition: box-shadow 0.3s ease; 
+}
+
+
+
+.pa-input-hotel-destino,
+.pa-input-hotel-recogida{
+    margin-left: 10px;
+    width: 50%;            
+    max-width: 200px;       
+    height: 5px;          
+    padding: 10px;          
+    font-size: 1rem;
+    border-radius: 6px;
+    border: 1px solid #f8ce70;
+    background-color: #726963;
+    color: white;
+    cursor: text;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4); 
+    transition: box-shadow 0.3s ease; 
+}
+
+.pa-select-numero-viajeros,
+.pa-input-zona,
+.pa-select-hotel-destino,
+.pa-select-hotel-destino{
+    margin-left: 10px;
+    width: 50%;            
+    max-width: 200px;        
+    padding: 3px;          
+    font-size: 0.9rem;
+    border-radius: 6px;
+    border: 1px solid #f8ce70;
+    background-color: #726963;
+    color: white;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4); 
+    transition: box-shadow 0.3s ease; 
+}
+.pa-input-nombre-cliente{
+    margin-left: 10px;
+    width: 50%;            
+    max-width: 200px;        
+    padding: 7px;          
+    font-size: 0.9rem;
+    border-radius: 6px;
+    border: 1px solid #f8ce70;
+    background-color: #726963;
+    color: white;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4); 
+    transition: box-shadow 0.3s ease; 
+    height: 3px;
+}
+
+.pa-input-email{
+    margin-left: 10px;
+    width: 50%;            
+    max-width: 200px;        
+    padding: 1px;   
+    height: 7px;       
+    font-size: 0.9rem;
+    border-radius: 6px;
+    border: 1px solid #f8ce70;
+    background-color: #726963;
+    color: white;
+    cursor: text;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4); 
+    transition: box-shadow 0.3s ease;
+}
+
+
+
+.pa-aeropuerto-hotel-submit,
+.pa-hotel-aeropuerto-submit,
+.pa-ida-vuelta-submit{
+    display: flex;
+    justify-content: center; 
+    gap: 10px; 
+    margin: 30px 30px;
+}
+.pa-aeropuerto-hotel-button,
+.pa-hotel-aeropuerto-button,
+.pa-ida-vuelta-button{
+    background-color: #f8ce70 !important; 
+    color: #221a1a !important  ;  
+                      
+    border: none !important  ;
+    border-radius: 6px !important  ;
+    padding: 10px 20px !important  ;
+    font-size: 1rem !important  ;
+    font-weight: bold !important  ;
+    cursor: pointer !important  ;
+    margin-top: 20px !important  ;
+    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.4) !important  ;
+    transition: background-color 0.3s ease, transform 0.2s ease !important  ;
+}
+
+.pa-aeropuerto-hotel-button:hover,
+.pa-hotel-aeropuerto-button:hover,
+.pa-ida-vuelta-button:hover {
+    background-color: #f5b94c !important  ;        
+    transform: scale(1.03) !important  ;            
+}
+
+.pa-dos-columnas {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    margin-top: 30px;
+    margin-left: 10px;
+    margin-right: 10px;
+    flex-wrap: wrap;
+  }
+  
+  .pa-columna {
+    flex: 1;
+    min-width: 300px;
+    padding: 10px;
+    border: 1px solid #f8ce70;
+    border-radius: 10px;
+    background-color: #3a2e2e;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  }
+
+  .pa-titulo-ida-y-vuelta{
+    text-align: center;
+    color: #f8ce70;
+  }
+
+/* Lista*/
+.pa-lista-reservas {
+    width: 1400px;
+    text-align: center;
+    margin: auto;
+    
+}
+
+.pa-tabla-reservas {
+    width: 100%;
+    border-collapse: collapse;
+    border-radius: 12px;        
+    overflow: hidden;           
+}
+.tabla-wrapper {
+    border: 2px solid grey;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.pa-casillas-reservas{
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid grey;  
+    border-radius: 12px;        
+    overflow: hidden;   
+}
+
+.btn-reserva {
+    padding: 6px 12px;
+    margin: 2px;
+    border: none;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.btn-editar {
+    background-color: #007bff;
+    color: white;
+}
+
+.btn-editar:hover {
+    background-color: #0056b3;
+}
+
+.btn-borrar {
+    background-color: #dc3545;
+    color: white;
+}
+
+.btn-borrar:hover {
+    background-color: #a71d2a;
+}
+.btn-detalles {
+    background-color: #f5b94c;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 500;
+    margin-right: 5px;
+}
+
+.btn-detalles:hover {
+    background-color: #f1a009;
+}
+/*Detalles reserva*/
+.pa-detalle-reserva {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 30px;
+    background-color: #fff7e6;
+    border: 2px solid #f5b94c;
+    border-radius: 12px;
+    font-family: 'Roboto', sans-serif;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.pa-detalle-reserva h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.pa-detalle-reserva ul {
+    list-style: none;
+    padding: 0;
+    font-size: 1rem;
+}
+
+.pa-detalle-reserva li {
+    padding: 8px 0;
+    border-bottom: 1px solid #ddd;
+}
+
+.pa-detalle-reserva li:last-child {
+    border-bottom: none;
+}
+
+.btn-volver {
+    display: inline-block;
+    margin-top: 20px;
+    background-color: #f5b94c;
+    color: #000;
+    padding: 8px 16px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: background 0.3s ease;
+}
+
+.btn-volver:hover {
+    background-color: #e0a631;
+}
+
+
+/* Calendario*/
+  .fc-event {
+    cursor: pointer;
+}
+
+.pa-calendario{
+    margin-bottom: 30px;
+    
+}
+#calendar{
+    border: 2px solid grey;
+    border-radius: 12px;
+    padding: 10px;
+    width: 1400px;
+    margin: auto;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* opcional: sombra sutil */
+}

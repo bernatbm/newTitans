@@ -33,20 +33,42 @@ service.addEventListener("click", () => {
 });
 });
 
-//PopUp de alerta de registro completado
-document.addEventListener("DOMContentLoaded", () => {
-    if (window.registrado) {
-        const { nombre, isAdmin } = window.registrado;
+// Lógica de pestañas
+const tabs = document.querySelectorAll('.tab');
+const contents = document.querySelectorAll('.tab-content');
 
-        let tipoUsuario = "";//Usuario, saldra vacío
-        if (isAdmin === "1") tipoUsuario = "Administrador";
-        else if (isAdmin === "2") tipoUsuario = "Corporativo";
+tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+        tabs.forEach(t => t.classList.remove('active'));
+        contents.forEach(c => c.classList.remove('active'));
 
-        alert(`¡${nombre},${tipoUsuario} ha sido registrado con éxito!`);//saldra la alerta con el popup
-
-        
-        const nuevaURL = window.location.origin + window.location.pathname;//Limpiaremos la URL para que no nos salga dos veces el popup
-        window.history.replaceState({}, document.title, nuevaURL);
-    }
+        tab.classList.add('active');
+        document.getElementById(tab.dataset.tab).classList.add('active');
+    });
 });
 
+// Función para abrir la pestaña seleccionada
+function openTab(tabName) {
+    // Ocultar todos los contenidos de las pestañas
+    var tabs = document.querySelectorAll('.tab-content');
+    tabs.forEach(function(tab) {
+        tab.classList.remove('active');
+    });
+
+    // Eliminar la clase "active" de todas las pestañas
+    var tabLinks = document.querySelectorAll('.tab');
+    tabLinks.forEach(function(link) {
+        link.classList.remove('active');
+    });
+
+    // Mostrar el contenido de la pestaña seleccionada
+    document.getElementById(tabName).classList.add('active');
+
+    // Marcar la pestaña seleccionada como "active"
+    event.target.classList.add('active');
+}
+
+// Mostrar la pestaña "Registrar Usuario" por defecto al cargar la página
+document.addEventListener('DOMContentLoaded', function() {
+    openTab('usuario');
+});
