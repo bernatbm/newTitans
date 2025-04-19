@@ -42,13 +42,21 @@ if ($reserva === null) {
     $excluir = ['id_reserva', 'localizador'];
     foreach ($reserva as $campo => $valor):
         if (in_array($campo, $excluir)) continue;
-
+    
         $tipo = 'text';
         if (str_contains($campo, 'fecha')) $tipo = 'date';
         if (str_contains($campo, 'hora')) $tipo = 'time';
+    
+        // Formatear fecha si es necesario
+        if ($tipo === 'date' && !empty($valor)) {
+            $valor = substr($valor, 0, 10); // De "YYYY-MM-DD HH:MM:SS" a "YYYY-MM-DD"
+        }
+    
+        // Solo poner required si el campo ya tiene valor
+        $esRequerido = !is_null($valor) && $valor !== '' ? 'required' : '';
     ?>
         <label for="<?= $campo ?>"><?= ucfirst(str_replace('_', ' ', $campo)) ?>:</label>
-        <input type="<?= $tipo ?>" name="<?= $campo ?>" id="<?= $campo ?>" value="<?= htmlspecialchars($valor ?? '') ?>" required>
+        <input type="<?= $tipo ?>" name="<?= $campo ?>" id="<?= $campo ?>" value="<?= htmlspecialchars($valor ?? '') ?>" <?= $esRequerido ?>>
     <?php endforeach; ?>
 
     <div class="optionbuttons">

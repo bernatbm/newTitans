@@ -407,12 +407,13 @@ class ReservasModel {
                 return false;
             }
         
-            // Preparar los datos con fallback al valor anterior o a null
             function valor($clave, $datos, $reserva) {
-                return array_key_exists($clave, $datos) 
-                    ? ($datos[$clave] !== '' ? $datos[$clave] : $reserva[$clave])
-                    : $reserva[$clave];
+                if (array_key_exists($clave, $datos)) {
+                    return $datos[$clave] === '' ? null : $datos[$clave];
+                }
+                return $reserva[$clave];
             }
+            
         
             $sql = "UPDATE transfer_reservas SET
                 id_hotel = :id_hotel,
@@ -437,7 +438,7 @@ class ReservasModel {
                 ':id_hotel' => valor('id_hotel', $datos, $reserva),
                 ':id_tipo_reserva' => valor('id_tipo_reserva', $datos, $reserva),
                 ':email_cliente' => valor('email_cliente', $datos, $reserva),
-                ':fecha_reserva' => valor('fecha_reserva', $datos, $reserva) ?: null,
+                ':fecha_reserva' => valor('fecha_reserva', $datos, $reserva),
                 ':id_destino' => valor('id_destino', $datos, $reserva),
                 ':fecha_entrada' => valor('fecha_entrada', $datos, $reserva) ?: null,
                 ':hora_entrada' => valor('hora_entrada', $datos, $reserva),
