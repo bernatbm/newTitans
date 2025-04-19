@@ -20,21 +20,21 @@ $controller = new ReservasController();
     <h1 class="pa-h1"style="display: none;">Perfil de Administrador</h1>
     <p class="pa-p1"style="display: none;">Bienvenido, aquí puedes crear y gestionar reservas</p>
     <!-- Formulario "Crear reserva"-->
-        <section class="pa-crear-reserva"  style="display: none;" id= "options">
+        <section class="pa-crear-reserva" style= "margin-top:170px" id= "options">
             <div>
                 <h2 class="pa-h2" id="h2-selector">Crear reserva - Seleccione el trayecto que quiere reservar</h2>
-                <h3 class="pa-h3-titulo-trayecto" id="titulo-trayecto" style="display: none;"></h3>
+                <h3 class="pa-h3-titulo-trayecto" id="titulo-trayecto"></h3>
 
                 <!--Selector de formulario con imagenes -->
 
                 <div class="pa-selector-trayecto">
-                    <div class="pa-trayecto-opcion" data-tipo="aeropuerto-hotel" style="display: none;" id= "aeroHotel">
+                    <div class="pa-trayecto-opcion" data-tipo="aeropuerto-hotel"  id= "aeroHotel">
                         <img src="../assets/imagenes/aero-hotel.png" alt="Aeropuerto a Hotel">
                     </div>
-                    <div class="pa-trayecto-opcion" data-tipo="hotel-aeropuerto" style="display: none;" id= "hotelAero">
+                    <div class="pa-trayecto-opcion" data-tipo="hotel-aeropuerto" id= "hotelAero">
                         <img src="../assets/imagenes/hotel-aero.jpg" alt="Hotel a Aeropuerto">
                     </div>
-                    <div class="pa-trayecto-opcion" data-tipo="ida-vuelta"  style="display: none;" id= "idaVuelta">
+                    <div class="pa-trayecto-opcion" data-tipo="ida-vuelta"  id= "idaVuelta">
                         <img src="../assets/imagenes/idavuelta.jpg" alt="">
                     </div>
 
