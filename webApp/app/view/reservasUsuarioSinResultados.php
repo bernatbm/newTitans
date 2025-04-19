@@ -9,7 +9,7 @@
     <div class="mensaje-vacio">
         <h2>❌ No se han encontrado reservas</h2>
         <p>Actualmente no tienes ninguna reserva registrada.</p>
-        <a href="perfilUsuario.php" class="btn-volver">⬅ Volver al panel</a>
+        <a href="../usuario/perfilUsuario.php" class="btn-volver">⬅ Volver al panel</a>
     </div>
 </body>
 </html>
