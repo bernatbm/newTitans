@@ -1,5 +1,14 @@
 <?php
 session_start();
+if (!isset($_SESSION['isAdmin']) || $_SESSION['isAdmin'] != 0) {
+    header("Location: login.php?error=acceso_denegado");
+    exit;
+}
+require_once '../model/database.php';
+
+$db = new Database();
+$conn = $db->getConn();
+
 ?>
 <!DOCTYPE html>
 <html lang="es">
