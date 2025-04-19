@@ -14,9 +14,9 @@ private $conn;
     }
 
     public function obtenerVehiclePerId($id) {
-        $sql = "SELECT * FROM transfer_vehiculo WHERE id_vehiculo = ?";
-        $stmt = $this->conn->prepare($sql);
-        $stmt->execute([$id]);
+        $stmt = $this->conn->prepare("SELECT Descripción FROM transfer_vehiculo WHERE id_vehiculo = ?");
+        $stmt->bindValue(1, $id, PDO::PARAM_INT);
+        $stmt->execute();
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 

@@ -16,8 +16,9 @@ class AirportModel {
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
     public function obtenerAeropuertoPorId($id) {
-        $stmt = $this->conn->prepare("SELECT * FROM transfer_aero WHERE id_destino = :id");
-        $stmt->execute([':id' => $id]);
+        $stmt = $this->conn->prepare("SELECT aeropuerto FROM transfer_aero WHERE id_destino = ?");
+        $stmt->bindValue(1, $id, PDO::PARAM_INT); 
+        $stmt->execute();
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 

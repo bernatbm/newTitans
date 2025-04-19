@@ -54,10 +54,10 @@ $vehiculos = $model->obtenerVehicles();
                 </thead>
                 <tbody>
                     <?php foreach ($vehiculos as $vehiculo): ?>
-                        <tr class="pa-casillas-reservas">
-                            <td style="text-align:center; color: white"><?= $vehiculo['id_vehiculo'] ?></td>
-                            <td style="text-align:center; color:white"><?= htmlspecialchars($vehiculo['Descripción'] ?? '') ?></td>
-                            <td style="text-align:center; color:white"><?= htmlspecialchars($vehiculo['email_conductor']) ?></td>
+                        <tr class="pa-casillas-reservas"style="color:white">
+                            <td data-label="ID"style="text-align:center;"><?= $vehiculo['id_vehiculo'] ?></td>
+                            <td data-label="VEHICULO"style="text-align:center;"><?= htmlspecialchars($vehiculo['Descripción'] ?? '') ?></td>
+                            <td data-label="EMAIL CONDUCTOR" style="text-align:center;"><?= htmlspecialchars($vehiculo['email_conductor']) ?></td>
                             <td style="text-align:center">
                                 <a class="btn-reserva btn-editar" href="editarVehiculo.php?id_vehiculo=<?= $vehiculo['id_vehiculo'] ?>">Editar</a>
                                 <a class="btn-reserva btn-borrar" href="../controller/vehicleController.php?accion=eliminar&id_vehiculo=<?= $vehiculo['id_vehiculo'] ?>" onclick="return confirm('¿Eliminar este vehículo?')">Eliminar</a>
@@ -70,4 +70,3 @@ $vehiculos = $model->obtenerVehicles();
     </section>
 </div>
 
-<hr>

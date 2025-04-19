@@ -22,14 +22,15 @@ class HotelController {
     // Agregar un nuevo hotel
     public function agregarHotel() {
         if ($_SERVER['REQUEST_METHOD'] === 'POST' && !isset($_POST['id_hotel'])) {  // Solo agregar si NO existe id_hotel
-            // Sanitizar y validar los datos de entrada
-            $nombre_hotel = htmlspecialchars($_POST['nombre_hotel']);
-            $id_zona = filter_var($_POST['id_zona'], FILTER_SANITIZE_NUMBER_INT);
+            // Recoger datos del formulario
+            $nombre_hotel = $_POST['nombre_hotel'];
+            $id_zona = $_POST['id_zona'];
+            $comision = isset($_POST['Comision']) && $_POST['Comision'] !== '' ? $_POST['Comision'] : 10; // Asignar valor por defecto si no se ha enviado
+            $usuario = $_POST['usuario'];
+            $password = $_POST['password'];
 
-            // Si 'comision' es un campo opcional, lo tratamos como tal
-            $comision = isset($_POST['comision']) ? filter_var($_POST['comision'], FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION) : 0.0;
-            $usuario = htmlspecialchars($_POST['usuario']);
-            $password = htmlspecialchars($_POST['password']);
+            
+            $this->model->insertarHotel($nombre_hotel, $id_zona, $comision, $usuario, $password);
 
             // Validación simple
             if (empty($nombre_hotel) || empty($usuario) || empty($password)) {
@@ -57,13 +58,31 @@ class HotelController {
 
     // Editar hotel
     public function editar($id, $datos) {
-        $hotel = trim($datos);
-        if (!empty($$hotel)) {
-            $this->model->actualizarHotel($id, $hotel);
-            header("Location: ../view/hotelView.php?editado=true");
-            exit; 
-    }
-}
+        // Asegúrate de aplicar trim a los valores específicos del array
+        $nombre_hotel = isset($datos['nombre_hotel']) ? trim($datos['nombre_hotel']) : null;
+        $id_zona = isset($datos['id_zona']) ? trim($datos['id_zona']) : null;
+        $comision = isset($datos['comision']) ? trim($datos['comision']) : null;
+        $usuario = isset($datos['usuario']) ? trim($datos['usuario']) : null;
+        $password = isset($datos['password']) ? trim($datos['password']) : null;
+    
+        // Crear el array con los datos que vamos a actualizar
+        $datos = [
+            'nombre_hotel' => $nombre_hotel,
+            'id_zona' => $id_zona,
+            'comision' => $comision,
+            'usuario' => $usuario,
+            'password' => $password
+        ];
+    
+        // Llamar a la función actualizarHotel con el array de datos
+        $this->model->actualizarHotel($id, $datos);
+    
+        // Redirigir después de la actualización
+        header("Location: ../view/hotelView.php?editado=true");
+        exit;
+    }    
+    
+
 }
 // Inicialización del controlador
 $controller = new HotelController();

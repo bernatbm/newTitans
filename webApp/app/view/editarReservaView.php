@@ -3,18 +3,27 @@ session_start();
 
 require_once '../model/database.php';
 require_once '../model/reservasModel.php';
+require_once '../model/vehicleModel.php'; 
+require_once '../model/airportModel.php'; 
 
 $db = new Database();
 $conn = $db->getConn();
 $model = new ReservasModel($conn);
+$vehiculoModel = new VehicleModel($conn);
+$aeropuertoModel = new AirportModel($conn);
+
 
 $id = $_GET['id'] ?? null; // Obtener el ID de la reserva desde la URL
 $reserva = $model->obtenerReservaPorId($id); // Obtener la reserva
 
 if ($reserva === null) {
-    echo "❌ Reserva no encontrada.";
+    echo "❌ Reserva no encontrada."; 
     exit;
 }
+$vehiculo = $vehiculoModel->obtenerVehiclePerId($reserva['id_vehiculo']);
+var_dump($vehiculo);
+$aeropuerto = $aeropuertoModel->obtenerAeropuertoPorId($reserva['id_destino']);
+
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -36,7 +45,7 @@ if ($reserva === null) {
 
     <!-- Campo no editable para el localizador -->
     <label>Localizador (no editable):</label>
-    <input type="text" disabled value="<?= htmlspecialchars($reserva['localizador']) ?>" required>
+    <input type="text" disabled value="<?= htmlspecialchars($reserva['localizador']) ?>" required><br>
 
     <?php
     $excluir = ['id_reserva', 'localizador'];
@@ -55,10 +64,10 @@ if ($reserva === null) {
         // Solo poner required si el campo ya tiene valor
         $esRequerido = !is_null($valor) && $valor !== '' ? 'required' : '';
     ?>
-        <label for="<?= $campo ?>"><?= ucfirst(str_replace('_', ' ', $campo)) ?>:</label>
-        <input type="<?= $tipo ?>" name="<?= $campo ?>" id="<?= $campo ?>" value="<?= htmlspecialchars($valor ?? '') ?>" <?= $esRequerido ?>>
-    <?php endforeach; ?>
-
+         <label for="<?= $campo ?>"><?= ucfirst(str_replace('_', ' ', $campo)) ?>:</label><br>
+         <input type="<?= $tipo ?>" name="<?= $campo ?>" id="<?= $campo ?>" value="<?= htmlspecialchars($valor ?? '') ?>" <?= $esRequerido ?>><br>
+<?php endforeach; ?>
+       
     <div class="optionbuttons">
         <div class="left">
             <a href="../admin/panelAdministrador.php" class="btn-volver">⬅ Volver al panel</a>

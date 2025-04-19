@@ -8,12 +8,19 @@ class HotelModel {
 
     // Obtener todos los hoteles
     public function obtenerHoteles() {
-        $stmt = $this->conn->query("SELECT * FROM transfer_hotel");
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
-    }
+            $stmt = $this->conn->query("
+                SELECT h.*, z.descripcion 
+                FROM transfer_hotel h
+                JOIN transfer_zona z ON h.id_zona = z.id_zona
+            ");
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        }
+    
 
     // Insertar un nuevo hotel
     public function insertarHotel($nombre, $zona, $comision, $usuario, $password) {
+        $comision = isset($comision) ? $comision : 10;
+
         $stmt = $this->conn->prepare(
             "INSERT INTO transfer_hotel (nombre_hotel, id_zona, Comision, usuario, password) 
             VALUES (:nombre_hotel, :id_zona, :Comision, :usuario, :password)"
@@ -65,6 +72,13 @@ class HotelModel {
         if (!$hotel) {
             return false;
         }
+        // Actualizar con los valores del array de datos
+        $nombre_hotel = isset($datos['nombre_hotel']) ? $datos['nombre_hotel'] : $hotel['nombre_hotel'];
+        $id_zona = isset($datos['id_zona']) ? $datos['id_zona'] : $hotel['id_zona'];
+        $comision = isset($datos['comision']) ? $datos['comision'] : $hotel['comision'];
+        $usuario = isset($datos['usuario']) ? $datos['usuario'] : $hotel['usuario'];
+        $password = isset($datos['password']) ? $datos['password'] : $hotel['password'];
+
     
         // Fallback a los valores actuales si no se envían datos nuevos
         function valor($clave, $datos, $hotel) {
@@ -73,26 +87,19 @@ class HotelModel {
                 : $hotel[$clave];
         }
     
-        $sql = "UPDATE transfer_hotel SET 
-                    nombre_hotel = :nombre_hotel,
-                    id_zona = :id_zona,
-                    Comision = :comision,
-                    usuario = :usuario,
-                    password = :password
-                WHERE id_hotel = :id";
-    
-        $data = [
-            ':nombre_hotel' => valor('nombre_hotel', $datos, $hotel),
-            ':id_zona' => valor('id_zona', $datos, $hotel),
-            ':comision' => valor('comision', $datos, $hotel),
-            ':usuario' => valor('usuario', $datos, $hotel),
-            ':password' => valor('password', $datos, $hotel),
-            ':id' => $id
-        ];
-    
-        $stmt = $this->conn->prepare($sql);
-        return $stmt->execute($data);
-    }
+        // Actualizar la base de datos con los nuevos valores
+        $stmt = $this->conn->prepare("UPDATE transfer_hotel SET nombre_hotel = :nombre_hotel, id_zona = :id_zona, comision = :comision, usuario = :usuario, password = :password WHERE id_hotel = :id");
+        $stmt->bindParam(':nombre_hotel', $nombre_hotel);
+        $stmt->bindParam(':id_zona', $id_zona);
+        $stmt->bindParam(':comision', $comision);
+        $stmt->bindParam(':usuario', $usuario);
+        $stmt->bindParam(':password', $password);
+        $stmt->bindParam(':id', $id);
+
+        // Ejecutar la actualización
+        return $stmt->execute();
+        }
+   
     
 }
 ?>

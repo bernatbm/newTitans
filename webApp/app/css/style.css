@@ -244,6 +244,16 @@ header nav a:hover {
     width: 24px; 
     height: 24px;
 }
+.addVehicle{
+    content: url("../assets/imagenes/addCar.svg");
+    height: 24px;
+}
+
+.addVehicle:hover {
+    content: url("../assets/imagenes/addCarHover.svg");
+    width: 24px; 
+    height: 24px;
+}
 /*END HEADER BUTTONS OPTIONS*/
 
 
@@ -306,7 +316,19 @@ header nav a:hover {
     box-sizing: border-box;
     
 }
-
+.btn-cancelar {
+    background-color: #f44336; /* rojo */
+    color: black;
+    padding: 8px 12px;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+  }
+  
+  .btn-cancelar:hover {
+    background-color: #d32f2f;
+  }
+  
 /* Animación y borde al hacer hover */
 .service:hover {
     transform: translateY(-5px);
@@ -483,11 +505,43 @@ header nav a:hover {
 
 
 
-.name-airport{
+/* Estilo para los labels */
+.name-airport {
     color: #f3c158;
-    margin-top: 25px; 
-    font-size: 20px;  
+    margin-top: 25px;
+    font-size: 20px;
+    display: block; /* Asegura que los labels estén en líneas separadas */
+    text-align: left; /* Alineación a la izquierda */
+}
 
+/* Estilo para los campos de entrada y select */
+.input-name {
+    width: 100%; /* Hace que los inputs ocupen todo el ancho */
+    padding: 12px;
+    margin-bottom: 20px; /* Espaciado entre campos */
+    font-size: 16px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    background-color: #fff;
+    color: #333;
+    box-sizing: border-box; /* Incluye el padding en el ancho total */
+}
+label {
+    color: #f3c158;
+    font-size: 16px;
+    margin-top: 15px;
+}
+/* Estilo para el select */
+.select-name {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 20px;
+    font-size: 16px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    background-color: #fff;
+    color: #333;
+    box-sizing: border-box;
 }
 .form-edit-airport{
     text-align: center;

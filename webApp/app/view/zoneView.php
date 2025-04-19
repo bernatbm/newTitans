@@ -24,15 +24,20 @@ $zonas = $model->obtenerZonas();
 <?php include '../shared/header.php'; ?>
 
 <!-- Formulario para añadir zona -->
+<!-- Formulario para añadir zona -->
 <form class="form-h2-airport" method="POST" action="../controller/zoneController.php">
     <h2 class="pa-h2-airport">Agregar Zona</h2>
     <input type="hidden" name="crear" value="1">
 
     <label class="name-airport">Descripción:</label>
-    <input class="input-name" type="text" name="descripcion" required>
+    <select class="input-name" name="descripcion" required>
+        <?php foreach ($zonas as $zona): ?>
+            <option value="<?= $zona['id_zona'] ?>"><?= htmlspecialchars($zona['descripcion']) ?></option>
+        <?php endforeach; ?>
+    </select>
 
     <button type="submit" class="btn-reserva">➕ Añadir Zona</button>
-    </form>
+</form>
 <div class="form-list">
     <section class="pa-lista-reservas">
         <h2 class="pa-h2-lista">Listado de Zonas</h2>
@@ -47,9 +52,9 @@ $zonas = $model->obtenerZonas();
                 </thead>
                 <tbody>
                     <?php foreach ($zonas as $zona): ?>
-                        <tr class="pa-casillas-reservas">
-                            <td style="text-align:center; color: white"><?= $zona['id_zona'] ?></td>
-                            <td style="text-align:center; color:white"><?= htmlspecialchars($zona['descripcion']) ?></td>
+                        <tr class="pa-casillas-reservas"style="color:white">
+                            <td data-label="ID"style="text-align:center;"><?= $zona['id_zona'] ?></td>
+                            <td  data-label="Zona" style="text-align:center;"><?= htmlspecialchars($zona['descripcion']) ?></td>
                             <td style="text-align:center">
                                 <a class="btn-reserva btn-editar" href="editarZona.php?id=<?= $zona['id_zona'] ?>">Editar</a>
                                 <a class="btn-reserva btn-borrar" href="../controller/zoneController.php?accion=eliminar&id=<?= $zona['id_zona'] ?>" onclick="return confirm('¿Eliminar esta zona?')">Eliminar</a>
@@ -62,5 +67,5 @@ $zonas = $model->obtenerZonas();
     </section>
 </div>
 
-<hr>
+
 

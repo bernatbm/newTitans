@@ -1,6 +1,7 @@
 <?php
 require_once '../model/database.php';
 require_once '../model/reservasModel.php';
+require_once __DIR__ . '/enviarMail.php';
 
 class ReservasController {
 
@@ -14,6 +15,7 @@ class ReservasController {
 
     public function procesarReserva() {
         $datos = $_POST;
+        $emailCliente = $datos['email_cliente'];
     
         if (!empty($datos['id_reserva'])) {
             // Actualizar reserva
@@ -32,6 +34,7 @@ class ReservasController {
             } else {
                 $this->model->addIdaVuelta();
             }
+            enviarCorreoReserva($emailCliente, $datos);
         }
         header("Location: ../admin/panelAdministrador.php");
         exit;

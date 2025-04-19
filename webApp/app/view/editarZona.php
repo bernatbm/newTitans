@@ -11,7 +11,7 @@ require_once '../model/zoneModel.php';
 $db = new Database();
 $conn = $db->getConn();
 $model = new ZoneModel($conn);
-
+$zonas = $model->obtenerZonas();
 if (!isset($_GET['id'])) {
     header("Location: zoneView.php");
     exit;
@@ -35,7 +35,14 @@ if (!$zona) {
         <input type="hidden" name="id" value="<?= $zona['id_zona'] ?>">
 
         <label class="name-airport">Descripción:</label>
-        <input class="input-name" type="text" name="descripcion" value="<?= htmlspecialchars($zona['descripcion']) ?>" required>
+        <select class="input-name" name="descripcion" required>
+            <?php foreach ($zonas as $zonaOption): ?>
+                <option value="<?= $zonaOption['id_zona'] ?>" 
+                        <?= ($zonaOption['id_zona'] == $zona['id_zona']) ? 'selected' : '' ?>>
+                    <?= htmlspecialchars($zonaOption['descripcion']) ?>
+                </option>
+            <?php endforeach; ?>
+        </select>
 
         <button type="submit" class="btn-reserva">💾 Guardar Cambios</button>
         <a href="zoneView.php" class="btn-reserva btn-cancelar">↩️ Cancelar</a>
