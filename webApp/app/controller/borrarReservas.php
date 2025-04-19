@@ -2,8 +2,13 @@
 session_start();
 require_once '../model/database.php';
 
+if (!isset($_SESSION['userName']) || $_SESSION['isAdmin'] != 0) {
+    header("Location: ../view/login.php?error=acceso_denegado");
+    exit;
+}
+
 if (isset($_GET['id']) && is_numeric($_GET['id'])) {
-    $id = (int) $_GET['id']; // Cast por seguridad
+    $id = (int) $_GET['id'];
 
     try {
         $db = new database();
@@ -16,7 +21,7 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
         $reserva = $stmt->fetch(PDO::FETCH_ASSOC);
 
         if (!$reserva) {
-            echo "<p style='color: red;'>❌ Reserva no encontrada.</p>";
+            header("Location: ../controller/reservasUsuarioController.php?error=reserva_no_encontrada");
             exit;
         }
 
@@ -27,19 +32,23 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
 
         // 2. Verificar si han pasado más de 2 días
         if ($dias >= 2) {
-            // Eliminar la reserva por ID
+            // Eliminar la reserva
             $stmt = $conn->prepare("DELETE FROM transfer_reservas WHERE id_reserva = :id");
             $stmt->bindParam(':id', $id, PDO::PARAM_INT);
             $stmt->execute();
 
+            header("Location: ../controller/reservasUsuarioController.php?borrado=1");
+            exit;
         } else {
-            echo "<p style='color: red;'>❌ No puedes borrar esta reserva hasta que pasen 2 días desde la fecha de creación.</p>";
+            header("Location: ../controller/reservasUsuarioController.php?error=no_puede_borrar");
             exit;
         }
     } catch (PDOException $e) {
-        echo "<p style='color: red;'>❌ Error al borrar la reserva: " . $e->getMessage() . "</p>";
+        header("Location: ../controller/reservasUsuarioController.php?error=error_borrar");
+        exit;
     }
 } else {
-    echo "<p style='color: red;'>❌ ID de reserva no válido.</p>";
+    header("Location: ../controller/reservasUsuarioController.php?error=id_invalido");
+    exit;
 }
 ?>

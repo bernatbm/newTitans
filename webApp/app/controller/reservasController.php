@@ -1,4 +1,5 @@
 <?php
+session_start();
 require_once '../model/database.php';
 require_once '../model/reservasModel.php';
 
@@ -13,28 +14,29 @@ class ReservasController {
     }
 
     public function procesarReserva() {
-        $datos = $_POST;
-    
-        if (!empty($datos['id_reserva'])) {
-            // Actualizar reserva
-            $this->model->actualizarReserva($datos['id_reserva'], $datos);
-            $id = $datos['id_reserva'];
-            header("Location: ../public/verReserva.php?id=" . $id . "&mensaje=Reserva%20Actualizada");
-            exit;
-        } else {
-            //añadir reserva segun tipo
-            $tipoReserva = $datos['id_tipo_reserva'] ?? null;
-    
+        try {
+            $tipoReserva = $_POST['id_tipo_reserva'] ?? null;
+            $localizador = null;
+
             if ($tipoReserva == '1') {
-                $this->model->addAeropuertoHotel();
+                $localizador = $this->model->addAeropuertoHotel();
             } elseif ($tipoReserva == '2') {
-                $this->model->addHotelAeropuerto();
+                $localizador = $this->model->addHotelAeropuerto();
             } else {
-                $this->model->addIdaVuelta();
+                $localizador = $this->model->addIdaVuelta();
             }
+
+            // Redirección según rol
+            $redirectUrl = ($_SESSION['isAdmin'] == 1) 
+                ? "../admin/panelAdministrador.php?reservado=ok&localizador=$localizador" 
+                : "../usuario/perfilUsuario.php?reservado=ok&localizador=$localizador";
+            
+            header("Location: $redirectUrl");
+            exit;
+
+        } catch (Exception $e) {
+            echo "❌ Error: " . $e->getMessage();
         }
-        header("Location: ../admin/panelAdministrador.php");
-        exit;
     }
 
     public function verReserva($id) {
@@ -70,14 +72,18 @@ class ReservasController {
     }
     public function eliminarReserva() {
         if (isset($_GET['id']) && is_numeric($_GET['id'])) {
-            $id = (int) $_GET['id'];
-            $this->model->deleteReserva($id);
-        } else {
-            echo "<p style='color: red;'>❌ ID de reserva no válido.</p>";
+            $id = (int)$_GET['id'];
+            if ($this->model->deleteReserva($id)) {
+                $redirectUrl = ($_SESSION['isAdmin'] == 1) 
+                    ? "../admin/panelAdministrador.php?mensaje=eliminado" 
+                    : "../usuario/perfilUsuario.php?mensaje=eliminado";
+                
+                header("Location: $redirectUrl");
+                exit;
+            }
         }
-    }
-    
-        
+        echo "❌ ID de reserva no válido.";
+    }   
         
 }
 
@@ -92,4 +98,4 @@ if (isset($_GET['action'])) {
         $controller->eliminarReserva();
     }
 }
-  
+

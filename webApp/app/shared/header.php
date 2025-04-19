@@ -72,9 +72,9 @@
             <a class="addAirport" href="../view/airportView.php"></a>
             <a class="addHotel" href="../view/hotelView.php"> </a>
             <a class="addZona" href="../view/zoneView.php"></a>
-            <a class="addVehicle" href="../view/vehicleView.php"></a>
+            <a class= "addVehicle" href="../view/vehicleView.php"></a>
 
-           
+
 
         </nav>
     </header>

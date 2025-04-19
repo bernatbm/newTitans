@@ -16,21 +16,23 @@ $hoteles = $model->obtenerHoteles();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../css/style.css?v=<?php echo time(); ?>">
+    <link rel="stylesheet" href="../css/style.css?v=<?php echo time(); ?>">
 </head>
+
 <?php include '../shared/header.php'; ?>
-<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../css/style.css?v=<?php echo time(); ?>">
 
 <!-- Formulario para añadir hotel -->
 <form class="form-h2-airport" method="POST" action="../controller/hotelController.php">
+    <input type="hidden" name="crear" value="1">
     <h2 class="pa-h2-airport">Añadir Nuevo Hotel</h2>
     
     <label class="name-airport">Nombre del hotel:</label>
     <input class="input-name" type="text" name="nombre_hotel" required>
 
     <label class="name-airport">ID Zona:</label>
-    <input class="input-name" type="number" name="id_zona" required></br>
+    <select name="id_zona" id="id_zona" required>
+        <?php include '../controller/getzonas.php'; ?>
+    </select></br>
 
     <label class="name-airport">Precio:</label>
     <input class="input-name" type="number" name="Comision" required></br>
@@ -68,11 +70,12 @@ $hoteles = $model->obtenerHoteles();
                                 <td style="text-align:center"><?= htmlspecialchars($hotel['id_hotel']) ?></td>
                                 <td style="text-align:center"><?= htmlspecialchars($hotel['nombre_hotel']) ?></td>
                                 <td style="text-align:center"><?= htmlspecialchars($hotel['id_zona']) ?></td>
-                                <td style="text-align:center"><?= htmlspecialchars($hotel['Comision']) ?></td>
+                                <td style="text-align:center"><?= htmlspecialchars($hotel['Comision'] ?? '') ?></td>
                                 <td style="text-align:center"><?= htmlspecialchars($hotel['usuario']) ?></td>
                                 <td style="text-align:center"><?= htmlspecialchars($hotel['password']) ?></td>
                                 <td style="text-align:center">
-                                    <a href="../controller/hotelController.php?accion=eliminar&id=<?= $hotel['id_hotel'] ?>" class="btn-reserva btn-borrar" onclick="return confirm('¿Eliminar este hotel?')"> Eliminar</a>
+                                <a class="btn-reserva btn-editar" href="editarHotel.php?id_hotel=<?= $hotel['id_hotel'] ?>">Editar</a>
+                                <a href="../controller/hotelController.php?accion=eliminar&id=<?= $hotel['id_hotel'] ?>" class="btn-reserva btn-borrar" onclick="return confirm('¿Eliminar este hotel?')"> Eliminar</a>
                                 </td>
                             </tr>
                         <?php endforeach; ?>
