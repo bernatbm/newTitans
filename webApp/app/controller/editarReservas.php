@@ -35,6 +35,36 @@ if ($dias < 2) {
 
 // Si se envía el formulario
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Función para sanitizar fechas y enteros
+    function sanitizarCampo($valor, $esFecha = false, $esEntero = false) {
+        if ($esFecha) {
+            return ($valor === '' || $valor === null) ? null : $valor;
+        }
+        if ($esEntero) {
+            return ($valor === '' || $valor === null) ? null : (int)$valor;
+        }
+        return $valor;
+    }
+
+    // Sanitizar todos los campos
+    $datos = [
+        ':id_hotel' => sanitizarCampo($_POST['id_hotel'], false, true),
+        ':id_tipo_reserva' => sanitizarCampo($_POST['id_tipo_reserva'], false, true),
+        ':email_cliente' => $_POST['email_cliente'],
+        ':id_destino' => sanitizarCampo($_POST['id_destino'], false, true),
+        ':fecha_entrada' => sanitizarCampo($_POST['fecha_entrada'], true),
+        ':hora_entrada' => $_POST['hora_entrada'],
+        ':numero_vuelo_entrada' => $_POST['numero_vuelo_entrada'],
+        ':origen_vuelo_entrada' => $_POST['origen_vuelo_entrada'],
+        ':hora_vuelo_salida' => $_POST['hora_vuelo_salida'],
+        ':fecha_vuelo_salida' => sanitizarCampo($_POST['fecha_vuelo_salida'], true),
+        ':num_viajeros' => sanitizarCampo($_POST['num_viajeros'], false, true),
+        ':id_vehiculo' => sanitizarCampo($_POST['id_vehiculo'], false, true),
+        ':numero_vuelo_salida' => $_POST['numero_vuelo_salida'],
+        ':hora_recogida' => $_POST['hora_recogida'],
+        ':id' => $id
+    ];
+
     $sql = "UPDATE transfer_reservas SET
         id_hotel = :id_hotel,
         id_tipo_reserva = :id_tipo_reserva,
@@ -53,25 +83,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         WHERE id_reserva = :id";
 
     $stmt = $conn->prepare($sql);
-    $stmt->execute([
-        ':id_hotel' => $_POST['id_hotel'],
-        ':id_tipo_reserva' => $_POST['id_tipo_reserva'],
-        ':email_cliente' => $_POST['email_cliente'],
-        ':id_destino' => $_POST['id_destino'],
-        ':fecha_entrada' => $_POST['fecha_entrada'],
-        ':hora_entrada' => $_POST['hora_entrada'],
-        ':numero_vuelo_entrada' => $_POST['numero_vuelo_entrada'],
-        ':origen_vuelo_entrada' => $_POST['origen_vuelo_entrada'],
-        ':hora_vuelo_salida' => $_POST['hora_vuelo_salida'],
-        ':fecha_vuelo_salida' => $_POST['fecha_vuelo_salida'],
-        ':num_viajeros' => $_POST['num_viajeros'],
-        ':id_vehiculo' => $_POST['id_vehiculo'],
-        ':numero_vuelo_salida' => $_POST['numero_vuelo_salida'],
-        ':hora_recogida' => $_POST['hora_recogida'],
-        ':id' => $id
-    ]);
+    $stmt->execute($datos);
 
-    header("Location: mostrarReservas.php");
+    header("Location: ../controller/reservasUsuarioController.php");
     exit;
 }
 ?>

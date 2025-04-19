@@ -101,7 +101,7 @@ class ReservasModel {
             $stmt->bindParam(':fecha_reserva', $fechaReserva);
             $stmt->execute();
 
-            $this->redirigirConLocalizador($localizador);
+            return $localizador;
 
 
         } catch (PDOException $e) {
@@ -124,12 +124,6 @@ class ReservasModel {
     public function fechaReservada(){
         $fechaReserva = date('Y-m-d H:i:s');
         return $fechaReserva;
-    }
-
-    // Función para redirigir con el localizador
-    public function redirigirConLocalizador($localizador) {
-        header("Location: ../admin/panelAdministrador.php?reservado=reserva&localizador=$localizador");
-        exit();
     }
 
     // Función para insertar reserva solo de ida
@@ -228,7 +222,7 @@ class ReservasModel {
                 $stmt->execute();
                 
         
-                $this->redirigirConLocalizador($localizador);
+                return $localizador;
         
                 
             } catch (PDOException $e) {
@@ -336,7 +330,7 @@ class ReservasModel {
                 $stmt->bindParam(':id_tipo_reserva', $idTipoReserva);
                 $stmt->execute();
         
-                $this->redirigirConLocalizador($localizador);
+                return $localizador;
             }catch (PDOException $e){
                 echo "Error al insertar: " . $e->getMessage();
             }
@@ -458,12 +452,9 @@ class ReservasModel {
     public function deleteReserva($id){
         try {
             $stmt = $this->conn->prepare("DELETE FROM transfer_reservas WHERE id_reserva = :id");
-            $stmt->bindParam(':id', $id, PDO::PARAM_INT);
-            $stmt->execute();
     
-            // Redirección tras eliminar
-            header("Location: ../admin/panelAdministrador.php?mensaje=eliminado");
-            exit;
+            $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+            return $stmt->execute(); // Retorna true/false
         } catch (PDOException $e) {
             echo "<p style='color: red;'>❌ Error al borrar la reserva: " . $e->getMessage() . "</p>";
         }

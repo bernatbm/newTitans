@@ -28,7 +28,7 @@ $vehiculos = $model->obtenerVehicles();
     <input type="hidden" name="crear" value="1">
 
     <label class="name-airport">Descripción:</label>
-    <input class="input-name" type="text" name="Descripción" required>
+    <input class="input-name" type="text" name="descripcion" required>
 
     <label class="name-airport">Email del conductor:</label>
     <input class="input-name" type="email" name="email_conductor" required>

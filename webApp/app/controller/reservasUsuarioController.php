@@ -3,6 +3,19 @@ session_start();
 
 require_once '../model/reservasUsuarioModel.php';
 
+if (isset($_GET['borrado'])) {
+    echo "<p class='exito'>✅ Reserva borrada correctamente.</p>";
+}
+if (isset($_GET['error'])) {
+    $errores = [
+        'reserva_no_encontrada' => '❌ Reserva no encontrada.',
+        'no_puede_borrar' => '❌ No puedes borrar reservas con menos de 2 días.',
+        'error_borrar' => '❌ Error al borrar la reserva.',
+        'id_invalido' => '❌ ID de reserva inválido.'
+    ];
+    echo "<p class='error'>" . ($errores[$_GET['error']] ?? '❌ Error desconocido.') . "</p>";
+}
+
 if (!isset($_SESSION['userName']) || $_SESSION['isAdmin'] != 0) {
     header("Location: ../view/login.php?error=acceso_denegado");
     exit;

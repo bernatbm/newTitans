@@ -244,6 +244,19 @@ header nav a:hover {
     width: 24px; 
     height: 24px;
 }
+
+.addVehicle{
+    content: url("../assets/imagenes/coche.svg");
+    width: 24px; 
+    height: 24px;
+}
+
+.addVehicle:hover {
+    content: url("../assets/imagenes/coche.svg");
+    width: 24px; 
+    height: 24px;
+}
+
 /*END HEADER BUTTONS OPTIONS*/
 
 
