@@ -40,7 +40,6 @@ if (isset($_GET['registro']) && $_GET['registro'] == 'registrado') {
         <input type="text" name="user" required>
         <label class="Name">Contraseña</label><br>
         <input type="password" name="password" required><br>
-        <input type="hidden" name="isAdmin" value="2">
     
         <div class="botones">
             <button type="submit" id="btnLogIn">ENTRAR</button>

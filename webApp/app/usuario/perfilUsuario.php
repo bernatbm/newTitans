@@ -20,7 +20,8 @@ session_start();
     <p class="pa-p1">Bienvenid@, aquí puedes crear y gestionar tus reservas</p>
 
     <ul class="user-panel-menu">
-        <li><a href="../controller/reservasUsuarioController.php">📄 Mis reservas</a></li>
+    
+        <li><a href="../controller/reservasController.php?action=listarUsuario">📄 Mis reservas</a></li>
         <li><a href="../view/nuevaResUsuarioView.php">➕ Nueva reserva</a></li>
         <li><a href="../controller/perfilUsuarioController.php">👤 Editar perfil</a></li>
     </ul>

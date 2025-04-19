@@ -16,9 +16,10 @@
                     <p><strong><?= $etiqueta ?>:</strong> <?= htmlspecialchars($reserva[$campo]) ?></p>
                 <?php endif; ?>
             <?php endforeach; ?>
-            <a href="../controller/editarReservas.php?id=<?= $reserva['id_reserva'] ?>" class="btn-reserva btn-editar">Editar</a>
-            <a href="../controller/borrarReservas.php?id=<?= $reserva['id_reserva'] ?>" class="btn-reserva btn-borrar" onclick="return confirm('¿Seguro que quieres borrar esta reserva?')">Borrar</a>
-        </div>
+            <a href="../controller/reservasController.php?action=editar&id=<?= $reserva['id_reserva'] ?>" class="btn-reserva btn-editar">Editar</a>
+            <a href="../controller/reservasController.php?action=eliminar&id=<?= $reserva['id_reserva'] ?>">Eliminar</a>
+
+            </div>
     <?php endforeach; ?>
     </div>
     <a href="../usuario/perfilUsuario.php" class="btn-volver">⬅ Volver al panel</a>

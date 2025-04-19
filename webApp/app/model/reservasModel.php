@@ -397,65 +397,77 @@ class ReservasModel {
 
     }
     public function actualizarReserva($id, $datos) {
-            // Obtener los datos actuales de la reserva
-            $stmt = $this->conn->prepare("SELECT * FROM transfer_reservas WHERE id_reserva = :id");
-            $stmt->bindParam(':id', $id);
-            $stmt->execute();
-            $reserva = $stmt->fetch(PDO::FETCH_ASSOC);
-        
-            if (!$reserva) {
-                return false;
+        try {
+            // Validar ID y datos
+            if (!is_numeric($id) || empty($datos)) {
+                throw new InvalidArgumentException("Datos de actualización inválidos");
             }
-        
-            function valor($clave, $datos, $reserva) {
-                if (array_key_exists($clave, $datos)) {
-                    return $datos[$clave] === '' ? null : $datos[$clave];
-                }
-                return $reserva[$clave];
-            }
+    
+            // Construir SET dinámico para la consulta SQL
+            $updates = [];
+            $params = [':id' => $id];
             
-        
-            $sql = "UPDATE transfer_reservas SET
-                id_hotel = :id_hotel,
-                id_tipo_reserva = :id_tipo_reserva,
-                email_cliente = :email_cliente,
-                fecha_reserva = :fecha_reserva,
-                fecha_modificacion = NOW(),
-                id_destino = :id_destino,
-                fecha_entrada = :fecha_entrada,
-                hora_entrada = :hora_entrada,
-                numero_vuelo_entrada = :numero_vuelo_entrada,
-                origen_vuelo_entrada = :origen_vuelo_entrada,
-                hora_vuelo_salida = :hora_vuelo_salida,
-                fecha_vuelo_salida = :fecha_vuelo_salida,
-                num_viajeros = :num_viajeros,
-                id_vehiculo = :id_vehiculo,
-                numero_vuelo_salida = :numero_vuelo_salida,
-                hora_recogida = :hora_recogida
-                WHERE id_reserva = :id";
-        
-            $data = [
-                ':id_hotel' => valor('id_hotel', $datos, $reserva),
-                ':id_tipo_reserva' => valor('id_tipo_reserva', $datos, $reserva),
-                ':email_cliente' => valor('email_cliente', $datos, $reserva),
-                ':fecha_reserva' => valor('fecha_reserva', $datos, $reserva),
-                ':id_destino' => valor('id_destino', $datos, $reserva),
-                ':fecha_entrada' => valor('fecha_entrada', $datos, $reserva) ?: null,
-                ':hora_entrada' => valor('hora_entrada', $datos, $reserva),
-                ':numero_vuelo_entrada' => valor('numero_vuelo_entrada', $datos, $reserva),
-                ':origen_vuelo_entrada' => valor('origen_vuelo_entrada', $datos, $reserva),
-                ':hora_vuelo_salida' => valor('hora_vuelo_salida', $datos, $reserva),
-                ':fecha_vuelo_salida' => valor('fecha_vuelo_salida', $datos, $reserva) ?: null,
-                ':num_viajeros' => valor('num_viajeros', $datos, $reserva),
-                ':id_vehiculo' => valor('id_vehiculo', $datos, $reserva),
-                ':numero_vuelo_salida' => valor('numero_vuelo_salida', $datos, $reserva),
-                ':hora_recogida' => valor('hora_recogida', $datos, $reserva),
-                ':id' => $id
-            ];
-        
+            foreach ($datos as $campo => $valor) {
+                // Excluir campos no actualizables
+                if (in_array($campo, ['id_reserva', 'localizador', 'fecha_reserva'])) continue;
+                
+                // Validar tipos de datos según necesidad
+                if (str_contains($campo, 'fecha') || str_contains($campo, 'hora')) {
+                    $params[":$campo"] = $valor;
+                    $updates[] = "$campo = :$campo";
+                } else {
+                    $params[":$campo"] = (is_numeric($valor)) ? (int)$valor : $valor;
+                    $updates[] = "$campo = :$campo";
+                }
+            }
+    
+            // Si no hay campos para actualizar
+            if (empty($updates)) {
+                throw new RuntimeException("No hay campos válidos para actualizar");
+            }
+    
+            // Consulta SQL dinámica
+            $sql = "UPDATE transfer_reservas SET 
+                    " . implode(', ', $updates) . ",
+                    fecha_modificacion = NOW()
+                    WHERE id_reserva = :id";
+    
+            // Ejecutar
             $stmt = $this->conn->prepare($sql);
-            return $stmt->execute($data);
+            $stmt->execute($params);
+    
+            return true;
+    
+        } catch (PDOException $e) {
+            error_log("Error BD: " . $e->getMessage());
+            return false;
         }
+    }
+    
+    // Funciones de validación auxiliares
+    private function validarEntero($valor) {
+        if (!is_numeric($valor)) {
+            throw new InvalidArgumentException("❌ Valor numérico requerido");
+        }
+        return (int)$valor;
+    }
+    
+    private function validarEnteroPositivo($valor) {
+        $valor = $this->validarEntero($valor);
+        if ($valor <= 0) {
+            throw new InvalidArgumentException("❌ El valor debe ser positivo");
+        }
+        return $valor;
+    }
+    
+    private function validarEmail($email) {
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            throw new InvalidArgumentException("❌ Formato de email inválido");
+        }
+        return $email;
+    }
+    
+
     public function deleteReserva($id){
         try {
             $stmt = $this->conn->prepare("DELETE FROM transfer_reservas WHERE id_reserva = :id");
@@ -468,6 +480,25 @@ class ReservasModel {
         } catch (PDOException $e) {
             echo "<p style='color: red;'>❌ Error al borrar la reserva: " . $e->getMessage() . "</p>";
         }
+    }
+
+    public function obtenerEmailPorNombre($nombre) {
+        $sql = "SELECT email FROM transfer_viajeros WHERE nombre = :nombre";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bindParam(':nombre', $nombre);
+        $stmt->execute();
+        return $stmt->fetchColumn();
+    }
+    
+    public function obtenerReservasPorEmail($email) {
+        $sql = "SELECT r.*, t.`Descripción` AS tipo_reserva_desc
+                FROM transfer_reservas r
+                LEFT JOIN transfer_tipo_reserva t ON r.id_tipo_reserva = t.id_tipo_reserva
+                WHERE r.email_cliente = :email";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bindParam(':email', $email);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
         
 }    

@@ -70,7 +70,7 @@ $aeropuerto = $aeropuertoModel->obtenerAeropuertoPorId($reserva['id_destino']);
        
     <div class="optionbuttons">
         <div class="left">
-            <a href="../admin/panelAdministrador.php" class="btn-volver">⬅ Volver al panel</a>
+        <a href="<?= $_SESSION['isAdmin'] == 1 ? '../admin/panelAdministrador.php' : '../usuario/perfilUsuario.php' ?>" class="btn-volver">⬅ Volver</a>
         </div>
         <div class="right">
             <button type="submit">Actualizar</button>
