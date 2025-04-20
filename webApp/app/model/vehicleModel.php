@@ -14,11 +14,12 @@ private $conn;
     }
 
     public function obtenerVehiclePerId($id) {
-        $stmt = $this->conn->prepare("SELECT Descripción FROM transfer_vehiculo WHERE id_vehiculo = ?");
+        $stmt = $this->conn->prepare("SELECT id_vehiculo, Descripción, email_conductor, password FROM transfer_vehiculo WHERE id_vehiculo = ?");
         $stmt->bindValue(1, $id, PDO::PARAM_INT);
         $stmt->execute();
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
+    
 
     public function agregarVehicle($descripcion, $email_conductor, $password) {
         $sql = "INSERT INTO transfer_vehiculo (Descripción, email_conductor, password) VALUES (?, ?, ?)";

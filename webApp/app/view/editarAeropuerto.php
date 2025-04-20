@@ -14,6 +14,19 @@ $model = new AirportModel($conn);
 
 $id = $_GET['id'] ?? null;
 $aeropuerto = $model->obtenerAeropuertoPorId($id);
+
+if (!$id) {
+    header("Location: airportView.php?error=id_faltante");
+    exit;
+}
+
+$aeropuerto = $model->obtenerAeropuertoPorId($id);
+
+if (!$aeropuerto) {
+    header("Location: airportView.php?error=no_encontrado");
+    exit;
+}
+
 ?>
 
 

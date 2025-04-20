@@ -37,13 +37,13 @@ if (!$vehicle) {
         <input type="hidden" name="id_vehiculo" value="<?= $vehicle['id_vehiculo'] ?>">
 
         <label class="name-airport">Descripción:</label>
-        <input class="input-name" type="text" name="descripcion" value="<?= htmlspecialchars($vehicle['Descripción']) ?>" required>
+        <input class="input-name" type="text" name="descripcion" value="<?= htmlspecialchars($vehicle['Descripción'] ?? '') ?>" required>
 
         <label class="name-airport">Email Conductor:</label>
-        <input class="input-email" type="email" name="email_conductor" value="<?= htmlspecialchars($vehicle['email_conductor']) ?>" required>
+        <input class="input-email" type="email" name="email_conductor" value="<?= htmlspecialchars($vehicle['email_conductor'] ?? '') ?>" required>
 
         <label class="name-airport">Password:</label>
-        <input class="input-name" type="password" name="password" value="<?= htmlspecialchars($vehicle['password']) ?>" required>
+        <input class="input-name" type="password" name="password" value="<?= htmlspecialchars($vehicle['password'] ?? '') ?>" required>
 
         <button type="submit" class="btn-reserva">💾 Guardar Cambios</button>
         <a href="vehicleView.php" class="btn-reserva btn-cancelar">↩️ Cancelar</a>

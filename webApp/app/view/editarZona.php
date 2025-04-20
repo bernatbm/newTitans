@@ -35,14 +35,8 @@ if (!$zona) {
         <input type="hidden" name="id" value="<?= $zona['id_zona'] ?>">
 
         <label class="name-airport">Descripción:</label>
-        <select class="input-name" name="descripcion" required>
-            <?php foreach ($zonas as $zonaOption): ?>
-                <option value="<?= $zonaOption['id_zona'] ?>" 
-                        <?= ($zonaOption['id_zona'] == $zona['id_zona']) ? 'selected' : '' ?>>
-                    <?= htmlspecialchars($zonaOption['descripcion']) ?>
-                </option>
-            <?php endforeach; ?>
-        </select>
+        <input class="input-name" type="text" name="descripcion" value="<?= htmlspecialchars($zona['descripcion']) ?>" required>
+
 
         <button type="submit" class="btn-reserva">💾 Guardar Cambios</button>
         <a href="zoneView.php" class="btn-reserva btn-cancelar">↩️ Cancelar</a>
