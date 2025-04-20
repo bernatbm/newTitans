@@ -29,12 +29,9 @@ $zonas = $model->obtenerZonas();
     <h2 class="pa-h2-airport">Agregar Zona</h2>
     <input type="hidden" name="crear" value="1">
 
-    <label class="name-airport">Descripción:</label>
-    <select class="input-name" name="descripcion" required>
-        <?php foreach ($zonas as $zona): ?>
-            <option value="<?= $zona['id_zona'] ?>"><?= htmlspecialchars($zona['descripcion']) ?></option>
-        <?php endforeach; ?>
-    </select>
+    <label class="name-airport">Nueva Zona:</label>
+    <input type="text" class="input-name" name="descripcion" required placeholder="Nombre de la zona">
+
 
     <button type="submit" class="btn-reserva">➕ Añadir Zona</button>
 </form>
