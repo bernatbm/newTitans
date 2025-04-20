@@ -30,7 +30,7 @@ class HotelController {
             $password = $_POST['password'];
 
             
-            $this->model->insertarHotel($nombre_hotel, $id_zona, $comision, $usuario, $password);
+            
 
             // Validación simple
             if (empty($nombre_hotel) || empty($usuario) || empty($password)) {
