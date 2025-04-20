@@ -24,3 +24,13 @@ if (isset($_GET['accion']) && $_GET['accion'] === 'eliminar') {
     header("Location: ../view/zoneView.php");
     exit;
 }
+
+if (isset($_GET['accion']) && $_GET['accion'] === 'eliminar') {
+    try {
+        $model->eliminarZona($_GET['id']);
+        header("Location: ../view/zoneView.php?mensaje=eliminado");
+    } catch (PDOException $e) {
+        header("Location: ../view/zoneView.php?error=no_se_puede_eliminar");
+    }
+    exit;
+}

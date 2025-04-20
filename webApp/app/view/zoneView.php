@@ -54,7 +54,7 @@ $zonas = $model->obtenerZonas();
                             <td  data-label="Zona" style="text-align:center;"><?= htmlspecialchars($zona['descripcion']) ?></td>
                             <td style="text-align:center">
                                 <a class="btn-reserva btn-editar" href="editarZona.php?id=<?= $zona['id_zona'] ?>">Editar</a>
-                                <a class="btn-reserva btn-borrar" href="../controller/zoneController.php?accion=eliminar&id=<?= $zona['id_zona'] ?>" onclick="return confirm('¿Eliminar esta zona?')">Eliminar</a>
+                                <a class="btn-reserva btn-borrar" href="#" onclick="confirmarEliminacion(<?= $zona['id_zona'] ?>)">Eliminar</a>
                             </td>
                         </tr>
                     <?php endforeach; ?>
@@ -63,6 +63,34 @@ $zonas = $model->obtenerZonas();
         </div>
     </section>
 </div>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
+<script>
+function confirmarEliminacion(idZona) {
+  Swal.fire({
+    title: '¿Estás seguro?',
+    text: '¿Quieres eliminar esta zona? Si hay hoteles asociados, no se podrá eliminar.',
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonText: 'Sí, eliminar',
+    cancelButtonText: 'Cancelar'
+  }).then((result) => {
+    if (result.isConfirmed) {
+      window.location.href = `../controller/zoneController.php?accion=eliminar&id=${idZona}`;
+    }
+  });
+}
+</script>
+
+<?php if (isset($_GET['error']) && $_GET['error'] === 'no_se_puede_eliminar'): ?>
+<script>
+Swal.fire({
+  icon: 'error',
+  title: 'No se puede eliminar',
+  text: 'Esta zona está asociada a uno o más hoteles.',
+});
+</script>
+<?php endif; ?>
 

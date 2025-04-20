@@ -33,8 +33,17 @@ class ZoneModel {
     }
 
     public function eliminarZona($id) {
-        $sql = "DELETE FROM transfer_zona WHERE id_zona = ?";
-        $stmt = $this->conn->prepare($sql);
-        return $stmt->execute([$id]);
+        // Eliminar los hoteles asociados
+    $query = "DELETE FROM transfer_hotel WHERE id_zona = :id";
+    $stmt = $this->conn->prepare($query);
+    $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+    $stmt->execute();
+
+    // Eliminar la zona
+    $query = "DELETE FROM transfer_zona WHERE id_zona = :id";
+    $stmt = $this->conn->prepare($query);
+    $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+    $stmt->execute();
     }
-}
+    }
+   
