@@ -59,7 +59,7 @@ $emailExiste = $checkEmail->fetchColumn();
 
 if ($emailExiste > 0) {
     $error = urlencode("El usuario con este email ya existe.");
-    header("Location: registro.php?error=$error");
+    header("Location: ../view/registroView.php?error=$error");
     exit;
 }
 if ($tablaUser === 'transfer_corporativos') {

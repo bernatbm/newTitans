@@ -2,6 +2,10 @@
 if (session_status() === PHP_SESSION_NONE) {
     session_start();// Iniciar la sesión
 }
+if (isset($_GET['error'])) {
+    echo "Error recibido: " . htmlspecialchars($_GET['error']);
+}
+
 require_once '../model/database.php'; 
 $db = new database();
 $conn = $db->getConn();
@@ -144,6 +148,19 @@ document.addEventListener("DOMContentLoaded", () => {
         // Limpiar la URL para evitar mostrar el popup dos veces
         const nuevaURL = window.location.origin + window.location.pathname;
         window.history.replaceState({}, document.title, nuevaURL);
+    }
+    
+
+});
+document.addEventListener("DOMContentLoaded", () => {
+    // Obtener los parámetros de la URL
+        const params = new URLSearchParams(window.location.search);
+        const error = params.get("error");
+        if (error) {
+            alert(decodeURIComponent(error));
+        // Limpiar la URL para evitar mostrar el popup dos veces
+        const nuevaURL = window.location.origin + window.location.pathname;
+        window.history.replaceState({}, "", nuevaURL); // Limpia los parámetros de la URL
     }
 });
 </script>
