@@ -38,4 +38,3 @@ function mostrarVistaPerfilUsuario($usuario, $actualizado) {
 </body>
 </html>
 <?php
-}
